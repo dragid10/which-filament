@@ -57,7 +57,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
     </section>
 
     <div class="cols">
-      <section class="panel">
+      <section class="panel t-mint">
         <h2>Good for</h2>
         {d.goodFor.length ? (
           <ul class="pill-list good">{d.goodFor.map((id) => <li>{label(id)}</li>)}</ul>
@@ -69,12 +69,12 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
           </>
         )}
       </section>
-      <section class="panel">
+      <section class="panel t-lilac">
         <h2>Ratings</h2>
         <RatingBars ratings={d.ratings} />
         <p style="font-size:.8rem;color:var(--muted);margin:10px 0 0">Relative scores, 1-5, for typical filament of this type.</p>
       </section>
-      <section class="panel">
+      <section class="panel t-sun">
         <h2>Typical settings</h2>
         <dl class="kv">
           <dt>Nozzle</dt><dd>{d.settings.nozzle}</dd>

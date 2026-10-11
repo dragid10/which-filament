@@ -45,7 +45,7 @@ const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.ma
       <ul class="reasons" data-reasons></ul>
     </div>
     <ul class="tags">
-      {d.goodFor.slice(0, 3).map((id) => <li>{labelFor(id)}</li>)}
+      {d.goodFor.slice(0, 2).map((id) => <li>{labelFor(id)}</li>)}
     </ul>
     <RatingBars ratings={d.ratings} compact />
   </div>

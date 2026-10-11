@@ -2,7 +2,7 @@
 title: ASA
 fullName: Acrylonitrile styrene acrylate
 summary: Like ABS but built for the outdoors. Resists UV, weather, and heat without yellowing or cracking.
-color: "#0f766e"
+color: "#19c29e"
 order: 4
 pros:
   - "Excellent UV and weather resistance, so it stays put in sun, rain, and cold"

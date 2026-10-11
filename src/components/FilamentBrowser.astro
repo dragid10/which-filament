@@ -49,7 +49,7 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
         <li class="chip">
           <label title={u.hint}>
             <input type="checkbox" value={u.id} data-good />
-            <span class="t">{u.label}</span>
+            <span class="t"><span class="emoji" aria-hidden="true">{u.emoji}</span>{u.label}</span>
           </label>
         </li>
       ))}

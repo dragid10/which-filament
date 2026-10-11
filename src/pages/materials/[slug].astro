@@ -43,15 +43,15 @@ const d = entry.data;
     <FilamentBrowser filaments={variants} materials={materials} />
     <h2>About {d.title}</h2>
     <div class="cols">
-      <section class="panel">
+      <section class="panel t-mint">
         <h3>Pros</h3>
         <ul class="pros" style="margin:0;padding-left:1.4em">{d.pros.map((p) => <li>{p}</li>)}</ul>
       </section>
-      <section class="panel">
+      <section class="panel t-pink">
         <h3>Cons</h3>
         <ul class="cons" style="margin:0;padding-left:1.4em">{d.cons.map((p) => <li>{p}</li>)}</ul>
       </section>
-      <section class="panel">
+      <section class="panel t-sun">
         <h3>Typical settings</h3>
         <dl class="kv">
           <dt>Nozzle</dt><dd>{d.settings.nozzle}</dd>

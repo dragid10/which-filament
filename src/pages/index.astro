@@ -23,24 +23,24 @@ const byColour = [...filaments].sort((a, b) => a.data.color.localeCompare(b.data
       <p class="lede">
         Tell us what you're making. We'll rank PLA, PETG, ABS, ASA, TPU, and their variants for the job, and explain why.
       </p>
-      <div class="rail" aria-hidden="true">
+      <div class="dots" aria-hidden="true">
         {byColour.map((f) => <span style={`background:${f.data.color}`} />)}
       </div>
     </section>
 
     <section class="finder" aria-labelledby="finder-h" data-finder>
-      <div class="finder-head"><p class="label">Step 1</p><p class="label">Pick everything that applies</p></div>
       <div class="finder-body">
         <h2 id="finder-h">What are you printing?</h2>
+        <p class="hint">Pick everything that applies.</p>
         <fieldset>
           <legend class="sr-only">Use cases</legend>
           <ul class="chips tiles">
             {
               USE_CASES.map((u) => (
                 <li class="chip">
-                  <label>
+                  <label title={u.hint}>
                     <input type="checkbox" value={u.id} data-usecase />
-                    <span class="t"><span>{u.label}<small>{u.hint}</small></span></span>
+                    <span class="t"><span class="emoji" aria-hidden="true">{u.emoji}</span><span>{u.label}<span class="sr-only">. {u.hint}</span></span></span>
                   </label>
                 </li>
               ))
@@ -55,7 +55,7 @@ const byColour = [...filaments].sort((a, b) => a.data.color.localeCompare(b.data
 
     <section data-categories>
       <h2>Browse by material</h2>
-      <p class="lede" style="margin-top:-0.25rem">Start with the material, then pick a variant like rapid, plus, matte, or carbon fiber.</p>
+      <p class="lede">Start with the material, then pick a variant like rapid, plus, matte, or carbon fiber.</p>
       <ul class="grid">
         {
           materials.map((m) => {

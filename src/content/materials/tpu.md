@@ -2,7 +2,7 @@
 title: TPU
 fullName: Thermoplastic polyurethane
 summary: Flexible, rubbery filament for parts that bend, squash, and absorb impacts.
-color: "#facc15"
+color: "#ffd23f"
 order: 5
 pros:
   - "Truly flexible, and can stretch, bend, and bounce back"

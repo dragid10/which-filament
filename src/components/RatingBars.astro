@@ -5,7 +5,7 @@ interface Props {
   compact?: boolean;
 }
 const { ratings, compact = false } = Astro.props;
-const keys = compact ? (['strength', 'heat', 'ease', 'speed'] as const) : RATING_KEYS;
+const keys = compact ? (['strength', 'heat', 'ease'] as const) : RATING_KEYS;
 ---
 
 <dl class:list={['ratings', { compact }]}>
