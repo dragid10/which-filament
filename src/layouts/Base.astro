@@ -1,5 +1,11 @@
 ---
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
+
 interface Props {
   title?: string;
   description?: string;
@@ -24,6 +30,7 @@ const isActive = (href: string) =>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -36,12 +43,12 @@ const isActive = (href: string) =>
     <header class="site-header">
       <div class="wrap bar-row">
         <a class="brand" href="/">
-          <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="16" cy="16" r="15" fill="var(--accent)" />
-            <circle cx="16" cy="16" r="9" fill="var(--bg)" />
-            <circle cx="16" cy="16" r="4" fill="var(--accent)" />
+          <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" focusable="false">
+            <rect x="2" y="3" width="24" height="5" fill="#d2ff45" />
+            <rect x="2" y="11.5" width="24" height="5" fill="#d2ff45" opacity=".75" />
+            <rect x="2" y="20" width="24" height="5" fill="#d2ff45" opacity=".5" />
           </svg>
-          Which Filament
+          <span>Which Filament</span>
         </a>
         <nav aria-label="Main">
           <ul>
@@ -62,7 +69,7 @@ const isActive = (href: string) =>
     <footer class="site-footer">
       <div class="wrap">
         <p>
-          Ratings are general guidance for typical filament of each type; brands vary, so check the manufacturer's
+          Ratings are general guidance for typical filament of each type. Brands vary, so check the manufacturer's
           settings. Spotted a mistake? <a href="/contribute">Help fix it.</a>
         </p>
       </div>

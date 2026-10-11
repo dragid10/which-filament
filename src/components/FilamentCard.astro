@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { USE_CASES } from '../data/useCases';
-import Spool from './Spool.astro';
+import Swatch from './Swatch.astro';
 import RatingBars from './RatingBars.astro';
 
 interface Props {
@@ -32,7 +32,7 @@ const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.ma
       d.image ? (
         <img src={d.image} alt="" loading="lazy" width="320" height="200" />
       ) : (
-        <Spool color={d.color} size={96} />
+        <Swatch color={d.color} size={64} />
       )
     }
   </a>

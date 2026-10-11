@@ -19,43 +19,45 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
 ---
 
 <form class="controls" role="search" data-controls onsubmit="return false">
-  <label class="sr-only" for="q">Search</label>
-  <input id="q" class="search" type="search" placeholder="Search: rapid, silk, outdoor, cosplay…" autocomplete="off" data-q />
+  <div>
+    <label class="eyebrow" for="q">Search</label>
+    <input id="q" class="search" type="search" placeholder="rapid, silk, outdoor, cosplay…" autocomplete="off" data-q />
+  </div>
 
   {
     materialFilter && (
-      <div class="filter-row" role="group" aria-label="Filter by material">
-        <strong>Material</strong>
+      <fieldset class="filter-row">
+        <legend>Material</legend>
         <ul class="chips">
           {materials.map((m) => (
             <li class="chip">
               <label>
                 <input type="checkbox" value={m.id} data-material />
-                <span>{m.data.title}</span>
+                <span class="t">{m.data.title}</span>
               </label>
             </li>
           ))}
         </ul>
-      </div>
+      </fieldset>
     )
   }
 
-  <div class="filter-row" role="group" aria-label="Filter by use">
-    <strong>Good for</strong>
+  <fieldset class="filter-row">
+    <legend>Good for</legend>
     <ul class="chips">
       {usedUseCases.map((u) => (
         <li class="chip">
           <label title={u.hint}>
             <input type="checkbox" value={u.id} data-good />
-            <span>{u.label}</span>
+            <span class="t">{u.label}</span>
           </label>
         </li>
       ))}
     </ul>
-  </div>
+  </fieldset>
 
-  <div class="filter-row">
-    <label for="sort"><strong>Sort</strong></label>
+  <div class="row">
+    <label for="sort" class="eyebrow" style="margin:0">Sort</label>
     <select id="sort" class="sort" data-sort>
       <option value="name">Name</option>
       <option value="strength">Strongest</option>
@@ -64,12 +66,13 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
       <option value="heat">Most heat resistant</option>
       <option value="finish">Best looking</option>
     </select>
-    <span data-count role="status" aria-live="polite" style="color:var(--muted)"></span>
+    <span data-count role="status" aria-live="polite" style="color:var(--muted);font-family:var(--font-mono);font-size:.85rem"></span>
     <button type="reset" class="btn-link" data-reset>Clear filters</button>
     <span style="margin-left:auto"><ViewToggle /></span>
   </div>
 </form>
 
+<h2 class="sr-only">Results</h2>
 <ul class="grid" data-grid>
   {
     sorted.map((f) => (

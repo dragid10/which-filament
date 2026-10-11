@@ -1,34 +1,40 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Spool from '../../components/Spool.astro';
+import Swatch from '../../components/Swatch.astro';
+import { readableInk } from '../../lib/color';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
 const filaments = await getCollection('filaments');
 ---
 
-<Base title="Materials" description="Start with the material (PLA, PETG, and more), then explore its variants like rapid, plus, matte, and silk.">
+<Base title="Materials" description="Start with the material (PLA, PETG, ABS, ASA, TPU), then explore its variants like rapid, plus, matte, and carbon fiber.">
   <div class="wrap">
     <section class="page-head"><div>
+      <p class="eyebrow">Step 1 of 2</p>
       <h1>Materials</h1>
       <p class="lede">Each material has its own personality. Pick one to see its variants, such as rapid, plus, matte, and silk.</p>
     </div></section>
+    <h2 class="sr-only">All materials</h2>
     <ul class="grid">
       {
         materials.map((m) => {
           const variants = filaments.filter((f) => f.data.material.id === m.id);
           return (
             <li style="display:contents">
-              <a class="panel mat-card" href={`/materials/${m.id}`}>
-                {m.data.image && <img class="mat-img" src={m.data.image} alt="" loading="lazy" />}
-                <p class="eyebrow">{m.data.fullName}</p>
-                <h2>{m.data.title}</h2>
-                <p>{m.data.summary}</p>
-                <div class="mat-variants">
+              <a class="mat-card" href={`/materials/${m.id}`}>
+                {m.data.image ? <img class="mat-img" src={m.data.image} alt="" loading="lazy" /> : null}
+                <div class="mat-top" style={`--tile:${m.data.color ?? '#0b0f14'};--tile-ink:${readableInk(m.data.color ?? '#0b0f14')}`}>
+                  <span class="mat-count">{variants.length} variants</span>
+                  <h3 class="mat-name">{m.data.title}</h3>
+                </div>
+                <div class="mat-body">
+                  <p class="eyebrow">{m.data.fullName}</p>
+                  <p>{m.data.summary}</p>
                   <span class="swatches" aria-hidden="true">
-                    {variants.slice(0, 8).map((v) => <Spool color={v.data.color} size={26} />)}
+                    {variants.map((v) => <Swatch color={v.data.color} />)}
                   </span>
-                  <span>{variants.length} variants</span>
+                  <span class="mat-go">Open {m.data.title} →</span>
                 </div>
               </a>
             </li>

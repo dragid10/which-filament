@@ -1,0 +1,11 @@
+---
+// Decorative filament colour chip with printed "layer lines". The name of the filament is always in text next to it.
+interface Props {
+  color: string;
+  size?: number;
+}
+const { color, size } = Astro.props;
+const style = size ? `--c:${color};--s:${size}px` : `--c:${color}`;
+---
+
+<span class="swatch" style={style} aria-hidden="true"></span>

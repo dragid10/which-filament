@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getEntry } from 'astro:content';
-import Spool from './Spool.astro';
+import Swatch from './Swatch.astro';
 
 interface Props {
   object: CollectionEntry<'objects'>;
@@ -12,7 +12,7 @@ const best = await getEntry(object.data.best);
 
 <a class="obj-card panel" href={`/objects/${object.id}`}>
   <div class="obj-pick">
-    {best && <Spool color={best.data.color} size={44} />}
+    {best && <Swatch color={best.data.color} />}
     <div>
       <p class="eyebrow">Best pick</p>
       <strong>{best?.data.title}</strong>

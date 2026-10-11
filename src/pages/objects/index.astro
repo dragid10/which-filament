@@ -12,6 +12,7 @@ const objects = (await getCollection('objects')).sort((a, b) => a.data.title.loc
       <h1>What are people printing?</h1>
       <p class="lede">Common objects, with the filament that suits each and why.</p>
     </div></section>
+    <h2 class="sr-only">All examples</h2>
     <ul class="grid">
       {objects.map((o) => <li style="display:contents"><ObjectCard object={o} /></li>)}
     </ul>

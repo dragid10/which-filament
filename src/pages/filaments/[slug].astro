@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Spool from '../../components/Spool.astro';
+import Swatch from '../../components/Swatch.astro';
 import RatingBars from '../../components/RatingBars.astro';
 import FilamentCard from '../../components/FilamentCard.astro';
 import Sources from '../../components/Sources.astro';
@@ -38,25 +38,22 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
       <a href="/materials">Materials</a> › <a href={`/materials/${material.id}`}>{material.data.title}</a>
     </p>
 
-    <section class="page-head with-media">
+    <section class:list={['page-head', { 'with-media': !!d.image }]}>
       <div>
-        <p class="eyebrow">{material.data.title} · {d.priceTier}</p>
-        <h1>{d.title}</h1>
+        <p class="eyebrow">{material.data.title} · price tier {d.priceTier}</p>
+        <div class="title-row">
+          {!d.image && <Swatch color={d.color} size={72} />}
+          <h1 style="margin:0">{d.title}</h1>
+        </div>
         <p class="lede">{d.summary}</p>
         {d.aliases.length > 0 && <p style="color:var(--muted)">Also called: {d.aliases.join(', ')}</p>}
       </div>
-      <figure class="media" style="margin:0">
-        {
-          d.image ? (
-            <>
-              <img src={d.image} alt={d.imageAlt ?? `${d.title} filament example`} />
-              {d.imageCredit && <figcaption style="font-size:.75rem;color:var(--muted)">{d.imageCredit}</figcaption>}
-            </>
-          ) : (
-            <Spool color={d.color} size={140} />
-          )
-        }
-      </figure>
+      {d.image && (
+        <figure class="media">
+          <img src={d.image} alt={d.imageAlt ?? `${d.title} filament example`} />
+          {d.imageCredit && <figcaption style="font-size:.75rem;color:var(--muted)">{d.imageCredit}</figcaption>}
+        </figure>
+      )}
     </section>
 
     <div class="cols">

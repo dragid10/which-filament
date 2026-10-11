@@ -4,13 +4,15 @@ import Base from '../layouts/Base.astro';
 import FilamentCard from '../components/FilamentCard.astro';
 import ViewToggle from '../components/ViewToggle.astro';
 import ObjectCard from '../components/ObjectCard.astro';
-import Spool from '../components/Spool.astro';
+import Swatch from '../components/Swatch.astro';
 import { USE_CASES } from '../data/useCases';
+import { readableInk } from '../lib/color';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
 const filaments = await getCollection('filaments');
 const objects = (await getCollection('objects')).slice(0, 6);
 const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.title ?? id;
+const byColour = [...filaments].sort((a, b) => a.data.color.localeCompare(b.data.color));
 ---
 
 <Base>
@@ -19,50 +21,60 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
       <p class="eyebrow">Filament guide for 3D printing</p>
       <h1>Which filament should I <em>use</em> for this print?</h1>
       <p class="lede">
-        Tell us what you're making. We'll rank PLA, PETG, ABS, ASA, TPU, and their variants for the job,
-        and explain why.
+        Tell us what you're making. We'll rank PLA, PETG, ABS, ASA, TPU, and their variants for the job, and explain why.
       </p>
+      <div class="rail" aria-hidden="true">
+        {byColour.map((f) => <span style={`background:${f.data.color}`} />)}
+      </div>
     </section>
 
     <section class="finder" aria-labelledby="finder-h" data-finder>
-      <h2 id="finder-h">What are you printing?</h2>
-      <p style="margin-top:-4px;color:var(--muted)">Pick everything that applies.</p>
-      <ul class="chips">
-        {
-          USE_CASES.map((u) => (
-            <li class="chip">
-              <label title={u.hint}>
-                <input type="checkbox" value={u.id} data-usecase />
-                <span>{u.label}</span>
-              </label>
-            </li>
-          ))
-        }
-      </ul>
-      <p class="finder-status" role="status" aria-live="polite" data-status>
-        Choose at least one to get a ranked shortlist.
-      </p>
+      <div class="finder-head"><p class="label">Step 1</p><p class="label">Pick everything that applies</p></div>
+      <div class="finder-body">
+        <h2 id="finder-h">What are you printing?</h2>
+        <fieldset>
+          <legend class="sr-only">Use cases</legend>
+          <ul class="chips tiles">
+            {
+              USE_CASES.map((u) => (
+                <li class="chip">
+                  <label>
+                    <input type="checkbox" value={u.id} data-usecase />
+                    <span class="t"><span>{u.label}<small>{u.hint}</small></span></span>
+                  </label>
+                </li>
+              ))
+            }
+          </ul>
+        </fieldset>
+        <p class="finder-status" role="status" aria-live="polite" data-status>
+          Choose at least one to get a ranked shortlist.
+        </p>
+      </div>
     </section>
 
     <section data-categories>
       <h2>Browse by material</h2>
-      <p style="color:var(--muted);margin-top:-6px">Start with the material, then pick a variant like rapid, plus, matte, or carbon fiber.</p>
+      <p class="lede" style="margin-top:-0.25rem">Start with the material, then pick a variant like rapid, plus, matte, or carbon fiber.</p>
       <ul class="grid">
         {
           materials.map((m) => {
             const variants = filaments.filter((f) => f.data.material.id === m.id);
             return (
               <li style="display:contents">
-                <a class="panel mat-card" href={`/materials/${m.id}`}>
-                  {m.data.image && <img class="mat-img" src={m.data.image} alt="" loading="lazy" />}
-                  <p class="eyebrow">{m.data.fullName}</p>
-                  <h3 style="font-size:1.6rem;margin-bottom:6px">{m.data.title}</h3>
-                  <p>{m.data.summary}</p>
-                  <div class="mat-variants">
+                <a class="mat-card" href={`/materials/${m.id}`}>
+                  {m.data.image ? <img class="mat-img" src={m.data.image} alt="" loading="lazy" /> : null}
+                  <div class="mat-top" style={`--tile:${m.data.color ?? '#0b0f14'};--tile-ink:${readableInk(m.data.color ?? '#0b0f14')}`}>
+                    <span class="mat-count">{variants.length} variants</span>
+                    <h3 class="mat-name">{m.data.title}</h3>
+                  </div>
+                  <div class="mat-body">
+                    <p class="eyebrow">{m.data.fullName}</p>
+                    <p>{m.data.summary}</p>
                     <span class="swatches" aria-hidden="true">
-                      {variants.slice(0, 8).map((v) => <Spool color={v.data.color} size={26} />)}
+                      {variants.map((v) => <Swatch color={v.data.color} />)}
                     </span>
-                    <span>{variants.length} variants</span>
+                    <span class="mat-go">Open {m.data.title} →</span>
                   </div>
                 </a>
               </li>
@@ -72,7 +84,8 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
       </ul>
     </section>
 
-    <section data-results hidden>
+    <section data-results hidden aria-label="Ranked results">
+      <h2 class="sr-only">Ranked results</h2>
       <div class="toolbar"><ViewToggle /></div>
       <ul class="grid" data-grid>
         {
@@ -91,7 +104,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
     <ul class="grid">
       {objects.map((o) => <li style="display:contents"><ObjectCard object={o} /></li>)}
     </ul>
-    <p><a href="/objects">See all examples →</a> · <a href="/filaments">Search all variants →</a></p>
+    <p style="margin-top:1.5rem"><a href="/objects">See all examples →</a> · <a href="/filaments">Search all variants →</a></p>
   </div>
 </Base>
 

@@ -14,10 +14,12 @@ const keys = compact ? (['strength', 'heat', 'ease', 'speed'] as const) : RATING
       <>
         <dt>{RATING_LABELS[k]}</dt>
         <dd>
-          <span class="bar" role="img" aria-label={`${ratings[k]} out of 5`}>
+          <span class="sr-only">{ratings[k]} out of 5</span>
+          <span class="bar" aria-hidden="true">
             {[1, 2, 3, 4, 5].map((i) => (
               <span class:list={['pip', { on: i <= ratings[k] }]} />
             ))}
+            <span class="num">{ratings[k]}/5</span>
           </span>
         </dd>
       </>
