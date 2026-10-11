@@ -1,0 +1,56 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FilamentCard from '../../components/FilamentCard.astro';
+
+export async function getStaticPaths() {
+  const materials = await getCollection('materials');
+  const filaments = await getCollection('filaments');
+  return materials.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry, variants: filaments.filter((f) => f.data.material === entry.id) },
+  }));
+}
+
+const { entry, variants } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+
+<Base title={d.title} description={d.summary}>
+  <div class="wrap">
+    <p class="crumbs"><a href="/materials">Materials</a></p>
+    <section class="page-head"><div>
+      <p class="eyebrow">{d.fullName}</p>
+      <h1>{d.title}</h1>
+      <p class="lede">{d.summary}</p>
+    </div></section>
+
+    <div class="cols">
+      <section class="panel">
+        <h2>Pros</h2>
+        <ul class="pros" style="margin:0;padding-left:1.4em">{d.pros.map((p) => <li>{p}</li>)}</ul>
+      </section>
+      <section class="panel">
+        <h2>Cons</h2>
+        <ul class="cons" style="margin:0;padding-left:1.4em">{d.cons.map((p) => <li>{p}</li>)}</ul>
+      </section>
+      <section class="panel">
+        <h2>Typical settings</h2>
+        <dl class="kv">
+          <dt>Nozzle</dt><dd>{d.settings.nozzle}</dd>
+          <dt>Bed</dt><dd>{d.settings.bed}</dd>
+          {d.settings.enclosure && <><dt>Enclosure</dt><dd>{d.settings.enclosure}</dd></>}
+          {d.settings.drying && <><dt>Drying</dt><dd>{d.settings.drying}</dd></>}
+        </dl>
+      </section>
+    </div>
+
+    <article class="prose"><Content /></article>
+
+    <h2>{d.title} types</h2>
+    <ul class="grid">
+      {variants.map((f) => <li style="display:contents"><FilamentCard filament={f} materialTitle={d.title} /></li>)}
+    </ul>
+  </div>
+</Base>

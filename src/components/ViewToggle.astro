@@ -1,0 +1,38 @@
+---
+---
+
+<div class="view-toggle" role="group" aria-label="Layout">
+  <button type="button" data-view="cards" aria-pressed="true">
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 1h6v6H1zM9 1h6v6H9zM1 9h6v6H1zM9 9h6v6H9z" /></svg>
+    Cards
+  </button>
+  <button type="button" data-view="list" aria-pressed="false">
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 2h14v3H1zM1 6.5h14v3H1zM1 11h14v3H1z" /></svg>
+    List
+  </button>
+</div>
+
+<script>
+  const KEY = 'wf-view';
+  const grid = document.querySelector<HTMLElement>('[data-grid]');
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-view]')];
+
+  function read(): string {
+    const fromUrl = new URLSearchParams(location.search).get('view');
+    if (fromUrl === 'list' || fromUrl === 'cards') return fromUrl;
+    try {
+      return localStorage.getItem(KEY) === 'list' ? 'list' : 'cards';
+    } catch {
+      return 'cards';
+    }
+  }
+  function set(view: string, persist: boolean) {
+    grid?.classList.toggle('list-view', view === 'list');
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === view)));
+    if (persist) {
+      try { localStorage.setItem(KEY, view); } catch { /* storage unavailable */ }
+    }
+  }
+  buttons.forEach((b) => b.addEventListener('click', () => set(b.dataset.view!, true)));
+  set(read(), false);
+</script>

@@ -1,0 +1,26 @@
+---
+import { RATING_KEYS, RATING_LABELS, type RatingKey } from '../data/useCases';
+interface Props {
+  ratings: Record<RatingKey, number>;
+  compact?: boolean;
+}
+const { ratings, compact = false } = Astro.props;
+const keys = compact ? (['strength', 'heat', 'ease', 'speed'] as const) : RATING_KEYS;
+---
+
+<dl class:list={['ratings', { compact }]}>
+  {
+    keys.map((k) => (
+      <>
+        <dt>{RATING_LABELS[k]}</dt>
+        <dd>
+          <span class="bar" role="img" aria-label={`${ratings[k]} out of 5`}>
+            {[1, 2, 3, 4, 5].map((i) => (
+              <span class:list={['pip', { on: i <= ratings[k] }]} />
+            ))}
+          </span>
+        </dd>
+      </>
+    ))
+  }
+</dl>

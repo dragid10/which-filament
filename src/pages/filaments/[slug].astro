@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Spool from '../../components/Spool.astro';
+import RatingBars from '../../components/RatingBars.astro';
+import FilamentCard from '../../components/FilamentCard.astro';
+import { USE_CASES } from '../../data/useCases';
+
+export async function getStaticPaths() {
+  const filaments = await getCollection('filaments');
+  const materials = await getCollection('materials');
+  return filaments.map((entry) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+      material: materials.find((m) => m.id === entry.data.material),
+      siblings: filaments.filter((f) => f.data.material === entry.data.material && f.id !== entry.id),
+      materials,
+    },
+  }));
+}
+
+const { entry, material, siblings, materials } = Astro.props;
+if (!material) throw new Error(`Filament "${entry.id}" references unknown material "${entry.data.material}"`);
+const { Content } = await render(entry);
+const d = entry.data;
+const label = (id: string) => USE_CASES.find((u) => u.id === id)?.label ?? id;
+const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.title ?? id;
+---
+
+<Base title={d.title} description={d.summary}>
+  <div class="wrap">
+    <p class="crumbs">
+      <a href="/filaments">All filaments</a> › <a href={`/materials/${material.id}`}>{material.data.title}</a>
+    </p>
+
+    <section class="page-head with-media">
+      <div>
+        <p class="eyebrow">{material.data.title} · {d.priceTier}</p>
+        <h1>{d.title}</h1>
+        <p class="lede">{d.summary}</p>
+        {d.aliases.length > 0 && <p style="color:var(--muted)">Also called: {d.aliases.join(', ')}</p>}
+      </div>
+      <figure class="media" style="margin:0">
+        {
+          d.image ? (
+            <>
+              <img src={d.image} alt={d.imageAlt ?? `${d.title} filament example`} />
+              {d.imageCredit && <figcaption style="font-size:.75rem;color:var(--muted)">{d.imageCredit}</figcaption>}
+            </>
+          ) : (
+            <Spool color={d.color} size={140} />
+          )
+        }
+      </figure>
+    </section>
+
+    <div class="cols">
+      <section class="panel">
+        <h2>Good for</h2>
+        {d.goodFor.length ? (
+          <ul class="pill-list good">{d.goodFor.map((id) => <li>{label(id)}</li>)}</ul>
+        ) : <p style="margin:0;color:var(--muted)">No specific strengths listed.</p>}
+        {d.avoidFor.length > 0 && (
+          <>
+            <h2 style="margin-top:1.2rem">Not great for</h2>
+            <ul class="pill-list avoid">{d.avoidFor.map((id) => <li>{label(id)}</li>)}</ul>
+          </>
+        )}
+      </section>
+      <section class="panel">
+        <h2>Ratings</h2>
+        <RatingBars ratings={d.ratings} />
+        <p style="font-size:.8rem;color:var(--muted);margin:10px 0 0">Relative scores, 1-5, for typical filament of this type.</p>
+      </section>
+      <section class="panel">
+        <h2>Typical settings</h2>
+        <dl class="kv">
+          <dt>Nozzle</dt><dd>{d.settings.nozzle}</dd>
+          <dt>Bed</dt><dd>{d.settings.bed}</dd>
+          {d.settings.speed && <><dt>Speed</dt><dd>{d.settings.speed}</dd></>}
+          {d.settings.cooling && <><dt>Cooling</dt><dd>{d.settings.cooling}</dd></>}
+        </dl>
+        {d.needs.length > 0 && (
+          <>
+            <h2 style="margin-top:1.2rem">You'll need</h2>
+            <ul style="margin:0;padding-left:1.1em">{d.needs.map((n) => <li>{n}</li>)}</ul>
+          </>
+        )}
+        <p style="font-size:.8rem;color:var(--muted);margin:10px 0 0">Always start from your filament maker's recommended range.</p>
+      </section>
+    </div>
+
+    <article class="prose"><Content /></article>
+
+    {siblings.length > 0 && (
+      <>
+        <h2>Other {material.data.title} types</h2>
+        <ul class="grid">
+          {siblings.map((s) => (
+            <li style="display:contents"><FilamentCard filament={s} materialTitle={materialTitle(s.data.material)} /></li>
+          ))}
+        </ul>
+      </>
+    )}
+
+    <p style="margin-top:2rem"><a href={`https://github.com/dragid10/which-filament/edit/main/src/content/filaments/${entry.id}.md`}>Suggest an edit to this page</a></p>
+  </div>
+</Base>
