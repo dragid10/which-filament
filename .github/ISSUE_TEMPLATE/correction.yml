@@ -1,0 +1,27 @@
+name: Correct information
+description: Something on the site is wrong or out of date
+title: "Correction: "
+labels: ["content", "correction"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Which page?
+      placeholder: https://which-filament.com/filaments/pla-plus
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What's wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: right
+    attributes:
+      label: What should it say?
+  - type: textarea
+    id: sources
+    attributes:
+      label: Source
+      description: Link or short explanation of how you know.

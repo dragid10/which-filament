@@ -1,0 +1,41 @@
+name: Add a filament
+description: Suggest a new filament type (e.g. Matte PETG, PLA-CF)
+title: "Add filament: "
+labels: ["content", "new-entry"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Filament type
+      placeholder: e.g. Matte PETG
+    validations:
+      required: true
+  - type: dropdown
+    id: material
+    attributes:
+      label: Base material
+      options: [PLA, PETG, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: good
+    attributes:
+      label: What is it good (and bad) for?
+    validations:
+      required: true
+  - type: textarea
+    id: settings
+    attributes:
+      label: Typical settings
+      description: Nozzle / bed temps, speed, any special requirements.
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Datasheets, tests, or your own experience.
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Contributing
+      options:
+        - label: I'm happy for the maintainers to write this up (or I'll open a PR myself)
