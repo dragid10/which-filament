@@ -2,7 +2,6 @@
 title: Rapid PETG
 material: petg
 summary: PETG tuned for high-speed printing. Same toughness, faster flow, fewer compromises at speed.
-color: "#8b5cf6"
 aliases: [high speed petg, hs petg, speed petg]
 ratings: { strength: 4, heat: 3, flex: 3, ease: 3, speed: 4, finish: 3, durability: 4 }
 goodFor: [functional, mechanical, fast, outdoor, hot-environment]

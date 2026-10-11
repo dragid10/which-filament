@@ -2,7 +2,6 @@
 title: Matte PLA
 material: pla
 summary: PLA with a non-glossy, velvety finish that hides layer lines and fingerprints.
-color: "#6b7280"
 aliases: [matt pla, satin pla]
 ratings: { strength: 2, heat: 1, flex: 1, ease: 4, speed: 3, finish: 4, durability: 2 }
 goodFor: [display, cosplay, prototype]

@@ -4,106 +4,101 @@ import Base from '../layouts/Base.astro';
 import FilamentCard from '../components/FilamentCard.astro';
 import ViewToggle from '../components/ViewToggle.astro';
 import ObjectCard from '../components/ObjectCard.astro';
-import Swatch from '../components/Swatch.astro';
 import { USE_CASES } from '../data/useCases';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
 const filaments = await getCollection('filaments');
 const objects = (await getCollection('objects')).slice(0, 6);
 const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.title ?? id;
-const byColour = [...filaments].sort((a, b) => a.data.color.localeCompare(b.data.color));
 ---
 
 <Base>
-  <div class="wrap">
-    <section class="hero">
-      <p class="eyebrow">Filament guide for 3D printing</p>
-      <h1>Which filament should I <em>use</em> for this print?</h1>
-      <p class="lede">
-        Tell us what you're making. We'll rank PLA, PETG, ABS, ASA, TPU, and their variants for the job, and explain why.
-      </p>
-      <div class="dots" aria-hidden="true">
-        {byColour.map((f) => <span style={`background:${f.data.color}`} />)}
-      </div>
-    </section>
+  <div class="wrap app">
+    <aside class="side" aria-label="What are you printing?">
+      <details class="side-details" open data-side>
+        <summary><span>What are you printing?</span> <span class="side-count" data-side-count></span></summary>
+        <div class="side-body">
+          <h2 class="side-title" id="finder-h">What are you printing?</h2>
+          <p class="side-hint">Pick everything that applies.</p>
+          <fieldset>
+            <legend class="sr-only">Use cases</legend>
+            <ul class="chips side-list">
+              {
+                USE_CASES.map((u) => (
+                  <li class="chip">
+                    <label title={u.hint}>
+                      <input type="checkbox" value={u.id} data-usecase />
+                      <span class="t"><span class="emoji" aria-hidden="true">{u.emoji}</span><span>{u.label}<span class="sr-only">. {u.hint}</span></span></span>
+                    </label>
+                  </li>
+                ))
+              }
+            </ul>
+          </fieldset>
+          <div class="side-actions">
+            <button type="button" class="btn-link" data-clear>Clear selection</button>
+            <button type="button" class="btn-show" data-show-results>Show results</button>
+          </div>
+        </div>
+      </details>
+    </aside>
 
-    <section class="finder" aria-labelledby="finder-h" data-finder>
-      <div class="finder-body">
-        <h2 id="finder-h">What are you printing?</h2>
-        <p class="hint">Pick everything that applies.</p>
-        <fieldset>
-          <legend class="sr-only">Use cases</legend>
-          <ul class="chips tiles">
-            {
-              USE_CASES.map((u) => (
-                <li class="chip">
-                  <label title={u.hint}>
-                    <input type="checkbox" value={u.id} data-usecase />
-                    <span class="t"><span class="emoji" aria-hidden="true">{u.emoji}</span><span>{u.label}<span class="sr-only">. {u.hint}</span></span></span>
-                  </label>
+    <div class="main-col" id="results-top">
+      <h1 class="page-title">Which filament should I use for this print?</h1>
+      <p class="finder-status" role="status" aria-live="polite" data-status>
+        Choose at least one option to get a ranked shortlist, or browse by material.
+      </p>
+
+      <section data-categories>
+        <h2>Browse by material</h2>
+        <ul class="grid mats">
+          {
+            materials.map((m) => {
+              const variants = filaments.filter((f) => f.data.material.id === m.id);
+              return (
+                <li style="display:contents">
+                  <a class="mat-card" href={`/materials/${m.id}`}>
+                    {m.data.image ? <img class="mat-img" src={m.data.image} alt="" loading="lazy" /> : null}
+                    <div class="mat-top">
+                      <h3 class="mat-name">{m.data.title}</h3>
+                      <span class="mat-count">{variants.length} variants</span>
+                    </div>
+                    <div class="mat-body">
+                      <p class="eyebrow">{m.data.fullName}</p>
+                      <p>{m.data.summary}</p>
+                      <p class="variant-names">{variants.map((v) => v.data.title).join(' · ')}</p>
+                      <span class="mat-go">Open {m.data.title} →</span>
+                    </div>
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </section>
+
+      <section data-results hidden aria-label="Ranked results">
+        <h2 class="sr-only">Ranked results</h2>
+        <div class="toolbar"><ViewToggle /></div>
+        <ul class="grid" data-grid>
+          {
+            filaments
+              .sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title))
+              .map((f) => (
+                <li style="display:contents">
+                  <FilamentCard filament={f} materialTitle={materialTitle(f.data.material.id)} />
                 </li>
               ))
-            }
-          </ul>
-        </fieldset>
-        <p class="finder-status" role="status" aria-live="polite" data-status>
-          Choose at least one to get a ranked shortlist.
-        </p>
-      </div>
-    </section>
+          }
+        </ul>
+      </section>
 
-    <section data-categories>
-      <h2>Browse by material</h2>
-      <p class="lede">Start with the material, then pick a variant like rapid, plus, matte, or carbon fiber.</p>
+      <h2>Or see what people print</h2>
       <ul class="grid">
-        {
-          materials.map((m) => {
-            const variants = filaments.filter((f) => f.data.material.id === m.id);
-            return (
-              <li style="display:contents">
-                <a class="mat-card" href={`/materials/${m.id}`}>
-                  {m.data.image ? <img class="mat-img" src={m.data.image} alt="" loading="lazy" /> : null}
-                  <div class="mat-top">
-                    <span class="mat-count">{variants.length} variants</span>
-                    <h3 class="mat-name">{m.data.title}</h3>
-                  </div>
-                  <div class="mat-body">
-                    <p class="eyebrow">{m.data.fullName}</p>
-                    <p>{m.data.summary}</p>
-                    <span class="swatches" aria-hidden="true">
-                      {variants.map((v) => <Swatch color={v.data.color} />)}
-                    </span>
-                    <span class="mat-go">Open {m.data.title} →</span>
-                  </div>
-                </a>
-              </li>
-            );
-          })
-        }
+        {objects.map((o) => <li style="display:contents"><ObjectCard object={o} /></li>)}
       </ul>
-    </section>
-
-    <section data-results hidden aria-label="Ranked results">
-      <h2 class="sr-only">Ranked results</h2>
-      <div class="toolbar"><ViewToggle /></div>
-      <ul class="grid" data-grid>
-        {
-          filaments
-            .sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title))
-            .map((f) => (
-              <li style="display:contents">
-                <FilamentCard filament={f} materialTitle={materialTitle(f.data.material.id)} />
-              </li>
-            ))
-        }
-      </ul>
-    </section>
-
-    <h2>Or see what people print</h2>
-    <ul class="grid">
-      {objects.map((o) => <li style="display:contents"><ObjectCard object={o} /></li>)}
-    </ul>
-    <p style="margin-top:1.5rem"><a href="/objects">See all examples →</a> · <a href="/filaments">Search all variants →</a></p>
+      <p style="margin-top:1.5rem"><a href="/objects">See all examples →</a> · <a href="/filaments">Search all variants →</a></p>
+    </div>
   </div>
 </Base>
 
@@ -126,7 +121,7 @@ const byColour = [...filaments].sort((a, b) => a.data.color.localeCompare(b.data
       for (const card of grid.querySelectorAll<HTMLElement>('[data-card]')) {
         card.querySelector<HTMLElement>('[data-match]')!.hidden = true;
       }
-      status.textContent = 'Choose at least one to get a ranked shortlist.';
+      status.textContent = 'Choose at least one option to get a ranked shortlist, or browse by material.';
       categories.hidden = false;
       results.hidden = true;
       return;
@@ -165,4 +160,32 @@ const byColour = [...filaments].sort((a, b) => a.data.color.localeCompare(b.data
   }
   boxes.forEach((b) => b.addEventListener('change', update));
   update();
+
+  // Sidebar behaviour: keep options open on wide screens, collapsible on narrow ones
+  const side = document.querySelector<HTMLDetailsElement>('[data-side]')!;
+  const sideCount = document.querySelector<HTMLElement>('[data-side-count]')!;
+  const wide = window.matchMedia('(min-width: 900px)');
+  function syncSide() {
+    if (wide.matches) side.open = true;
+  }
+  wide.addEventListener('change', () => {
+    syncSide();
+    if (!wide.matches) side.open = false;
+  });
+  if (!wide.matches) side.open = false;
+  function updateCount() {
+    const n = boxes.filter((b) => b.checked).length;
+    sideCount.textContent = n ? `${n} selected` : '';
+  }
+  boxes.forEach((b) => b.addEventListener('change', updateCount));
+  document.querySelector('[data-clear]')!.addEventListener('click', () => {
+    boxes.forEach((b) => (b.checked = false));
+    update();
+    updateCount();
+  });
+  document.querySelector('[data-show-results]')!.addEventListener('click', () => {
+    if (!wide.matches) side.open = false;
+    document.getElementById('results-top')!.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+  updateCount();
 </script>

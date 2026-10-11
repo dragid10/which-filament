@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { USE_CASES } from '../data/useCases';
-import Swatch from './Swatch.astro';
 import RatingBars from './RatingBars.astro';
 
 interface Props {
@@ -27,15 +26,13 @@ const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.ma
   data-ratings={JSON.stringify(d.ratings)}
   data-price={d.priceTier.length}
 >
-  <a class="card-media" href={`/filaments/${filament.id}`} tabindex="-1" aria-hidden="true">
-    {
-      d.image ? (
+  {
+    d.image && (
+      <a class="card-media" href={`/filaments/${filament.id}`} tabindex="-1" aria-hidden="true">
         <img src={d.image} alt="" loading="lazy" width="320" height="200" />
-      ) : (
-        <Swatch color={d.color} size={64} />
-      )
-    }
-  </a>
+      </a>
+    )
+  }
   <div class="card-body">
     <p class="eyebrow">{materialTitle}</p>
     <h3><a href={`/filaments/${filament.id}`}>{d.title}</a></h3>

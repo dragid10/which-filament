@@ -2,7 +2,6 @@
 title: ABS-CF
 material: abs
 summary: ABS filled with carbon fiber. Stiffer and less warp-prone than plain ABS, with a dry matte look.
-color: "#111827"
 aliases: [carbon fiber abs, carbon fibre abs, abs carbon fiber, cf abs]
 ratings: { strength: 4, heat: 4, flex: 1, ease: 2, speed: 3, finish: 4, durability: 3 }
 goodFor: [functional, mechanical, hot-environment]

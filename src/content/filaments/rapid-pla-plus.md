@@ -2,7 +2,6 @@
 title: Rapid PLA+
 material: pla
 summary: The speed of Rapid PLA with the toughening of PLA+. A strong choice for fast functional prints.
-color: "#ef4444"
 aliases: [rapid pla plus, high speed pla+, hs pla+]
 ratings: { strength: 4, heat: 1, flex: 2, ease: 4, speed: 5, finish: 3, durability: 3 }
 goodFor: [fast, functional, prototype, cosplay]

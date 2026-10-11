@@ -2,7 +2,6 @@
 title: PLA-CF
 material: pla
 summary: PLA filled with chopped carbon fiber. Very stiff, matte, and low-warp, but brittle and hard on nozzles.
-color: "#374151"
 aliases: [carbon fiber pla, carbon fibre pla, pla carbon fiber, cf pla]
 ratings: { strength: 3, heat: 2, flex: 1, ease: 3, speed: 3, finish: 4, durability: 2 }
 goodFor: [functional, prototype, display]

@@ -2,7 +2,6 @@
 title: Rapid PLA
 material: pla
 summary: PLA tuned to melt and flow quickly so high-speed printers can run fast without under-extruding.
-color: "#f97316"
 aliases: [high speed pla, hs pla, speed pla, hyper pla]
 ratings: { strength: 3, heat: 1, flex: 1, ease: 4, speed: 5, finish: 3, durability: 2 }
 goodFor: [fast, prototype, large, display]

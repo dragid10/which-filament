@@ -39,8 +39,6 @@ const filaments = defineCollection({
     // File name (without .md) of an entry in src/content/materials. Typos fail the build.
     material: reference('materials'),
     summary: z.string().max(200),
-    // Hex colour used for the fallback spool illustration
-    color: z.string().regex(/^#[0-9a-fA-F]{6}$/),
     // Optional photo, relative to /public (e.g. /images/filaments/silk-pla.jpg)
     image: z.string().optional(),
     imageAlt: z.string().optional(),

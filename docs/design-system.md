@@ -1,6 +1,6 @@
 # Design system
 
-Warm neutral and calm: an eggshell page, tan secondary surfaces, near-black ink, and nothing else. The only colour on the site is filament colour (spool swatches and the hero dots), because that colour is information. A light/dark toggle follows the system by default and remembers the visitor's choice.
+Warm neutral and calm: an eggshell page, tan secondary surfaces, near-black ink, and nothing else. There is no accent colour and no decorative colour (a filament type comes in every colour, so showing one would mislead). A light/dark toggle follows the system by default and remembers the visitor's choice.
 
 ## Tokens (`src/styles/global.css`, `light-dark()` pairs)
 
@@ -29,9 +29,8 @@ Radius 14 px for cards and tiles, 10 px for inner media, pills (999 px) for chip
 
 | Component | Notes |
 |-----------|-------|
-| Material tile (`.mat-card`) | Top-level category: tan block with the big name and a variant count, then summary and spool swatches |
-| Filament card (`.card`) | Spool swatch, material label, name, summary, up to two tags, three ratings. Grid or list layout |
-| Swatch (`Swatch.astro`) | Top view of a spool in the filament's colour. Decorative, always paired with a text name |
+| Material tile (`.mat-card`) | Top-level category: tan header with the name and a variant count, then summary and the list of variant names |
+| Filament card (`.card`) | Material label, name, summary, up to two tags, three ratings. Grid or list layout. A photo appears on top only when the entry has an `image` |
 | Toggle chip (`.chip`) | Pill with an emoji. Selected state is an ink fill plus a check mark |
 | Rating dots | Five round dots plus `n/5` text and a screen-reader sentence |
 | Panels | Tan blocks for good-for, ratings, settings, pros, cons |
@@ -52,3 +51,9 @@ Radius 14 px for cards and tiles, 10 px for inner media, pills (999 px) for chip
 ## Checking it
 
 With the site built and served (`npm run build && npm run preview`), run axe-core against each page type in light and dark, including the finder results state and list view, plus a 320 px overflow check. The project has no test runner, so this is done ad hoc.
+
+## Layout
+
+- **Home:** a sticky left sidebar holds the "What are you printing?" options; the main column shows the material tiles, then ranked results as soon as an option is picked. No hero, so the useful content is visible without scrolling. Below 900 px the sidebar becomes a collapsible section above the results with a "Show results" button.
+- **Detail pages:** text on the left, key facts (good for, ratings, settings) in a sticky right column, which splits into two columns on very wide screens.
+- **Container:** up to 1760 px wide so large monitors are used rather than left empty.

@@ -23,9 +23,7 @@ const d = entry.data;
     <p class="crumbs"><a href="/materials">Materials</a> › {d.title}</p>
     <section class:list={['page-head', { 'with-media': !!d.image }]}><div>
       <p class="eyebrow">{d.fullName}</p>
-      <div class="title-row">
-        <h1 style="margin:0">{d.title}</h1>
-      </div>
+      <h1>{d.title}</h1>
       <p class="lede">{d.summary}</p>
       {d.aliases.length > 0 && <p style="color:var(--muted)">Also called: {d.aliases.join(', ')}</p>}
     </div>
@@ -40,7 +38,12 @@ const d = entry.data;
     <h2 style="margin-top:1.5rem">{d.title} variants <span style="color:var(--muted);font-weight:500;font-size:1rem">({variants.length})</span></h2>
     <FilamentBrowser filaments={variants} materials={materials} />
     <h2>About {d.title}</h2>
-    <div class="cols">
+    <div class="detail">
+      <div>
+        <article class="prose"><Content /></article>
+        <Sources sources={d.sources} />
+      </div>
+      <aside class="detail-side" aria-label="Key facts">
       <section class="panel t-mint">
         <h3>Pros</h3>
         <ul class="pros" style="margin:0;padding-left:1.4em">{d.pros.map((p) => <li>{p}</li>)}</ul>
@@ -58,10 +61,8 @@ const d = entry.data;
           {d.settings.drying && <><dt>Drying</dt><dd>{d.settings.drying}</dd></>}
         </dl>
       </section>
+      </aside>
     </div>
-
-    <article class="prose"><Content /></article>
-    <Sources sources={d.sources} />
 
   </div>
 </Base>

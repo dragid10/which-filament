@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Swatch from '../../components/Swatch.astro';
 import RatingBars from '../../components/RatingBars.astro';
 import FilamentCard from '../../components/FilamentCard.astro';
 import Sources from '../../components/Sources.astro';
@@ -38,13 +37,13 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
       <a href="/materials">Materials</a> › <a href={`/materials/${material.id}`}>{material.data.title}</a>
     </p>
 
-    <section class:list={['page-head', { 'with-media': !!d.image }]}>
+
+    <div class="detail">
+      <div>
+        <section class:list={['page-head', { 'with-media': !!d.image }]}>
       <div>
         <p class="eyebrow">{material.data.title} · price tier {d.priceTier}</p>
-        <div class="title-row">
-          {!d.image && <Swatch color={d.color} size={72} />}
-          <h1 style="margin:0">{d.title}</h1>
-        </div>
+        <h1>{d.title}</h1>
         <p class="lede">{d.summary}</p>
         {d.aliases.length > 0 && <p style="color:var(--muted)">Also called: {d.aliases.join(', ')}</p>}
       </div>
@@ -54,9 +53,11 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
           {d.imageCredit && <figcaption style="font-size:.75rem;color:var(--muted)">{d.imageCredit}</figcaption>}
         </figure>
       )}
-    </section>
-
-    <div class="cols">
+        </section>
+        <article class="prose"><Content /></article>
+        <Sources sources={d.sources} />
+      </div>
+      <aside class="detail-side" aria-label="Key facts">
       <section class="panel t-mint">
         <h2>Good for</h2>
         {d.goodFor.length ? (
@@ -90,10 +91,8 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
         )}
         <p style="font-size:.8rem;color:var(--muted);margin:10px 0 0">Always start from your filament maker's recommended range.</p>
       </section>
+      </aside>
     </div>
-
-    <article class="prose"><Content /></article>
-    <Sources sources={d.sources} />
 
     {objects.length > 0 && (
       <>

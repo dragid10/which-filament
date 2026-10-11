@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Swatch from '../../components/Swatch.astro';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
 const filaments = await getCollection('filaments');
@@ -15,7 +14,7 @@ const filaments = await getCollection('filaments');
       <p class="lede">Each material has its own personality. Pick one to see its variants, such as rapid, plus, matte, and silk.</p>
     </div></section>
     <h2 class="sr-only">All materials</h2>
-    <ul class="grid">
+    <ul class="grid mats">
       {
         materials.map((m) => {
           const variants = filaments.filter((f) => f.data.material.id === m.id);
@@ -30,9 +29,7 @@ const filaments = await getCollection('filaments');
                 <div class="mat-body">
                   <p class="eyebrow">{m.data.fullName}</p>
                   <p>{m.data.summary}</p>
-                  <span class="swatches" aria-hidden="true">
-                    {variants.map((v) => <Swatch color={v.data.color} />)}
-                  </span>
+                  <p class="variant-names">{variants.map((v) => v.data.title).join(' · ')}</p>
                   <span class="mat-go">Open {m.data.title} →</span>
                 </div>
               </a>

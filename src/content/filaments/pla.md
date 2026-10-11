@@ -2,7 +2,6 @@
 title: PLA
 material: pla
 summary: Standard PLA. Cheap, easy, and the right answer for most decorative and low-stress prints.
-color: "#3b82f6"
 aliases: [plain pla, regular pla, basic pla]
 ratings: { strength: 3, heat: 1, flex: 1, ease: 5, speed: 3, finish: 3, durability: 2 }
 goodFor: [display, prototype, beginner, large]

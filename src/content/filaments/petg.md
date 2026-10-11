@@ -2,7 +2,6 @@
 title: PETG
 material: petg
 summary: The tougher everyday choice. Handles heat, sun, and impacts that would crack PLA.
-color: "#0ea5e9"
 aliases: [standard petg, regular petg, plain petg]
 ratings: { strength: 4, heat: 3, flex: 3, ease: 3, speed: 3, finish: 3, durability: 4 }
 goodFor: [functional, mechanical, outdoor, hot-environment, waterproof]

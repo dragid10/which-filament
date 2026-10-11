@@ -2,7 +2,6 @@
 title: PETG-CF
 material: petg
 summary: PETG filled with carbon fiber. Stiffer, with a matte finish and cleaner prints.
-color: "#1f2937"
 aliases: [carbon fiber petg, carbon fibre petg, petg carbon fiber, cf petg]
 ratings: { strength: 4, heat: 3, flex: 2, ease: 3, speed: 3, finish: 4, durability: 3 }
 goodFor: [functional, mechanical, outdoor]
