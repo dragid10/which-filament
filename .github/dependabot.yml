@@ -5,6 +5,10 @@ updates:
     schedule: { interval: monthly }
     groups:
       all: { patterns: ["*"] }
+    ignore:
+      # @astrojs/check does not support TypeScript 7 yet
+      - dependency-name: typescript
+        update-types: [version-update:semver-major]
   - package-ecosystem: github-actions
     directory: /
     schedule: { interval: monthly }
