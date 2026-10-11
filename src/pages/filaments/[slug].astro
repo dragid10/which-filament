@@ -34,7 +34,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
 <Base title={d.title} description={d.summary}>
   <div class="wrap">
     <p class="crumbs">
-      <a href="/filaments">All filaments</a> › <a href={`/materials/${material.id}`}>{material.data.title}</a>
+      <a href="/materials">Materials</a> › <a href={`/materials/${material.id}`}>{material.data.title}</a>
     </p>
 
     <section class="page-head with-media">

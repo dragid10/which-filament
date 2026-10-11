@@ -1,25 +1,25 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import FilamentCard from '../../components/FilamentCard.astro';
+import FilamentBrowser from '../../components/FilamentBrowser.astro';
 
 export async function getStaticPaths() {
   const materials = await getCollection('materials');
   const filaments = await getCollection('filaments');
   return materials.map((entry) => ({
     params: { slug: entry.id },
-    props: { entry, variants: filaments.filter((f) => f.data.material === entry.id) },
+    props: { entry, materials, variants: filaments.filter((f) => f.data.material === entry.id) },
   }));
 }
 
-const { entry, variants } = Astro.props;
+const { entry, materials, variants } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 ---
 
 <Base title={d.title} description={d.summary}>
   <div class="wrap">
-    <p class="crumbs"><a href="/materials">Materials</a></p>
+    <p class="crumbs"><a href="/materials">Materials</a> › {d.title}</p>
     <section class="page-head"><div>
       <p class="eyebrow">{d.fullName}</p>
       <h1>{d.title}</h1>
@@ -48,9 +48,7 @@ const d = entry.data;
 
     <article class="prose"><Content /></article>
 
-    <h2>{d.title} types</h2>
-    <ul class="grid">
-      {variants.map((f) => <li style="display:contents"><FilamentCard filament={f} materialTitle={d.title} /></li>)}
-    </ul>
+    <h2>{d.title} variants <span style="color:var(--muted);font-weight:500;font-size:1rem">({variants.length})</span></h2>
+    <FilamentBrowser filaments={variants} materials={materials} />
   </div>
 </Base>

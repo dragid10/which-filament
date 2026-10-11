@@ -1,31 +1,40 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Spool from '../../components/Spool.astro';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
 const filaments = await getCollection('filaments');
 ---
 
-<Base title="Materials" description="Overview of 3D printing filament materials: PLA and PETG, with strengths, weaknesses, and settings.">
+<Base title="Materials" description="Start with the material (PLA, PETG, and more), then explore its variants like rapid, plus, matte, and silk.">
   <div class="wrap">
     <section class="page-head"><div>
       <h1>Materials</h1>
-      <p class="lede">Each material has its own personality. Start here, then pick a variant.</p>
+      <p class="lede">Each material has its own personality. Pick one to see its variants, such as rapid, plus, matte, and silk.</p>
     </div></section>
-    <div class="cols">
+    <ul class="grid">
       {
         materials.map((m) => {
           const variants = filaments.filter((f) => f.data.material === m.id);
           return (
-            <a class="panel" href={`/materials/${m.id}`} style="text-decoration:none;color:inherit">
-              <p class="eyebrow">{m.data.fullName}</p>
-              <h2 style="font-size:1.6rem">{m.data.title}</h2>
-              <p>{m.data.summary}</p>
-              <p style="margin:0;color:var(--muted)">{variants.length} types: {variants.map((v) => v.data.title).join(', ')}</p>
-            </a>
+            <li style="display:contents">
+              <a class="panel mat-card" href={`/materials/${m.id}`}>
+                <p class="eyebrow">{m.data.fullName}</p>
+                <h2>{m.data.title}</h2>
+                <p>{m.data.summary}</p>
+                <div class="mat-variants">
+                  <span class="swatches" aria-hidden="true">
+                    {variants.slice(0, 8).map((v) => <Spool color={v.data.color} size={26} />)}
+                  </span>
+                  <span>{variants.length} variants</span>
+                </div>
+              </a>
+            </li>
           );
         })
       }
-    </div>
+    </ul>
+    <p style="margin-top:2rem">Know what you're looking for? <a href="/filaments">Search all variants</a>.</p>
   </div>
 </Base>

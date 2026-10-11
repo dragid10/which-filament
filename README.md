@@ -7,7 +7,7 @@ Source for [which-filament.com](https://which-filament.com): a static guide to 3
 ## Features
 
 - **Finder**: choose your use cases and get filaments ranked with explanations.
-- **Browse**: search, filter by material or use, sort by property, and switch between card and list views. Filtered views are shareable via the URL.
+- **Browse by material**: start with the top-level materials (PLA, PETG, ...), then open one to see its variants (Rapid, Plus, Matte, Silk, ...). Each material page has its own search, filters, sort, and card/list views. There's also a search-everything page. Filtered views are shareable via the URL.
 - **Examples**: common objects (phone stand, planter, car mount, ...) each with a best pick, runners-up, and what to avoid.
 - **Pages** for every material and every filament type.
 - **Content is Markdown**: one file per filament, validated by a schema in CI.

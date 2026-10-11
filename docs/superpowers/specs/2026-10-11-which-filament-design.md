@@ -26,9 +26,10 @@ Astro (static output) + content collections with Zod schema validation. Vanilla 
 
 ## Pages
 - `/` — hero + "What are you printing?" finder: choose use-case chips, see ranked results live.
-- `/filaments` — all variants, search bar, filter by material / good-for / needs, sort.
+- `/materials` — top-level categories (PLA, PETG, ...); the home page also leads with these until a use case is picked.
+- `/materials/[slug]` — one material: overview plus its variants with search, use-case filters, sort, and card/list views.
+- `/filaments` — secondary "search all variants" page across materials.
 - `/filaments/[slug]` — variant detail: ratings, settings, good/avoid for, body, "compare with" siblings.
-- `/materials` and `/materials/[slug]` — material overview with its variants.
 - `/contribute` — how to add an entry (also CONTRIBUTING.md).
 - `/404`.
 

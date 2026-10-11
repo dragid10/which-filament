@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import FilamentCard from '../components/FilamentCard.astro';
 import ViewToggle from '../components/ViewToggle.astro';
 import ObjectCard from '../components/ObjectCard.astro';
+import Spool from '../components/Spool.astro';
 import { USE_CASES } from '../data/useCases';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
@@ -43,37 +44,53 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
       </p>
     </section>
 
-    <div class="toolbar"><ViewToggle /></div>
-    <ul class="grid" data-grid>
-      {
-        filaments
-          .sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title))
-          .map((f) => (
-            <li style="display:contents">
-              <FilamentCard filament={f} materialTitle={materialTitle(f.data.material)} />
-            </li>
-          ))
-      }
-    </ul>
+    <section data-categories>
+      <h2>Browse by material</h2>
+      <p style="color:var(--muted);margin-top:-6px">Start with the material, then pick a variant like rapid, plus, matte, or silk.</p>
+      <ul class="grid">
+        {
+          materials.map((m) => {
+            const variants = filaments.filter((f) => f.data.material === m.id);
+            return (
+              <li style="display:contents">
+                <a class="panel mat-card" href={`/materials/${m.id}`}>
+                  <p class="eyebrow">{m.data.fullName}</p>
+                  <h3 style="font-size:1.6rem;margin-bottom:6px">{m.data.title}</h3>
+                  <p>{m.data.summary}</p>
+                  <div class="mat-variants">
+                    <span class="swatches" aria-hidden="true">
+                      {variants.slice(0, 8).map((v) => <Spool color={v.data.color} size={26} />)}
+                    </span>
+                    <span>{variants.length} variants</span>
+                  </div>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </section>
+
+    <section data-results hidden>
+      <div class="toolbar"><ViewToggle /></div>
+      <ul class="grid" data-grid>
+        {
+          filaments
+            .sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title))
+            .map((f) => (
+              <li style="display:contents">
+                <FilamentCard filament={f} materialTitle={materialTitle(f.data.material)} />
+              </li>
+            ))
+        }
+      </ul>
+    </section>
 
     <h2>Or see what people print</h2>
     <ul class="grid">
       {objects.map((o) => <li style="display:contents"><ObjectCard object={o} /></li>)}
     </ul>
-    <p><a href="/objects">See all examples →</a></p>
-
-    <h2>Or start with the material</h2>
-    <div class="cols">
-      {
-        materials.map((m) => (
-          <a class="panel" href={`/materials/${m.id}`} style="text-decoration:none;color:inherit">
-            <p class="eyebrow">{m.data.fullName}</p>
-            <h3>{m.data.title}</h3>
-            <p style="color:var(--muted);margin:0">{m.data.summary}</p>
-          </a>
-        ))
-      }
-    </div>
+    <p><a href="/objects">See all examples →</a> · <a href="/filaments">Search all variants →</a></p>
   </div>
 </Base>
 
@@ -84,6 +101,8 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
   const boxes = [...document.querySelectorAll<HTMLInputElement>('[data-usecase]')];
   const grid = document.querySelector<HTMLElement>('[data-grid]')!;
   const status = document.querySelector<HTMLElement>('[data-status]')!;
+  const categories = document.querySelector<HTMLElement>('[data-categories]')!;
+  const results = document.querySelector<HTMLElement>('[data-results]')!;
   const items = [...grid.children] as HTMLElement[];
   const original = [...items];
 
@@ -95,8 +114,12 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
         card.querySelector<HTMLElement>('[data-match]')!.hidden = true;
       }
       status.textContent = 'Choose at least one to get a ranked shortlist.';
+      categories.hidden = false;
+      results.hidden = true;
       return;
     }
+    categories.hidden = true;
+    results.hidden = false;
     const scored = items.map((li) => {
       const card = li.querySelector<HTMLElement>('[data-card]')!;
       const match = scoreFilament(

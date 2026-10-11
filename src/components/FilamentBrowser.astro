@@ -1,0 +1,149 @@
+---
+// Search + filters + sort + card/list grid for a set of filament variants.
+import type { CollectionEntry } from 'astro:content';
+import FilamentCard from './FilamentCard.astro';
+import ViewToggle from './ViewToggle.astro';
+import { USE_CASES } from '../data/useCases';
+
+interface Props {
+  filaments: CollectionEntry<'filaments'>[];
+  materials: CollectionEntry<'materials'>[];
+  /** Show a material filter (only useful when variants span several materials) */
+  materialFilter?: boolean;
+}
+const { filaments, materials, materialFilter = false } = Astro.props;
+const sorted = [...filaments].sort((a, b) => a.data.title.localeCompare(b.data.title));
+const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.title ?? id;
+// Only offer use-case filters that at least one variant is actually good for
+const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodFor as string[]).includes(u.id)));
+---
+
+<form class="controls" role="search" data-controls onsubmit="return false">
+  <label class="sr-only" for="q">Search</label>
+  <input id="q" class="search" type="search" placeholder="Search: rapid, silk, outdoor, cosplay…" autocomplete="off" data-q />
+
+  {
+    materialFilter && (
+      <div class="filter-row" role="group" aria-label="Filter by material">
+        <strong>Material</strong>
+        <ul class="chips">
+          {materials.map((m) => (
+            <li class="chip">
+              <label>
+                <input type="checkbox" value={m.id} data-material />
+                <span>{m.data.title}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  <div class="filter-row" role="group" aria-label="Filter by use">
+    <strong>Good for</strong>
+    <ul class="chips">
+      {usedUseCases.map((u) => (
+        <li class="chip">
+          <label title={u.hint}>
+            <input type="checkbox" value={u.id} data-good />
+            <span>{u.label}</span>
+          </label>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="filter-row">
+    <label for="sort"><strong>Sort</strong></label>
+    <select id="sort" class="sort" data-sort>
+      <option value="name">Name</option>
+      <option value="strength">Strongest</option>
+      <option value="speed">Fastest to print</option>
+      <option value="ease">Easiest to print</option>
+      <option value="heat">Most heat resistant</option>
+      <option value="finish">Best looking</option>
+    </select>
+    <span data-count role="status" aria-live="polite" style="color:var(--muted)"></span>
+    <button type="reset" class="btn-link" data-reset>Clear filters</button>
+    <span style="margin-left:auto"><ViewToggle /></span>
+  </div>
+</form>
+
+<ul class="grid" data-grid>
+  {
+    sorted.map((f) => (
+      <li style="display:contents">
+        <FilamentCard filament={f} materialTitle={materialTitle(f.data.material)} />
+      </li>
+    ))
+  }
+</ul>
+<p class="empty" data-empty hidden>Nothing matches. Try removing a filter.</p>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-controls]')!;
+  const q = form.querySelector<HTMLInputElement>('[data-q]')!;
+  const sort = form.querySelector<HTMLSelectElement>('[data-sort]')!;
+  const count = form.querySelector<HTMLElement>('[data-count]')!;
+  const grid = document.querySelector<HTMLElement>('[data-grid]')!;
+  const empty = document.querySelector<HTMLElement>('[data-empty]')!;
+  const items = [...grid.children] as HTMLElement[];
+  const cardOf = (li: HTMLElement) => li.querySelector<HTMLElement>('[data-card]')!;
+
+  const checked = (attr: string) =>
+    [...form.querySelectorAll<HTMLInputElement>(`[${attr}]:checked`)].map((i) => i.value);
+
+  // keep state in the URL so filtered views can be shared
+  function readUrl() {
+    const p = new URLSearchParams(location.search);
+    q.value = p.get('q') ?? '';
+    sort.value = p.get('sort') ?? 'name';
+    for (const [attr, key] of [['data-material', 'material'], ['data-good', 'for']] as const) {
+      const wanted = (p.get(key) ?? '').split(',');
+      form.querySelectorAll<HTMLInputElement>(`[${attr}]`).forEach((i) => (i.checked = wanted.includes(i.value)));
+    }
+  }
+  function writeUrl() {
+    const p = new URLSearchParams();
+    if (q.value.trim()) p.set('q', q.value.trim());
+    if (sort.value !== 'name') p.set('sort', sort.value);
+    const m = checked('data-material');
+    const g = checked('data-good');
+    if (m.length) p.set('material', m.join(','));
+    if (g.length) p.set('for', g.join(','));
+    const view = new URLSearchParams(location.search).get('view');
+    if (view) p.set('view', view);
+    const qs = p.toString();
+    history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
+  }
+
+  function apply() {
+    const terms = q.value.toLowerCase().split(/\s+/).filter(Boolean);
+    const mats = checked('data-material');
+    const goods = checked('data-good');
+    let shown = 0;
+    for (const li of items) {
+      const c = cardOf(li);
+      const ok =
+        terms.every((t) => c.dataset.search!.includes(t)) &&
+        (!mats.length || mats.includes(c.dataset.material!)) &&
+        goods.every((g) => c.dataset.good!.split(',').includes(g));
+      c.hidden = !ok;
+      if (ok) shown++;
+    }
+    const key = sort.value;
+    const val = (li: HTMLElement) => (key === 'name' ? 0 : JSON.parse(cardOf(li).dataset.ratings!)[key] as number);
+    [...items]
+      .sort((a, b) => val(b) - val(a) || cardOf(a).dataset.title!.localeCompare(cardOf(b).dataset.title!))
+      .forEach((li) => grid.append(li));
+    count.textContent = `${shown} of ${items.length} shown`;
+    empty.hidden = shown > 0;
+    writeUrl();
+  }
+
+  form.addEventListener('input', apply);
+  form.addEventListener('reset', () => setTimeout(apply));
+  readUrl();
+  apply();
+</script>

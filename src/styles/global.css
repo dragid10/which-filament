@@ -184,3 +184,12 @@ p { margin: 0 0 1em; }
 .obj-card p:last-child { margin: 0; color: var(--muted); font-size: 0.93rem; }
 .obj-pick { display: flex; align-items: center; gap: 12px; }
 .obj-pick .eyebrow { margin: 0; }
+
+/* material (top-level category) cards */
+.mat-card { display: block; text-decoration: none; color: inherit; }
+.mat-card:hover { border-color: var(--accent); }
+.mat-card h2 { margin: 0 0 6px; font-size: 1.7rem; }
+.mat-card p { color: var(--muted); }
+.mat-variants { display: flex; align-items: center; gap: 12px; margin-top: 8px; font-weight: 600; color: var(--text); }
+.swatches { display: inline-flex; }
+.swatches .spool { margin-right: -8px; }
