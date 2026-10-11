@@ -1,0 +1,124 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import FilamentCard from '../components/FilamentCard.astro';
+import ViewToggle from '../components/ViewToggle.astro';
+import { USE_CASES } from '../data/useCases';
+
+const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
+const filaments = await getCollection('filaments');
+const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.title ?? id;
+---
+
+<Base>
+  <div class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Filament guide for 3D printing</p>
+      <h1>Which filament should I <em>use</em> for this print?</h1>
+      <p class="lede">
+        Tell us what you're making. We'll rank PLA, PETG, and their rapid, plus, matte, and silk variants for the job,
+        and explain why.
+      </p>
+    </section>
+
+    <section class="finder" aria-labelledby="finder-h" data-finder>
+      <h2 id="finder-h">What are you printing?</h2>
+      <p style="margin-top:-4px;color:var(--muted)">Pick everything that applies.</p>
+      <ul class="chips">
+        {
+          USE_CASES.map((u) => (
+            <li class="chip">
+              <label title={u.hint}>
+                <input type="checkbox" value={u.id} data-usecase />
+                <span>{u.label}</span>
+              </label>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="finder-status" role="status" aria-live="polite" data-status>
+        Choose at least one to get a ranked shortlist.
+      </p>
+    </section>
+
+    <div class="toolbar"><ViewToggle /></div>
+    <ul class="grid" data-grid>
+      {
+        filaments
+          .sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title))
+          .map((f) => (
+            <li style="display:contents">
+              <FilamentCard filament={f} materialTitle={materialTitle(f.data.material)} />
+            </li>
+          ))
+      }
+    </ul>
+
+    <h2>Or start with the material</h2>
+    <div class="cols">
+      {
+        materials.map((m) => (
+          <a class="panel" href={`/materials/${m.id}`} style="text-decoration:none;color:inherit">
+            <p class="eyebrow">{m.data.fullName}</p>
+            <h3>{m.data.title}</h3>
+            <p style="color:var(--muted);margin:0">{m.data.summary}</p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Base>
+
+<script>
+  import { scoreFilament, VERDICT_LABEL } from '../scripts/finder';
+  import { USE_CASES } from '../data/useCases';
+
+  const boxes = [...document.querySelectorAll<HTMLInputElement>('[data-usecase]')];
+  const grid = document.querySelector<HTMLElement>('[data-grid]')!;
+  const status = document.querySelector<HTMLElement>('[data-status]')!;
+  const items = [...grid.children] as HTMLElement[];
+  const original = [...items];
+
+  function update() {
+    const selected = boxes.filter((b) => b.checked).map((b) => b.value);
+    if (!selected.length) {
+      original.forEach((li) => grid.append(li));
+      for (const card of grid.querySelectorAll<HTMLElement>('[data-card]')) {
+        card.querySelector<HTMLElement>('[data-match]')!.hidden = true;
+      }
+      status.textContent = 'Choose at least one to get a ranked shortlist.';
+      return;
+    }
+    const scored = items.map((li) => {
+      const card = li.querySelector<HTMLElement>('[data-card]')!;
+      const match = scoreFilament(
+        {
+          ratings: JSON.parse(card.dataset.ratings!),
+          goodFor: (card.dataset.good ?? '').split(',').filter(Boolean),
+          avoidFor: (card.dataset.avoid ?? '').split(',').filter(Boolean),
+        },
+        selected,
+      );
+      return { li, card, match };
+    });
+    scored.sort((a, b) => b.match.score - a.match.score);
+    for (const { li, card, match } of scored) {
+      grid.append(li);
+      const box = card.querySelector<HTMLElement>('[data-match]')!;
+      const verdict = box.querySelector<HTMLElement>('[data-verdict]')!;
+      const list = box.querySelector<HTMLElement>('[data-reasons]')!;
+      box.hidden = false;
+      verdict.textContent = `${VERDICT_LABEL[match.verdict]} · ${match.score}`;
+      verdict.dataset.v = match.verdict;
+      list.replaceChildren(
+        ...match.reasons.map((t) => Object.assign(document.createElement('li'), { textContent: t })),
+        ...match.warnings.map((t) => Object.assign(document.createElement('li'), { textContent: t, className: 'warn' })),
+      );
+    }
+    const labels = selected.map((id) => USE_CASES.find((u) => u.id === id)!.label.toLowerCase());
+    const top = scored[0];
+    status.textContent = `Best for ${labels.join(' + ')}: ${top.card.querySelector('h3')!.textContent}.`;
+  }
+  boxes.forEach((b) => b.addEventListener('change', update));
+  update();
+</script>

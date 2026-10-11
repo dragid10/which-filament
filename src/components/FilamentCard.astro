@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { USE_CASES } from '../data/useCases';
+import Spool from './Spool.astro';
+import RatingBars from './RatingBars.astro';
+
+interface Props {
+  filament: CollectionEntry<'filaments'>;
+  materialTitle: string;
+}
+const { filament, materialTitle } = Astro.props;
+const d = filament.data;
+const labelFor = (id: string) => USE_CASES.find((u) => u.id === id)?.label ?? id;
+const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.map(labelFor)].join(' ').toLowerCase();
+---
+
+<article
+  class="card"
+  data-card
+  data-slug={filament.id}
+  data-material={d.material}
+  data-title={d.title.toLowerCase()}
+  data-search={search}
+  data-good={d.goodFor.join(',')}
+  data-avoid={d.avoidFor.join(',')}
+  data-needs={d.needs.length ? 'needs' : ''}
+  data-ratings={JSON.stringify(d.ratings)}
+  data-price={d.priceTier.length}
+>
+  <a class="card-media" href={`/filaments/${filament.id}`} tabindex="-1" aria-hidden="true">
+    {
+      d.image ? (
+        <img src={d.image} alt="" loading="lazy" width="320" height="200" />
+      ) : (
+        <Spool color={d.color} size={96} />
+      )
+    }
+  </a>
+  <div class="card-body">
+    <p class="eyebrow">{materialTitle}</p>
+    <h3><a href={`/filaments/${filament.id}`}>{d.title}</a></h3>
+    <p class="summary">{d.summary}</p>
+    <div class="match" data-match hidden>
+      <p class="verdict" data-verdict></p>
+      <ul class="reasons" data-reasons></ul>
+    </div>
+    <ul class="tags">
+      {d.goodFor.slice(0, 3).map((id) => <li>{labelFor(id)}</li>)}
+    </ul>
+    <RatingBars ratings={d.ratings} compact />
+  </div>
+</article>

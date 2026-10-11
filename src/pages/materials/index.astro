@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
+const filaments = await getCollection('filaments');
+---
+
+<Base title="Materials" description="Overview of 3D printing filament materials: PLA and PETG, with strengths, weaknesses, and settings.">
+  <div class="wrap">
+    <section class="page-head"><div>
+      <h1>Materials</h1>
+      <p class="lede">Each material has its own personality. Start here, then pick a variant.</p>
+    </div></section>
+    <div class="cols">
+      {
+        materials.map((m) => {
+          const variants = filaments.filter((f) => f.data.material === m.id);
+          return (
+            <a class="panel" href={`/materials/${m.id}`} style="text-decoration:none;color:inherit">
+              <p class="eyebrow">{m.data.fullName}</p>
+              <h2 style="font-size:1.6rem">{m.data.title}</h2>
+              <p>{m.data.summary}</p>
+              <p style="margin:0;color:var(--muted)">{variants.length} types: {variants.map((v) => v.data.title).join(', ')}</p>
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+</Base>

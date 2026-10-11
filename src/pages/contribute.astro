@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+const repo = 'https://github.com/dragid10/which-filament';
+---
+
+<Base title="Contribute" description="Add or correct a filament entry: it's just a Markdown file.">
+  <div class="wrap prose">
+    <section class="page-head"><div>
+      <h1>Help improve which-filament</h1>
+      <p class="lede">Every filament on this site is a single Markdown file. Fixing or adding one takes a few minutes.</p>
+    </div></section>
+    <h2>Spotted something wrong?</h2>
+    <p>Open a <a href={`${repo}/issues/new/choose`}>"Correct information"</a> issue, or use the "Suggest an edit" link at the bottom of any filament page to edit the file directly on GitHub.</p>
+    <h2>Want a new filament type added?</h2>
+    <ol>
+      <li>Open an <a href={`${repo}/issues/new/choose`}>"Add a filament"</a> issue, or</li>
+      <li>Copy an existing file in <code>src/content/filaments/</code>, edit it, and open a pull request.</li>
+    </ol>
+    <p>The build checks the frontmatter automatically and tells you exactly what's missing or invalid. Full instructions are in <a href={`${repo}/blob/main/CONTRIBUTING.md`}>CONTRIBUTING.md</a>.</p>
+  </div>
+</Base>
