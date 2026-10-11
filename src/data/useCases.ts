@@ -10,7 +10,7 @@ export const RATING_LABELS: Record<RatingKey, string> = {
   heat: 'Heat resistance',
   flex: 'Flexibility',
   ease: 'Ease of printing',
-  speed: 'Speed friendliness',
+  speed: 'Print speed',
   finish: 'Looks / finish',
   durability: 'Durability',
 };
