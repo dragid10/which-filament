@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Sources from '../../components/Sources.astro';
 import FilamentBrowser from '../../components/FilamentBrowser.astro';
 
 export async function getStaticPaths() {
@@ -8,7 +9,7 @@ export async function getStaticPaths() {
   const filaments = await getCollection('filaments');
   return materials.map((entry) => ({
     params: { slug: entry.id },
-    props: { entry, materials, variants: filaments.filter((f) => f.data.material === entry.id) },
+    props: { entry, materials, variants: filaments.filter((f) => f.data.material.id === entry.id) },
   }));
 }
 
@@ -20,11 +21,19 @@ const d = entry.data;
 <Base title={d.title} description={d.summary}>
   <div class="wrap">
     <p class="crumbs"><a href="/materials">Materials</a> › {d.title}</p>
-    <section class="page-head"><div>
+    <section class:list={['page-head', { 'with-media': !!d.image }]}><div>
       <p class="eyebrow">{d.fullName}</p>
       <h1>{d.title}</h1>
       <p class="lede">{d.summary}</p>
-    </div></section>
+      {d.aliases.length > 0 && <p style="color:var(--muted)">Also called: {d.aliases.join(', ')}</p>}
+    </div>
+    {d.image && (
+      <figure class="media" style="margin:0">
+        <img src={d.image} alt={d.imageAlt ?? `${d.title} filament example`} />
+        {d.imageCredit && <figcaption style="font-size:.75rem;color:var(--muted)">{d.imageCredit}</figcaption>}
+      </figure>
+    )}
+    </section>
 
     <div class="cols">
       <section class="panel">
@@ -47,6 +56,7 @@ const d = entry.data;
     </div>
 
     <article class="prose"><Content /></article>
+    <Sources sources={d.sources} />
 
     <h2>{d.title} variants <span style="color:var(--muted);font-weight:500;font-size:1rem">({variants.length})</span></h2>
     <FilamentBrowser filaments={variants} materials={materials} />

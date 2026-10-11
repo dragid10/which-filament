@@ -16,11 +16,20 @@ needs:
   - A printer that can actually print fast (strong cooling, good acceleration, high-flow hotend)
 priceTier: "$$"
 featured: true
+sources:
+  - title: "Prusa: Prusament PLA High Speed"
+    url: "https://blog.prusa3d.com/prusament-pla-high-speed-a-perfect-choice-for-rapid-prototyping_137192/"
+  - title: "3D Printing Canada: PLA vs high-speed PLA"
+    url: "https://3dprintingcanada.com/blogs/news/pla-vs-high-speed-pla-whats-the-real-difference"
 ---
 
 ## When to pick it
 
 You have a fast printer (Bambu, Prusa MK4/Core One, Voron, tuned Ender, and similar) and you want to use that speed. Plates of small parts, big low-detail prints, and quick prototypes are the sweet spot.
+
+## What makes it different
+
+High-speed PLA is reformulated, not just relabelled: it has lower melt viscosity and nucleating agents so the bead sets quickly. That raises the flow you can push before under-extrusion. Prusa lists 28 mm³/s for its high-speed PLA against 24 mm³/s for regular PLA on the same printer, and Polymaker testing cited by Bambu forum users puts regular PLA at roughly 13-15 mm³/s versus 18-22 mm³/s for high-speed. Your own hotend sets the real limit.
 
 ## Watch out for
 

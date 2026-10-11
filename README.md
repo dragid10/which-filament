@@ -1,4 +1,4 @@
-# which-filament
+# Which Filament
 
 > "I want to print this object. Which filament should I use?"
 

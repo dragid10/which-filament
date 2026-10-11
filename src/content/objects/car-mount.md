@@ -3,7 +3,7 @@ title: Car phone mount or vent clip
 summary: Parked cars regularly hit 60-80 °C inside.
 useCases: [hot-environment, functional]
 best: petg
-runnersUp: [rapid-petg]
+runnersUp: [rapid-petg, asa, abs]
 avoid: [pla, pla-plus, matte-pla, silk-pla, rapid-pla, rapid-pla-plus]
 ---
 

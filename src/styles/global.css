@@ -193,3 +193,10 @@ p { margin: 0 0 1em; }
 .mat-variants { display: flex; align-items: center; gap: 12px; margin-top: 8px; font-weight: 600; color: var(--text); }
 .swatches { display: inline-flex; }
 .swatches .spool { margin-right: -8px; }
+
+/* sources */
+.sources { margin-top: 2rem; max-width: 46rem; font-size: 0.92rem; }
+.sources h2 { font-size: 1rem; margin-bottom: 0.4em; }
+.sources ul { margin: 0 0 0.5em; padding-left: 1.2em; }
+.sources .note { color: var(--muted); font-size: 0.82rem; }
+.mat-card .mat-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; }

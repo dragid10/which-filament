@@ -16,10 +16,11 @@ const filaments = await getCollection('filaments');
     <ul class="grid">
       {
         materials.map((m) => {
-          const variants = filaments.filter((f) => f.data.material === m.id);
+          const variants = filaments.filter((f) => f.data.material.id === m.id);
           return (
             <li style="display:contents">
               <a class="panel mat-card" href={`/materials/${m.id}`}>
+                {m.data.image && <img class="mat-img" src={m.data.image} alt="" loading="lazy" />}
                 <p class="eyebrow">{m.data.fullName}</p>
                 <h2>{m.data.title}</h2>
                 <p>{m.data.summary}</p>

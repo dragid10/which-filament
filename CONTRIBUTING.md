@@ -16,7 +16,7 @@ Thanks for helping people pick the right filament! Contributions of all sizes ar
 | Field | Notes |
 |-------|-------|
 | `title` | Display name, e.g. `Rapid PETG` |
-| `material` | File name of a material in `src/content/materials/` (`pla`, `petg`) |
+| `material` | File name of a material in `src/content/materials/` (`pla`, `petg`, `abs`, `asa`, `tpu`). Checked by the build. |
 | `summary` | One sentence, max 200 characters |
 | `color` | Hex colour for the fallback spool image, e.g. `"#8b5cf6"` |
 | `aliases` | Other names people search for |
@@ -45,9 +45,29 @@ Objects answer "I want to print *this*: which filament?" Copy a file in `src/con
 
 The body explains *why*: what the object needs (heat, impact, looks) and how that points to the pick.
 
-### Adding a new material
+### Adding a new material (category)
 
-Add `src/content/materials/<name>.md` (see `pla.md`). Then filaments can use `material: <name>`.
+A material is a top-level category such as PLA or ABS. Add `src/content/materials/<name>.md` (copy `pla.md`). It shows up on the home page and the Materials page automatically, and its variants are the filament files whose `material:` matches the file name.
+
+| Field | Notes |
+|-------|-------|
+| `title` / `fullName` | Short name and full chemical name, e.g. `ABS` / `Acrylonitrile butadiene styrene` |
+| `summary` | One sentence, max 200 characters |
+| `order` | Sort position among materials (lower is first) |
+| `aliases` (optional) | Other names people search for |
+| `color` (optional) | Hex colour for the fallback illustration |
+| `image`, `imageAlt`, `imageCredit` (optional) | Photo under `public/`, with alt text and credit |
+| `pros` / `cons` | Lists. Quote each item (`"..."`) so colons do not break the YAML |
+| `settings` | `nozzle`, `bed`, and optional `enclosure` and `drying` |
+| `sources` (optional) | List of `{ title, url }` backing your claims |
+
+The body is Markdown: say who the material is for and when to move to a different one.
+
+Variants (the "subcategories") are filament files in `src/content/filaments/` with `material: <name>`. A wrong name fails the build.
+
+### Cite your sources
+
+Both materials and filaments accept `sources: [{ title, url }]`. Add datasheets, tests, or reputable guides for any numbers you change. They are shown at the bottom of the page.
 
 ### Adding a new use case
 

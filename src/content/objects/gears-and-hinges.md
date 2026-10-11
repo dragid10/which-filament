@@ -3,7 +3,7 @@ title: Gears, hinges, and snap-fits
 summary: Moving parts that flex, rub, and carry load.
 useCases: [mechanical, functional]
 best: petg
-runnersUp: [pla-plus]
+runnersUp: [pla-plus, abs]
 avoid: [silk-pla, pla, rapid-pla]
 ---
 

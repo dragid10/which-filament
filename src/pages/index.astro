@@ -19,7 +19,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
       <p class="eyebrow">Filament guide for 3D printing</p>
       <h1>Which filament should I <em>use</em> for this print?</h1>
       <p class="lede">
-        Tell us what you're making. We'll rank PLA, PETG, and their rapid, plus, matte, and silk variants for the job,
+        Tell us what you're making. We'll rank PLA, PETG, ABS, ASA, TPU, and their variants for the job,
         and explain why.
       </p>
     </section>
@@ -46,14 +46,15 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
 
     <section data-categories>
       <h2>Browse by material</h2>
-      <p style="color:var(--muted);margin-top:-6px">Start with the material, then pick a variant like rapid, plus, matte, or silk.</p>
+      <p style="color:var(--muted);margin-top:-6px">Start with the material, then pick a variant like rapid, plus, matte, or carbon fiber.</p>
       <ul class="grid">
         {
           materials.map((m) => {
-            const variants = filaments.filter((f) => f.data.material === m.id);
+            const variants = filaments.filter((f) => f.data.material.id === m.id);
             return (
               <li style="display:contents">
                 <a class="panel mat-card" href={`/materials/${m.id}`}>
+                  {m.data.image && <img class="mat-img" src={m.data.image} alt="" loading="lazy" />}
                   <p class="eyebrow">{m.data.fullName}</p>
                   <h3 style="font-size:1.6rem;margin-bottom:6px">{m.data.title}</h3>
                   <p>{m.data.summary}</p>
@@ -79,7 +80,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
             .sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title))
             .map((f) => (
               <li style="display:contents">
-                <FilamentCard filament={f} materialTitle={materialTitle(f.data.material)} />
+                <FilamentCard filament={f} materialTitle={materialTitle(f.data.material.id)} />
               </li>
             ))
         }

@@ -18,7 +18,7 @@ const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.ma
   class="card"
   data-card
   data-slug={filament.id}
-  data-material={d.material}
+  data-material={d.material.id}
   data-title={d.title.toLowerCase()}
   data-search={search}
   data-good={d.goodFor.join(',')}

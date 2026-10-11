@@ -15,6 +15,9 @@ settings:
 needs: []
 priceTier: "$$"
 featured: true
+sources:
+  - title: "Snapmaker: Silk PLA vs PLA"
+    url: "https://www.snapmaker.com/blog/silk-pla-vs-pla/"
 ---
 
 ## When to pick it
@@ -23,7 +26,7 @@ Looks come first. Vases, trophies, jewellery-style pieces, decorative gifts, and
 
 ## Watch out for
 
-- Layers bond less strongly than normal PLA, so parts are noticeably more brittle.
+- Layers generally bond less strongly than normal PLA, so parts are more brittle. Some newer silk formulations claim better adhesion, so check the brand.
 - Print slower and a bit hotter than you would plain PLA, or the shine turns dull and patchy.
 - Fine detail can look smeared because the shiny surface hides it.
 

@@ -5,6 +5,9 @@ import { USE_CASE_IDS } from './data/useCases';
 
 const rating = z.number().int().min(1).max(5);
 
+// Optional references backing the claims on a page (datasheets, tests, reputable guides)
+const sources = z.array(z.object({ title: z.string(), url: z.url() })).default([]);
+
 const materials = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/materials' }),
   schema: z.object({
@@ -12,6 +15,14 @@ const materials = defineCollection({
     fullName: z.string(),
     summary: z.string().max(200),
     order: z.number().default(100),
+    aliases: z.array(z.string()).default([]),
+    // Hex colour for the fallback illustration when there is no image
+    color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
+    // Optional photo, relative to /public (e.g. /images/materials/pla.jpg)
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+    imageCredit: z.string().optional(),
+    sources,
     pros: z.array(z.string()).min(1),
     cons: z.array(z.string()).min(1),
     settings: z.object({
@@ -27,8 +38,8 @@ const filaments = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/filaments' }),
   schema: z.object({
     title: z.string(),
-    // Must match the file name (without .md) of an entry in src/content/materials
-    material: z.string(),
+    // File name (without .md) of an entry in src/content/materials. Typos fail the build.
+    material: reference('materials'),
     summary: z.string().max(200),
     // Hex colour used for the fallback spool illustration
     color: z.string().regex(/^#[0-9a-fA-F]{6}$/),
@@ -57,6 +68,7 @@ const filaments = defineCollection({
     needs: z.array(z.string()).default([]),
     priceTier: z.enum(['$', '$$', '$$$']).default('$'),
     featured: z.boolean().default(false),
+    sources,
   }),
 });
 

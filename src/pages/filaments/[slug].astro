@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Spool from '../../components/Spool.astro';
 import RatingBars from '../../components/RatingBars.astro';
 import FilamentCard from '../../components/FilamentCard.astro';
+import Sources from '../../components/Sources.astro';
 import ObjectCard from '../../components/ObjectCard.astro';
 import { USE_CASES } from '../../data/useCases';
 
@@ -15,8 +16,8 @@ export async function getStaticPaths() {
     params: { slug: entry.id },
     props: {
       entry,
-      material: materials.find((m) => m.id === entry.data.material),
-      siblings: filaments.filter((f) => f.data.material === entry.data.material && f.id !== entry.id),
+      material: materials.find((m) => m.id === entry.data.material.id),
+      siblings: filaments.filter((f) => f.data.material.id === entry.data.material.id && f.id !== entry.id),
       materials,
       objects: objects.filter((o) => o.data.best.id === entry.id || o.data.runnersUp.some((r) => r.id === entry.id)),
     },
@@ -24,7 +25,7 @@ export async function getStaticPaths() {
 }
 
 const { entry, material, siblings, materials, objects } = Astro.props;
-if (!material) throw new Error(`Filament "${entry.id}" references unknown material "${entry.data.material}"`);
+if (!material) throw new Error(`Filament "${entry.id}" references unknown material "${entry.data.material.id}"`);
 const { Content } = await render(entry);
 const d = entry.data;
 const label = (id: string) => USE_CASES.find((u) => u.id === id)?.label ?? id;
@@ -95,6 +96,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
     </div>
 
     <article class="prose"><Content /></article>
+    <Sources sources={d.sources} />
 
     {objects.length > 0 && (
       <>
@@ -110,7 +112,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
         <h2>Other {material.data.title} types</h2>
         <ul class="grid">
           {siblings.map((s) => (
-            <li style="display:contents"><FilamentCard filament={s} materialTitle={materialTitle(s.data.material)} /></li>
+            <li style="display:contents"><FilamentCard filament={s} materialTitle={materialTitle(s.data.material.id)} /></li>
           ))}
         </ul>
       </>

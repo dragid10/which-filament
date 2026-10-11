@@ -4,7 +4,7 @@ material: pla
 summary: PLA with a non-glossy, velvety finish that hides layer lines and fingerprints.
 color: "#6b7280"
 aliases: [matt pla, satin pla]
-ratings: { strength: 3, heat: 1, flex: 1, ease: 4, speed: 3, finish: 4, durability: 2 }
+ratings: { strength: 2, heat: 1, flex: 1, ease: 4, speed: 3, finish: 4, durability: 2 }
 goodFor: [display, cosplay, prototype]
 avoidFor: [hot-environment, outdoor, mechanical]
 settings:
@@ -15,6 +15,11 @@ settings:
 needs: []
 priceTier: "$$"
 featured: true
+sources:
+  - title: "Snapmaker: PLA Matte vs Basic"
+    url: "https://www.snapmaker.com/blog/pla-matte-vs-basic/"
+  - title: "Bambu Lab forum: PLA Matte layer adhesion"
+    url: "https://forum.bambulab.com/t/pla-matte-layer-adhesion/21090"
 ---
 
 ## When to pick it
@@ -23,9 +28,9 @@ When the print will be looked at up close. Matte PLA softens the look of layer l
 
 ## Watch out for
 
-- Slightly more brittle than standard PLA in many brands, so avoid thin snap fits.
-- Matte additives can make the filament a little more abrasive on nozzles over very long use.
+- Layer bonding is often weaker than standard PLA. Users report parts separating along layer lines across several brands, and the matting particles are the likely cause. It is not stronger or more heat-resistant than basic PLA.
+- Avoid thin snap-fits and anything load-bearing; use PLA+ or PETG there.
 
 ## Tips
 
-Choose darker colours for the most convincing matte look. Light, saturated colours show more of the sheen.
+Print a little hotter and slower, with reduced part cooling, to narrow the strength gap (it will not fully close). Darker colours give the most convincing matte look.

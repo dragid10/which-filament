@@ -4,8 +4,8 @@ interface Props {
   title?: string;
   description?: string;
 }
-const { title, description = 'Not sure which 3D printer filament to use? Pick what you are printing and compare PLA, PETG, and their variants.' } = Astro.props;
-const fullTitle = title ? `${title} · which-filament` : 'which-filament · Pick the right 3D printing filament';
+const { title, description = 'Not sure which 3D printer filament to use? Pick what you are printing and compare PLA, PETG, ABS, ASA, TPU, and their variants.' } = Astro.props;
+const fullTitle = title ? `${title} · Which Filament` : 'Which Filament · Pick the right 3D printing filament';
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const nav = [
   { href: '/', label: 'Find mine' },
@@ -41,7 +41,7 @@ const isActive = (href: string) =>
             <circle cx="16" cy="16" r="9" fill="var(--bg)" />
             <circle cx="16" cy="16" r="4" fill="var(--accent)" />
           </svg>
-          which-filament
+          Which Filament
         </a>
         <nav aria-label="Main">
           <ul>

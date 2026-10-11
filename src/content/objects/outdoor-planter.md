@@ -3,7 +3,7 @@ title: Outdoor planter
 summary: Sun, rain, heat, and temperature swings all day.
 useCases: [outdoor, waterproof]
 best: petg
-runnersUp: [rapid-petg]
+runnersUp: [rapid-petg, asa]
 avoid: [pla, pla-plus, matte-pla, silk-pla, rapid-pla, rapid-pla-plus]
 ---
 

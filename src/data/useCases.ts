@@ -31,6 +31,7 @@ export const USE_CASES = [
   { id: 'outdoor', label: 'Outdoor / sunlight', hint: 'Garden, planters, UV exposure', weights: { durability: 3, heat: 2 } },
   { id: 'hot-environment', label: 'Hot environments', hint: 'Cars, near heaters, dishwashers', weights: { heat: 4, durability: 1 } },
   { id: 'waterproof', label: 'Wet / waterproof', hint: 'Bathroom, water contact', weights: { durability: 2, heat: 1, strength: 1 } },
+  { id: 'flexible', label: 'Flexible / rubbery', hint: 'Gaskets, phone cases, grips, bumpers', weights: { flex: 4, durability: 2 } },
   { id: 'large', label: 'Large prints', hint: 'Big parts that risk warping', weights: { ease: 3, speed: 1 } },
   { id: 'fast', label: 'Fast / bulk printing', hint: 'Lots of parts, short deadlines', weights: { speed: 4, ease: 1 } },
   { id: 'beginner', label: 'First-time friendly', hint: 'Forgiving and low-fuss', weights: { ease: 4 } },

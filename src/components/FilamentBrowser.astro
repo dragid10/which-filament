@@ -74,7 +74,7 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
   {
     sorted.map((f) => (
       <li style="display:contents">
-        <FilamentCard filament={f} materialTitle={materialTitle(f.data.material)} />
+        <FilamentCard filament={f} materialTitle={materialTitle(f.data.material.id)} />
       </li>
     ))
   }

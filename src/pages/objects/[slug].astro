@@ -32,7 +32,7 @@ const label = (id: string) => USE_CASES.find((u) => u.id === id)?.label ?? id;
 
     <h2 style="margin-top:0.5rem">Best pick</h2>
     <ul class="grid" style="margin-top:12px">
-      <li style="display:contents"><FilamentCard filament={best!} materialTitle={materialTitle(best!.data.material)} /></li>
+      <li style="display:contents"><FilamentCard filament={best!} materialTitle={materialTitle(best!.data.material.id)} /></li>
     </ul>
 
     <article class="prose" style="margin-top:1.5rem"><Content /></article>
@@ -41,7 +41,7 @@ const label = (id: string) => USE_CASES.find((u) => u.id === id)?.label ?? id;
       <>
         <h2>Also works</h2>
         <ul class="grid">
-          {runnersUp.map((f) => <li style="display:contents"><FilamentCard filament={f} materialTitle={materialTitle(f.data.material)} /></li>)}
+          {runnersUp.map((f) => <li style="display:contents"><FilamentCard filament={f} materialTitle={materialTitle(f.data.material.id)} /></li>)}
         </ul>
       </>
     )}
