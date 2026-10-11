@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Swatch from '../../components/Swatch.astro';
-import { readableInk } from '../../lib/color';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
 const filaments = await getCollection('filaments');
@@ -24,7 +23,7 @@ const filaments = await getCollection('filaments');
             <li style="display:contents">
               <a class="mat-card" href={`/materials/${m.id}`}>
                 {m.data.image ? <img class="mat-img" src={m.data.image} alt="" loading="lazy" /> : null}
-                <div class="mat-top" style={`--tile:${m.data.color ?? '#0b0f14'};--tile-ink:${readableInk(m.data.color ?? '#0b0f14')}`}>
+                <div class="mat-top">
                   <span class="mat-count">{variants.length} variants</span>
                   <h3 class="mat-name">{m.data.title}</h3>
                 </div>

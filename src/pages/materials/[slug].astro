@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Swatch from '../../components/Swatch.astro';
 import Sources from '../../components/Sources.astro';
 import FilamentBrowser from '../../components/FilamentBrowser.astro';
 
@@ -25,7 +24,6 @@ const d = entry.data;
     <section class:list={['page-head', { 'with-media': !!d.image }]}><div>
       <p class="eyebrow">{d.fullName}</p>
       <div class="title-row">
-        {d.color && <Swatch color={d.color} size={72} />}
         <h1 style="margin:0">{d.title}</h1>
       </div>
       <p class="lede">{d.summary}</p>

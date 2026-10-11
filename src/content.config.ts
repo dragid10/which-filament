@@ -16,8 +16,6 @@ const materials = defineCollection({
     summary: z.string().max(200),
     order: z.number().default(100),
     aliases: z.array(z.string()).default([]),
-    // Hex colour for the fallback illustration when there is no image
-    color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
     // Optional photo, relative to /public (e.g. /images/materials/pla.jpg)
     image: z.string().optional(),
     imageAlt: z.string().optional(),

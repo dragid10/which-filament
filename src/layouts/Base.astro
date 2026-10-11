@@ -34,6 +34,13 @@ const isActive = (href: string) =>
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>
+      // Apply a saved theme before first paint to avoid a flash
+      try {
+        var t = localStorage.getItem('wf-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -41,12 +48,13 @@ const isActive = (href: string) =>
       <div class="wrap bar-row">
         <a class="brand" href="/">
           <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
-            <circle cx="17" cy="17" r="16" fill="#5b3df5" />
-            <circle cx="17" cy="17" r="10" fill="#ffd23f" />
-            <circle cx="17" cy="17" r="4.5" fill="#fff" />
+            <circle cx="17" cy="17" r="16" style="fill:var(--ink)" />
+            <circle cx="17" cy="17" r="10" style="fill:var(--head-bg)" />
+            <circle cx="17" cy="17" r="4.5" style="fill:var(--ink)" />
           </svg>
           <span>Which Filament</span>
         </a>
+        <div class="head-tools">
         <nav aria-label="Main">
           <ul>
             {
@@ -60,6 +68,10 @@ const isActive = (href: string) =>
             }
           </ul>
         </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false">
+          <span class="ico" aria-hidden="true">🌙</span><span>Dark mode</span>
+        </button>
+        </div>
       </div>
     </header>
     <main id="main"><slot /></main>
@@ -71,5 +83,24 @@ const isActive = (href: string) =>
         </p>
       </div>
     </footer>
+      <script>
+      const btn = document.querySelector<HTMLButtonElement>('[data-theme-toggle]')!;
+      const root = document.documentElement;
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const isDark = () => (root.dataset.theme ? root.dataset.theme === 'dark' : mq.matches);
+      function sync() {
+        const dark = isDark();
+        btn.setAttribute('aria-pressed', String(dark));
+        btn.querySelector('.ico')!.textContent = dark ? '☀️' : '🌙';
+      }
+      btn.addEventListener('click', () => {
+        const next = isDark() ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try { localStorage.setItem('wf-theme', next); } catch { /* storage unavailable */ }
+        sync();
+      });
+      mq.addEventListener('change', sync);
+      sync();
+    </script>
   </body>
 </html>

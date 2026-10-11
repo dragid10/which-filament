@@ -55,7 +55,6 @@ A material is a top-level category such as PLA or ABS. Add `src/content/material
 | `summary` | One sentence, max 200 characters |
 | `order` | Sort position among materials (lower is first) |
 | `aliases` (optional) | Other names people search for |
-| `color` (optional) | Hex colour for the fallback illustration |
 | `image`, `imageAlt`, `imageCredit` (optional) | Photo under `public/`, with alt text and credit |
 | `pros` / `cons` | Lists. Quote each item (`"..."`) so colons do not break the YAML |
 | `settings` | `nozzle`, `bed`, and optional `enclosure` and `drying` |

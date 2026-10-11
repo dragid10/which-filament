@@ -1,25 +1,24 @@
 # Design system
 
-Bright, rounded, and friendly: a violet brand colour, a sunny yellow highlight, a bright colour owned by each material, big soft shapes and plenty of whitespace.
+Warm neutral and calm: an eggshell page, tan secondary surfaces, near-black ink, and nothing else. The only colour on the site is filament colour (spool swatches and the hero dots), because that colour is information. A light/dark toggle follows the system by default and remembers the visitor's choice.
 
-## Tokens (`src/styles/global.css`)
+## Tokens (`src/styles/global.css`, `light-dark()` pairs)
 
 | Token | Light | Dark | Use |
 |-------|-------|------|-----|
-| `--bg` | `#f5f2ff` | `#130f26` | Page background |
-| `--surface` | `#ffffff` | `#1e1838` | Cards, panels |
-| `--ink` | `#1b1340` | `#f3f0ff` | Text |
-| `--muted` | `#4b4470` | `#b8afdc` | Secondary text (>= 4.5:1) |
-| `--field` | `#6f68a0` | `#8f87bf` | Borders of interactive controls (>= 3:1) |
-| `--brand` | `#5b3df5` | `#a99bff` | Selected state, active nav, links |
-| `--sun` | `#ffd23f` | `#ffd23f` | Highlights and the focus halo. Text on it is always dark ink |
-| `--tint-*` | pastel | deep tone | Panel backgrounds: mint (good), pink (cons), sun (settings), lilac (ratings) |
+| `--bg` | `#f4efe4` | `#17140f` | Page background (eggshell) |
+| `--surface` | `#fdfbf6` | `#211d16` | Cards, panels |
+| `--surface-2` | `#e9e0cf` | `#2d271d` | Tan: tiles, media wells, toggles |
+| `--ink` | `#1f1a14` | `#f3ede2` | Text and the "accent" (selected states, active nav) |
+| `--muted` | `#5a5043` | `#b5aa97` | Secondary text (>= 4.5:1) |
+| `--field` | `#7d705d` | `#948871` | Borders of interactive controls (>= 3:1) |
+| `--good` / `--warn` | `#1c6b3c` / `#a8321f` | `#86efac` / `#ffab91` | Check and cross marks only |
 
-Each material's colour comes from its `color` frontmatter. Text on its tile is picked automatically (`src/lib/color.ts`) as dark or white, whichever has more contrast.
+The theme follows `prefers-color-scheme` until the visitor uses the toggle, which sets `data-theme` on `<html>` and saves it in `localStorage` (applied before first paint to avoid a flash).
 
 ## Shape and motion
 
-Radius 28 px for cards and tiles, 18 px for inner media, pills (999 px) for chips, buttons and badges. Soft layered shadows; hover lifts a card with a small bounce. All motion is off under `prefers-reduced-motion`.
+Radius 14 px for cards and tiles, 10 px for inner media, pills (999 px) for chips, buttons and badges. Soft layered shadows; hover lifts a card with a small bounce. All motion is off under `prefers-reduced-motion`.
 
 ## Type (self-hosted via Fontsource, no third-party requests)
 
@@ -30,12 +29,13 @@ Radius 28 px for cards and tiles, 18 px for inner media, pills (999 px) for chip
 
 | Component | Notes |
 |-----------|-------|
-| Material tile (`.mat-card`) | Top-level category: big colour block with decorative circles, name, variant count pill, then summary and spool swatches |
+| Material tile (`.mat-card`) | Top-level category: tan block with the big name and a variant count, then summary and spool swatches |
 | Filament card (`.card`) | Spool swatch, material label, name, summary, up to two tags, three ratings. Grid or list layout |
 | Swatch (`Swatch.astro`) | Top view of a spool in the filament's colour. Decorative, always paired with a text name |
-| Toggle chip (`.chip`) | Pill with an emoji. Selected state is a brand fill plus a check mark |
+| Toggle chip (`.chip`) | Pill with an emoji. Selected state is an ink fill plus a check mark |
 | Rating dots | Five round dots plus `n/5` text and a screen-reader sentence |
-| Panels | Tinted rounded blocks for good-for, ratings, settings, pros, cons |
+| Panels | Tan blocks for good-for, ratings, settings, pros, cons |
+| Theme toggle | Header button, `aria-pressed` reflects dark mode |
 | View toggle | Cards / List pill switch, `aria-pressed` buttons |
 | Sources | Cited references at the bottom of an entry |
 
@@ -43,7 +43,7 @@ Radius 28 px for cards and tiles, 18 px for inner media, pills (999 px) for chip
 
 - Contrast: text >= 4.5:1, UI boundaries >= 3:1 in both themes (checked with axe-core and Lighthouse).
 - Targets: interactive controls are at least 44 px tall.
-- Focus: a visible 3 px outline with a 7 px yellow halo on every focusable element. Skip link first.
+- Focus: a visible 3 px ink outline with a tan halo on every focusable element. Skip link first.
 - State is never conveyed by colour alone: check marks, ✓/✕ glyphs, text labels. Emoji are decorative and hidden from screen readers.
 - Honours `prefers-color-scheme`, `prefers-reduced-motion`, and `forced-colors`.
 - Headings do not skip levels. Filter groups are `fieldset` + `legend`. Live regions announce result counts.

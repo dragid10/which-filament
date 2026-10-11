@@ -2,7 +2,6 @@
 title: PLA
 fullName: Polylactic acid
 summary: The friendly default. Easy, cheap, and comes in every colour and finish you can imagine.
-color: "#7c5cff"
 order: 1
 pros:
   - "Easiest filament to print; forgiving on almost any printer"

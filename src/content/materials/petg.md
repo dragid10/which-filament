@@ -2,7 +2,6 @@
 title: PETG
 fullName: Polyethylene terephthalate glycol
 summary: The tougher all-rounder. More heat- and impact-resistant than PLA with only a little more fuss.
-color: "#2bb3ff"
 order: 2
 pros:
   - "Tougher and less brittle than PLA; flexes before it breaks"
