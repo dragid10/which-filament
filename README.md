@@ -8,6 +8,7 @@ Source for [which-filament.com](https://which-filament.com): a static guide to 3
 
 - **Finder**: choose your use cases and get filaments ranked with explanations.
 - **Browse**: search, filter by material or use, sort by property, and switch between card and list views. Filtered views are shareable via the URL.
+- **Examples**: common objects (phone stand, planter, car mount, ...) each with a best pick, runners-up, and what to avoid.
 - **Pages** for every material and every filament type.
 - **Content is Markdown**: one file per filament, validated by a schema in CI.
 
@@ -27,6 +28,7 @@ Requires Node 20+ (CI uses 22).
 ```
 src/content/materials/   one .md per material (PLA, PETG, ...)
 src/content/filaments/   one .md per filament type
+src/content/objects/     one .md per example object (references filaments)
 src/content.config.ts    frontmatter schema (Zod)
 src/data/useCases.ts     "what are you printing?" use cases and their weights
 src/scripts/finder.ts    ranking logic

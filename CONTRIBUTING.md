@@ -31,6 +31,20 @@ Thanks for helping people pick the right filament! Contributions of all sizes ar
 4. Run `npm install` then `npm run check` to validate. The error messages say exactly which field is wrong.
 5. Open a pull request. CI runs the same check and a build.
 
+### Add an example object
+
+Objects answer "I want to print *this*: which filament?" Copy a file in `src/content/objects/` (e.g. `phone-stand.md`):
+
+| Field | Notes |
+|-------|-------|
+| `title` | Short name, e.g. `Outdoor planter` |
+| `summary` | One sentence on what the object has to survive |
+| `useCases` | Use-case ids from `src/data/useCases.ts` |
+| `best` | File name of the single best filament in `src/content/filaments/` |
+| `runnersUp` / `avoid` | Lists of filament file names. A typo here fails the build. |
+
+The body explains *why*: what the object needs (heat, impact, looks) and how that points to the pick.
+
 ### Adding a new material
 
 Add `src/content/materials/<name>.md` (see `pla.md`). Then filaments can use `material: <name>`.

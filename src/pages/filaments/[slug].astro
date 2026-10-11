@@ -4,11 +4,13 @@ import Base from '../../layouts/Base.astro';
 import Spool from '../../components/Spool.astro';
 import RatingBars from '../../components/RatingBars.astro';
 import FilamentCard from '../../components/FilamentCard.astro';
+import ObjectCard from '../../components/ObjectCard.astro';
 import { USE_CASES } from '../../data/useCases';
 
 export async function getStaticPaths() {
   const filaments = await getCollection('filaments');
   const materials = await getCollection('materials');
+  const objects = await getCollection('objects');
   return filaments.map((entry) => ({
     params: { slug: entry.id },
     props: {
@@ -16,11 +18,12 @@ export async function getStaticPaths() {
       material: materials.find((m) => m.id === entry.data.material),
       siblings: filaments.filter((f) => f.data.material === entry.data.material && f.id !== entry.id),
       materials,
+      objects: objects.filter((o) => o.data.best.id === entry.id || o.data.runnersUp.some((r) => r.id === entry.id)),
     },
   }));
 }
 
-const { entry, material, siblings, materials } = Astro.props;
+const { entry, material, siblings, materials, objects } = Astro.props;
 if (!material) throw new Error(`Filament "${entry.id}" references unknown material "${entry.data.material}"`);
 const { Content } = await render(entry);
 const d = entry.data;
@@ -92,6 +95,15 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
     </div>
 
     <article class="prose"><Content /></article>
+
+    {objects.length > 0 && (
+      <>
+        <h2>Commonly printed in {d.title}</h2>
+        <ul class="grid">
+          {objects.map((o) => <li style="display:contents"><ObjectCard object={o} /></li>)}
+        </ul>
+      </>
+    )}
 
     {siblings.length > 0 && (
       <>

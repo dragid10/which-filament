@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ObjectCard from '../../components/ObjectCard.astro';
+
+const objects = (await getCollection('objects')).sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<Base title="Examples" description="Which filament to use for common 3D prints: phone stands, planters, car mounts, cosplay, gears, and more.">
+  <div class="wrap">
+    <section class="page-head"><div>
+      <h1>What are people printing?</h1>
+      <p class="lede">Common objects, with the filament that suits each and why.</p>
+    </div></section>
+    <ul class="grid">
+      {objects.map((o) => <li style="display:contents"><ObjectCard object={o} /></li>)}
+    </ul>
+    <p style="margin-top:2rem">Don't see your object? <a href="/">Use the finder</a> or <a href="/contribute">suggest one</a>.</p>
+  </div>
+</Base>

@@ -1,0 +1,60 @@
+---
+import { getCollection, getEntries, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FilamentCard from '../../components/FilamentCard.astro';
+import { USE_CASES } from '../../data/useCases';
+
+export async function getStaticPaths() {
+  const objects = await getCollection('objects');
+  return objects.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const best = await getEntry(d.best);
+const runnersUp = await getEntries(d.runnersUp);
+const avoid = await getEntries(d.avoid);
+const materials = await getCollection('materials');
+const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.title ?? id;
+const label = (id: string) => USE_CASES.find((u) => u.id === id)?.label ?? id;
+---
+
+<Base title={d.title} description={`${d.title}: ${d.summary} Best filament: ${best?.data.title}.`}>
+  <div class="wrap">
+    <p class="crumbs"><a href="/objects">Examples</a></p>
+    <section class="page-head"><div>
+      <p class="eyebrow">Which filament for…</p>
+      <h1>{d.title}</h1>
+      <p class="lede">{d.summary}</p>
+      {d.useCases.length > 0 && <ul class="tags">{d.useCases.map((id) => <li>{label(id)}</li>)}</ul>}
+    </div></section>
+
+    <h2 style="margin-top:0.5rem">Best pick</h2>
+    <ul class="grid" style="margin-top:12px">
+      <li style="display:contents"><FilamentCard filament={best!} materialTitle={materialTitle(best!.data.material)} /></li>
+    </ul>
+
+    <article class="prose" style="margin-top:1.5rem"><Content /></article>
+
+    {runnersUp.length > 0 && (
+      <>
+        <h2>Also works</h2>
+        <ul class="grid">
+          {runnersUp.map((f) => <li style="display:contents"><FilamentCard filament={f} materialTitle={materialTitle(f.data.material)} /></li>)}
+        </ul>
+      </>
+    )}
+
+    {avoid.length > 0 && (
+      <>
+        <h2>Think twice about</h2>
+        <ul class="pill-list avoid">
+          {avoid.map((f) => <li><a href={`/filaments/${f.id}`} style="color:inherit">{f.data.title}</a></li>)}
+        </ul>
+      </>
+    )}
+
+    <p style="margin-top:2rem"><a href={`https://github.com/dragid10/which-filament/edit/main/src/content/objects/${entry.id}.md`}>Suggest an edit to this page</a></p>
+  </div>
+</Base>

@@ -176,3 +176,11 @@ p { margin: 0 0 1em; }
   .list-view .card-body > .ratings { display: none; }
   .list-view .card-media { width: 72px; }
 }
+
+/* object cards */
+.obj-card { display: block; text-decoration: none; color: inherit; position: relative; }
+.obj-card:hover { border-color: var(--accent); }
+.obj-card h3 { margin: 12px 0 4px; }
+.obj-card p:last-child { margin: 0; color: var(--muted); font-size: 0.93rem; }
+.obj-pick { display: flex; align-items: center; gap: 12px; }
+.obj-pick .eyebrow { margin: 0; }

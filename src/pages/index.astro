@@ -3,10 +3,12 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import FilamentCard from '../components/FilamentCard.astro';
 import ViewToggle from '../components/ViewToggle.astro';
+import ObjectCard from '../components/ObjectCard.astro';
 import { USE_CASES } from '../data/useCases';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
 const filaments = await getCollection('filaments');
+const objects = (await getCollection('objects')).slice(0, 6);
 const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.title ?? id;
 ---
 
@@ -53,6 +55,12 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
           ))
       }
     </ul>
+
+    <h2>Or see what people print</h2>
+    <ul class="grid">
+      {objects.map((o) => <li style="display:contents"><ObjectCard object={o} /></li>)}
+    </ul>
+    <p><a href="/objects">See all examples →</a></p>
 
     <h2>Or start with the material</h2>
     <div class="cols">

@@ -1,4 +1,4 @@
-import { defineCollection } from 'astro:content';
+import { defineCollection, reference } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { USE_CASE_IDS } from './data/useCases';
@@ -60,4 +60,18 @@ const filaments = defineCollection({
   }),
 });
 
-export const collections = { materials, filaments };
+const objects = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/objects' }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string().max(200),
+    // Use-case ids from src/data/useCases.ts that describe this object
+    useCases: z.array(z.enum(USE_CASE_IDS)).default([]),
+    // File names (without .md) of entries in src/content/filaments. Typos fail the build.
+    best: reference('filaments'),
+    runnersUp: z.array(reference('filaments')).default([]),
+    avoid: z.array(reference('filaments')).default([]),
+  }),
+});
+
+export const collections = { materials, filaments, objects };
