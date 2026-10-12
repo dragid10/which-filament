@@ -6,13 +6,16 @@ interface Props {
 }
 const { ratings, compact = false } = Astro.props;
 const keys = compact ? (['strength', 'heat', 'ease'] as const) : RATING_KEYS;
+// Short labels keep the compact card/list ratings on one line
+const SHORT: Partial<Record<RatingKey, string>> = { strength: 'Strength', heat: 'Heat', ease: 'Ease' };
+const labelOf = (k: RatingKey) => (compact ? (SHORT[k] ?? RATING_LABELS[k]) : RATING_LABELS[k]);
 ---
 
 <dl class:list={['ratings', { compact }]}>
   {
     keys.map((k) => (
-      <>
-        <dt>{RATING_LABELS[k]}</dt>
+      <div class="r">
+        <dt>{labelOf(k)}</dt>
         <dd>
           <span class="sr-only">{ratings[k]} out of 5</span>
           <span class="bar" aria-hidden="true">
@@ -22,7 +25,7 @@ const keys = compact ? (['strength', 'heat', 'ease'] as const) : RATING_KEYS;
             <span class="num">{ratings[k]}/5</span>
           </span>
         </dd>
-      </>
+      </div>
     ))
   }
 </dl>

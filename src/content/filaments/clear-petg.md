@@ -17,9 +17,10 @@ priceTier: "$$"
 featured: false
 ---
 
-## When to pick it
+## Use it for
 
-Light diffusers and lamp covers, protective windows, cases where you want to see inside, and decorative pieces that benefit from a glassy look. It keeps PETG's toughness and moisture resistance.
+- Light diffusers and lamp covers, protective windows, cases where you want to see inside, and decorative pieces that benefit from a glassy look.
+- It keeps PETG's toughness and moisture resistance.
 
 ## Watch out for
 
@@ -29,4 +30,6 @@ Light diffusers and lamp covers, protective windows, cases where you want to see
 
 ## Tips
 
-For clearer parts, print slowly with thick extrusion and few layer changes. Fewer or no infill gaps keep it clear. Vase mode (a single outer wall) is especially clear.
+- For clearer parts, print slowly with thick extrusion and few layer changes.
+- Fewer or no infill gaps keep it clear.
+- Vase mode (a single outer wall) is especially clear.

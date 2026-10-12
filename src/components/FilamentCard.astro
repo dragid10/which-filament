@@ -34,16 +34,21 @@ const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.ma
     )
   }
   <div class="card-body">
-    <p class="eyebrow">{materialTitle}</p>
-    <h3><a href={`/filaments/${filament.id}`}>{d.title}</a></h3>
-    <p class="summary">{d.summary}</p>
-    <div class="match" data-match hidden>
-      <p class="verdict" data-verdict></p>
-      <ul class="reasons" data-reasons></ul>
+    <div class="c-title">
+      <p class="eyebrow">{materialTitle}</p>
+      <h3><a href={`/filaments/${filament.id}`}>{d.title}</a></h3>
     </div>
-    <ul class="tags">
-      {d.goodFor.slice(0, 2).map((id) => <li>{labelFor(id)}</li>)}
-    </ul>
+    <div class="c-info">
+      <div class="match" data-match hidden>
+        <p class="verdict" data-verdict></p>
+        <ul class="reasons" data-reasons></ul>
+      </div>
+      <p class="summary">{d.summary}</p>
+      <ul class="tags">
+        {d.goodFor.slice(0, 2).map((id) => <li>{labelFor(id)}</li>)}
+      </ul>
+    </div>
+    <p class="specs"><span>Nozzle <b>{d.settings.nozzle}</b></span><span>Bed <b>{d.settings.bed}</b></span></p>
     <RatingBars ratings={d.ratings} compact />
   </div>
 </article>

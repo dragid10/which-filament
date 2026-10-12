@@ -7,6 +7,6 @@ runnersUp: [rapid-petg, asa, abs]
 avoid: [pla, pla-plus, matte-pla, silk-pla, rapid-pla, rapid-pla-plus]
 ---
 
-This is the classic case where PLA fails: a dashboard in summer sun passes PLA's softening point and the mount droops or warps. PETG handles the heat and survives vibration and knocks.
-
-Anything that lives in a hot car should be PETG or something stronger.
+- This is the classic case where PLA fails: a dashboard in summer sun passes PLA's softening point and the mount droops or warps.
+- PETG handles the heat and survives vibration and knocks.
+- Anything that lives in a hot car should be PETG or something stronger.

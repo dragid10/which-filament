@@ -23,9 +23,10 @@ sources:
     url: "https://all3dp.com/2/asa-vs-abs-differences/"
 ---
 
-## When to pick it
+## Use it for
 
-Electronics enclosures, mechanical parts near heat, car interior pieces, and anything you want to sand, drill, or smooth with acetone vapor. It is tougher than PLA and survives heat that would soften PETG.
+- Electronics enclosures, mechanical parts near heat, car interior pieces, and anything you want to sand, drill, or smooth with acetone vapor.
+- It is tougher than PLA and survives heat that would soften PETG.
 
 ## Watch out for
 
@@ -35,4 +36,5 @@ Electronics enclosures, mechanical parts near heat, car interior pieces, and any
 
 ## Tips
 
-Use a brim, a very hot bed, and close the lid. Let the printer cool slowly before removing a large part.
+- Use a brim, a very hot bed, and close the lid.
+- Let the printer cool slowly before removing a large part.

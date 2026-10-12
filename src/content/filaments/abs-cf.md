@@ -19,9 +19,9 @@ priceTier: "$$$"
 featured: false
 ---
 
-## When to pick it
+## Use it for
 
-You want ABS's heat resistance with extra stiffness and dimensional stability: tooling, brackets, fixtures, and structural parts that live in a warm enclosure.
+- You want ABS's heat resistance with extra stiffness and dimensional stability: tooling, brackets, fixtures, and structural parts that live in a warm enclosure.
 
 ## Watch out for
 
@@ -31,4 +31,5 @@ You want ABS's heat resistance with extra stiffness and dimensional stability: t
 
 ## Tips
 
-It warps a little less than plain ABS, which makes larger parts more forgiving. Dry the spool well before printing.
+- It warps a little less than plain ABS, which makes larger parts more forgiving.
+- Dry the spool well before printing.

@@ -16,9 +16,10 @@ priceTier: "$$"
 featured: false
 ---
 
-## When to pick it
+## Use it for
 
-Busts, statues, planters for indoor use, bookends, and anything meant to look like stone or concrete. The speckles break up layer lines so prints look natural without painting.
+- Busts, statues, planters for indoor use, bookends, and anything meant to look like stone or concrete.
+- The speckles break up layer lines so prints look natural without painting.
 
 ## Watch out for
 
@@ -28,4 +29,4 @@ Busts, statues, planters for indoor use, bookends, and anything meant to look li
 
 ## Tips
 
-Print slightly slower for clean surfaces, and choose a slightly larger nozzle if your brand clogs.
+- Print slightly slower for clean surfaces, and choose a slightly larger nozzle if your brand clogs.

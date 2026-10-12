@@ -17,9 +17,9 @@ priceTier: "$"
 featured: true
 ---
 
-## When to pick it
+## Use it for
 
-Parts that need to work, not just look good: garage organisers, car interior parts, planters, bike mounts, water bottle holders, and snap-fit housings.
+- Parts that need to work, not just look good: garage organisers, car interior parts, planters, bike mounts, water bottle holders, and snap-fit housings.
 
 ## Watch out for
 
@@ -29,6 +29,6 @@ Parts that need to work, not just look good: garage organisers, car interior par
 
 ## Tips
 
-Lower the part cooling compared to PLA for stronger layers. Keep it sealed with desiccant between prints.
-
-Printing a lot? Try [Rapid PETG](/filaments/rapid-petg).
+- Lower the part cooling compared to PLA for stronger layers.
+- Keep it sealed with desiccant between prints.
+- Printing a lot? Try [Rapid PETG](/filaments/rapid-petg).

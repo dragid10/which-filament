@@ -21,9 +21,10 @@ sources:
     url: "https://siddament.com.au/blogs/filament-guide-au/how-to-print-tpu"
 ---
 
-## When to pick it
+## Use it for
 
-Soft seals, squishy toys, cushioning pads, and parts that must compress a lot. If 95A is not flexible enough, 85A is the next step.
+- Soft seals, squishy toys, cushioning pads, and parts that must compress a lot.
+- If 95A is not flexible enough, 85A is the next step.
 
 ## Watch out for
 
@@ -33,4 +34,5 @@ Soft seals, squishy toys, cushioning pads, and parts that must compress a lot. I
 
 ## Tips
 
-Print with slow speeds, minimal retraction, and consider a TPU-specific extruder tensioner setting. Try 95A first if you are new to TPU.
+- Print with slow speeds, minimal retraction, and consider a TPU-specific extruder tensioner setting.
+- Try 95A first if you are new to TPU.

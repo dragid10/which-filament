@@ -23,9 +23,10 @@ sources:
     url: "https://au.qidi3d.com/products/petg-cf"
 ---
 
-## When to pick it
+## Use it for
 
-You want PETG's weather resistance with extra stiffness: drone and RC frames, enclosure brackets, printer upgrade parts, and structural parts that must hold shape. Carbon fiber also reduces stringing, so prints often look cleaner than plain PETG.
+- You want PETG's weather resistance with extra stiffness: drone and RC frames, enclosure brackets, printer upgrade parts, and structural parts that must hold shape.
+- Carbon fiber also reduces stringing, so prints often look cleaner than plain PETG.
 
 ## Watch out for
 
@@ -35,4 +36,5 @@ You want PETG's weather resistance with extra stiffness: drone and RC frames, en
 
 ## Tips
 
-Dry it thoroughly (about 65 °C for 5-8 hours) and start from the manufacturer's profile. Heat resistance is only slightly above plain PETG (vendor datasheets list a heat deflection temperature of roughly 74-77 °C), so do not count on it for very hot places.
+- Dry it thoroughly (about 65 °C for 5-8 hours) and start from the manufacturer's profile.
+- Heat resistance is only slightly above plain PETG (vendor datasheets list a heat deflection temperature of roughly 74-77 °C), so do not count on it for very hot places.

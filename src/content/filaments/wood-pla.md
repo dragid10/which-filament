@@ -18,9 +18,10 @@ priceTier: "$$"
 featured: false
 ---
 
-## When to pick it
+## Use it for
 
-Signs, picture frames, decorative boxes, and gifts where a wood look matters. You can sand and stain it like real wood.
+- Signs, picture frames, decorative boxes, and gifts where a wood look matters.
+- You can sand and stain it like real wood.
 
 ## Watch out for
 
@@ -30,4 +31,5 @@ Signs, picture frames, decorative boxes, and gifts where a wood look matters. Yo
 
 ## Tips
 
-Vary temperature across a test tower for lighter or darker tones. Sand lightly and seal with wax or oil for a wood finish.
+- Vary temperature across a test tower for lighter or darker tones.
+- Sand lightly and seal with wax or oil for a wood finish.

@@ -18,9 +18,10 @@ priceTier: "$$$"
 featured: false
 ---
 
-## When to pick it
+## Use it for
 
-You need a part that does not flex: camera and tripod mounts, jigs and fixtures, drone and RC frames, brackets that must stay straight. The fibers make it very stiff and give a clean matte finish that hides layer lines.
+- You need a part that does not flex: camera and tripod mounts, jigs and fixtures, drone and RC frames, brackets that must stay straight.
+- The fibers make it very stiff and give a clean matte finish that hides layer lines.
 
 ## Watch out for
 
@@ -30,4 +31,5 @@ You need a part that does not flex: camera and tripod mounts, jigs and fixtures,
 
 ## Tips
 
-Print a little hotter than plain PLA, dry the spool first, and wear gloves when sanding. The dust is not something to breathe.
+- Print a little hotter than plain PLA, dry the spool first, and wear gloves when sanding.
+- The dust is not something to breathe.

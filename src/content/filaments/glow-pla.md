@@ -17,9 +17,10 @@ priceTier: "$$"
 featured: false
 ---
 
-## When to pick it
+## Use it for
 
-Night lights, signs, toys, Halloween decorations, and anything where the glow is the point. Thick, solid prints glow longest.
+- Night lights, signs, toys, Halloween decorations, and anything where the glow is the point.
+- Thick, solid prints glow longest.
 
 ## Watch out for
 
@@ -29,4 +30,5 @@ Night lights, signs, toys, Halloween decorations, and anything where the glow is
 
 ## Tips
 
-Print slowly with a larger nozzle (0.6 mm) to reduce clogs and get more pigment into the walls. Keep it away from anything that bears load.
+- Print slowly with a larger nozzle (0.6 mm) to reduce clogs and get more pigment into the walls.
+- Keep it away from anything that bears load.

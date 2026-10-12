@@ -21,9 +21,10 @@ sources:
     url: "https://siddament.com.au/blogs/filament-guide-au/how-to-print-tpu"
 ---
 
-## When to pick it
+## Use it for
 
-Phone cases, bumpers, vibration feet, gaskets, wheels, and grips. It absorbs impacts, takes abuse, and springs back to shape.
+- Phone cases, bumpers, vibration feet, gaskets, wheels, and grips.
+- It absorbs impacts, takes abuse, and springs back to shape.
 
 ## Watch out for
 
@@ -33,4 +34,5 @@ Phone cases, bumpers, vibration feet, gaskets, wheels, and grips. It absorbs imp
 
 ## Tips
 
-Print slowly, reduce or disable retraction, and keep it dry. Avoid long unsupported filament paths.
+- Print slowly, reduce or disable retraction, and keep it dry.
+- Avoid long unsupported filament paths.

@@ -18,9 +18,10 @@ priceTier: "$$"
 featured: true
 ---
 
-## When to pick it
+## Use it for
 
-You want PETG's toughness without waiting around. Enclosures, mounts, brackets, and batches of functional parts are where it shines on a fast printer.
+- You want PETG's toughness without waiting around.
+- Enclosures, mounts, brackets, and batches of functional parts are where it shines on a fast printer.
 
 ## Watch out for
 
@@ -29,4 +30,5 @@ You want PETG's toughness without waiting around. Enclosures, mounts, brackets, 
 
 ## Tips
 
-Start with the manufacturer's high-speed profile for your printer and raise flow gradually. Always dry it first; wet PETG at high speed is a mess.
+- Start with the manufacturer's high-speed profile for your printer and raise flow gradually.
+- Always dry it first; wet PETG at high speed is a mess.

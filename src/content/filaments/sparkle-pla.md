@@ -16,9 +16,10 @@ priceTier: "$$"
 featured: false
 ---
 
-## When to pick it
+## Use it for
 
-Ornaments, keychains, dragons, figurines, and gifts that should shimmer. It prints almost like regular PLA.
+- Ornaments, keychains, dragons, figurines, and gifts that should shimmer.
+- It prints almost like regular PLA.
 
 ## Watch out for
 
@@ -27,4 +28,5 @@ Ornaments, keychains, dragons, figurines, and gifts that should shimmer. It prin
 
 ## Tips
 
-Darker colours show the sparkle best. A slightly larger nozzle helps if you see small clogs.
+- Darker colours show the sparkle best.
+- A slightly larger nozzle helps if you see small clogs.

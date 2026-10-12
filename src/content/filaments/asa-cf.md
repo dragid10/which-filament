@@ -19,9 +19,9 @@ priceTier: "$$$"
 featured: false
 ---
 
-## When to pick it
+## Use it for
 
-Rigid parts that also live outside or under a car: mounts, brackets, structural housings, and drone or rover components that see sun and rain.
+- Rigid parts that also live outside or under a car: mounts, brackets, structural housings, and drone or rover components that see sun and rain.
 
 ## Watch out for
 
@@ -31,4 +31,4 @@ Rigid parts that also live outside or under a car: mounts, brackets, structural 
 
 ## Tips
 
-Start from the manufacturer's profile, keep the chamber warm, and dry the spool before use.
+- Start from the manufacturer's profile, keep the chamber warm, and dry the spool before use.

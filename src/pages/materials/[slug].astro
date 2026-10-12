@@ -25,7 +25,7 @@ const d = entry.data;
       <p class="eyebrow">{d.fullName}</p>
       <h1>{d.title}</h1>
       <p class="lede">{d.summary}</p>
-      {d.aliases.length > 0 && <p style="color:var(--muted)">Also called: {d.aliases.join(', ')}</p>}
+      {d.aliases.length > 0 && <p class="aka">Also called: {d.aliases.join(', ')}</p>}
     </div>
     {d.image && (
       <figure class="media" style="margin:0">
@@ -38,21 +38,16 @@ const d = entry.data;
     <h2 style="margin-top:1.5rem">{d.title} variants <span style="color:var(--muted);font-weight:500;font-size:1rem">({variants.length})</span></h2>
     <FilamentBrowser filaments={variants} materials={materials} />
     <h2>About {d.title}</h2>
-    <div class="detail">
-      <div>
-        <article class="prose"><Content /></article>
-        <Sources sources={d.sources} />
-      </div>
-      <aside class="detail-side" aria-label="Key facts">
-      <section class="panel t-mint">
+    <div class="facts">
+      <section class="panel">
         <h3>Pros</h3>
-        <ul class="pros" style="margin:0;padding-left:1.4em">{d.pros.map((p) => <li>{p}</li>)}</ul>
+        <ul class="pros">{d.pros.map((p) => <li>{p}</li>)}</ul>
       </section>
-      <section class="panel t-pink">
+      <section class="panel">
         <h3>Cons</h3>
-        <ul class="cons" style="margin:0;padding-left:1.4em">{d.cons.map((p) => <li>{p}</li>)}</ul>
+        <ul class="cons">{d.cons.map((p) => <li>{p}</li>)}</ul>
       </section>
-      <section class="panel t-sun">
+      <section class="panel">
         <h3>Typical settings</h3>
         <dl class="kv">
           <dt>Nozzle</dt><dd>{d.settings.nozzle}</dd>
@@ -61,8 +56,9 @@ const d = entry.data;
           {d.settings.drying && <><dt>Drying</dt><dd>{d.settings.drying}</dd></>}
         </dl>
       </section>
-      </aside>
     </div>
 
+    <article class="prose cols-prose"><Content /></article>
+    <Sources sources={d.sources} />
   </div>
 </Base>

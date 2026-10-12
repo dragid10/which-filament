@@ -19,9 +19,10 @@ sources:
     url: "https://www.snapmaker.com/blog/silk-pla-vs-pla/"
 ---
 
-## When to pick it
+## Use it for
 
-Looks come first. Vases, trophies, jewellery-style pieces, decorative gifts, and dual- or tri-colour figures all benefit from silk's metallic glow.
+- Looks come first.
+- Vases, trophies, jewellery-style pieces, decorative gifts, and dual- or tri-colour figures all benefit from silk's metallic glow.
 
 ## Watch out for
 
@@ -31,4 +32,4 @@ Looks come first. Vases, trophies, jewellery-style pieces, decorative gifts, and
 
 ## Tips
 
-Use thicker walls and a larger nozzle for visible parts, and keep it away from anything that bears load.
+- Use thicker walls and a larger nozzle for visible parts, and keep it away from anything that bears load.

@@ -17,9 +17,9 @@ priceTier: "$$"
 featured: false
 ---
 
-## When to pick it
+## Use it for
 
-You want quick prints that you can actually use: jigs, brackets, organiser parts, repair pieces, and cosplay pieces that will be handled.
+- You want quick prints that you can actually use: jigs, brackets, organiser parts, repair pieces, and cosplay pieces that will be handled.
 
 ## Watch out for
 
@@ -28,4 +28,4 @@ You want quick prints that you can actually use: jigs, brackets, organiser parts
 
 ## Tips
 
-Print a little hotter than you would the non-rapid version for strong layer bonds, and give the part time to cool before removing it.
+- Print a little hotter than you would the non-rapid version for strong layer bonds, and give the part time to cool before removing it.

@@ -16,9 +16,10 @@ priceTier: "$"
 featured: true
 ---
 
-## When to pick it
+## Use it for
 
-PLA+ is plain PLA that does not snap as easily. Reach for it for brackets, holders, hooks, phone stands, and enclosures that will be handled, bumped, and screwed together.
+- PLA+ is plain PLA that does not snap as easily.
+- Reach for it for brackets, holders, hooks, phone stands, and enclosures that will be handled, bumped, and screwed together.
 
 ## Watch out for
 
@@ -27,4 +28,4 @@ PLA+ is plain PLA that does not snap as easily. Reach for it for brackets, holde
 
 ## Tips
 
-Print slightly hotter than plain PLA (about +5-10 °C) for better layer bonding, which is where the extra strength comes from.
+- Print slightly hotter than plain PLA (about +5-10 °C) for better layer bonding, which is where the extra strength comes from.

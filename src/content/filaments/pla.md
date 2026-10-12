@@ -16,9 +16,10 @@ priceTier: "$"
 featured: true
 ---
 
-## When to pick it
+## Use it for
 
-Anything that is going to sit on a shelf, a desk, or a table. Figurines, organisers, test fits, and first prints on a new printer are exactly what plain PLA is for.
+- Anything that is going to sit on a shelf, a desk, or a table.
+- Figurines, organisers, test fits, and first prints on a new printer are exactly what plain PLA is for.
 
 ## Watch out for
 
@@ -27,4 +28,5 @@ Anything that is going to sit on a shelf, a desk, or a table. Figurines, organis
 
 ## Tips
 
-Use a cool-ish bed and full part cooling for the sharpest overhangs. Step up to [PLA+](/filaments/pla-plus) when you need a little more toughness without leaving the PLA workflow.
+- Use a cool-ish bed and full part cooling for the sharpest overhangs.
+- Step up to [PLA+](/filaments/pla-plus) when you need a little more toughness without leaving the PLA workflow.

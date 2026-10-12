@@ -21,9 +21,10 @@ sources:
     url: "https://forum.bambulab.com/t/pla-matte-layer-adhesion/21090"
 ---
 
-## When to pick it
+## Use it for
 
-When the print will be looked at up close. Matte PLA softens the look of layer lines, does not reflect harsh highlights, and looks great for figurines, planters, desk accessories, and parts you plan to paint.
+- When the print will be looked at up close.
+- Matte PLA softens the look of layer lines, does not reflect harsh highlights, and looks great for figurines, planters, desk accessories, and parts you plan to paint.
 
 ## Watch out for
 
@@ -32,4 +33,5 @@ When the print will be looked at up close. Matte PLA softens the look of layer l
 
 ## Tips
 
-Print a little hotter and slower, with reduced part cooling, to narrow the strength gap (it will not fully close). Darker colours give the most convincing matte look.
+- Print a little hotter and slower, with reduced part cooling, to narrow the strength gap (it will not fully close).
+- Darker colours give the most convincing matte look.

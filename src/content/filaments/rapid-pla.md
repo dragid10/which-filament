@@ -22,13 +22,17 @@ sources:
     url: "https://3dprintingcanada.com/blogs/news/pla-vs-high-speed-pla-whats-the-real-difference"
 ---
 
-## When to pick it
+## Use it for
 
-You have a fast printer (Bambu, Prusa MK4/Core One, Voron, tuned Ender, and similar) and you want to use that speed. Plates of small parts, big low-detail prints, and quick prototypes are the sweet spot.
+- You have a fast printer (Bambu, Prusa MK4/Core One, Voron, tuned Ender, and similar) and you want to use that speed.
+- Plates of small parts, big low-detail prints, and quick prototypes are the sweet spot.
 
-## What makes it different
+## What is different
 
-High-speed PLA is reformulated, not just relabelled: it has lower melt viscosity and nucleating agents so the bead sets quickly. That raises the flow you can push before under-extrusion. Prusa lists 28 mm³/s for its high-speed PLA against 24 mm³/s for regular PLA on the same printer, and Polymaker testing cited by Bambu forum users puts regular PLA at roughly 13-15 mm³/s versus 18-22 mm³/s for high-speed. Your own hotend sets the real limit.
+- High-speed PLA is reformulated, not just relabelled: it has lower melt viscosity and nucleating agents so the bead sets quickly.
+- That raises the flow you can push before under-extrusion.
+- Prusa lists 28 mm³/s for its high-speed PLA against 24 mm³/s for regular PLA on the same printer, and Polymaker testing cited by Bambu forum users puts regular PLA at roughly 13-15 mm³/s versus 18-22 mm³/s for high-speed.
+- Your own hotend sets the real limit.
 
 ## Watch out for
 
@@ -37,6 +41,6 @@ High-speed PLA is reformulated, not just relabelled: it has lower melt viscosity
 
 ## Tips
 
-Use it with a profile for your printer and tune max volumetric flow for this specific spool. Faster printing needs more cooling, so open the door and keep the fan at full.
-
-Want speed and toughness? See [Rapid PLA+](/filaments/rapid-pla-plus).
+- Use it with a profile for your printer and tune max volumetric flow for this specific spool.
+- Faster printing needs more cooling, so open the door and keep the fan at full.
+- Want speed and toughness? See [Rapid PLA+](/filaments/rapid-pla-plus).

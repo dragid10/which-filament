@@ -25,9 +25,10 @@ sources:
     url: "https://all3dp.com/2/asa-vs-abs-differences/"
 ---
 
-## When to pick it
+## Use it for
 
-Outdoor brackets, garden fixtures, camera and sensor housings, vehicle exterior parts, and anything left in the sun and rain for years. It keeps its colour and strength where PLA, PETG, and ABS fade or crack.
+- Outdoor brackets, garden fixtures, camera and sensor housings, vehicle exterior parts, and anything left in the sun and rain for years.
+- It keeps its colour and strength where PLA, PETG, and ABS fade or crack.
 
 ## Watch out for
 
@@ -37,4 +38,4 @@ Outdoor brackets, garden fixtures, camera and sensor housings, vehicle exterior 
 
 ## Tips
 
-Use a brim and a hot bed for good adhesion, and print the walls a little thicker for outdoor parts.
+- Use a brim and a hot bed for good adhesion, and print the walls a little thicker for outdoor parts.
