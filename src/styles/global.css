@@ -417,3 +417,25 @@ code { font-size: 0.9em; background: var(--surface-2); padding: 0.1em 0.45em; bo
   .home-search { flex-direction: column; }
   .btn-show-inline { min-height: 48px; }
 }
+
+/* active filters as removable pills (so applied choices stay visible when the sidebar is collapsed) */
+.active-filters { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 0; padding: 0; flex: 1 1 100%; order: 3; }
+.active-filters[hidden] { display: none; }
+.pill-x { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0 0.9rem; border: 2px solid var(--ink); border-radius: 999px; background: var(--surface); color: var(--ink); font: 700 0.92rem var(--font-body); cursor: pointer; }
+.pill-x span { font-size: 0.8rem; }
+.pill-x:hover { background: var(--ink); color: var(--bg); }
+
+/* ratings radar */
+.radar { width: 15rem; max-width: 100%; height: auto; }
+.head-visuals { display: none; }
+@media (min-width: 720px) {
+  .page-head.with-visuals { grid-template-columns: 1fr auto; align-items: center; }
+  .head-visuals { display: flex; align-items: center; gap: 1rem; }
+  .head-visuals .media { width: 11rem; }
+}
+.radar-ring { fill: none; stroke: var(--line); stroke-width: 1; }
+.radar-ring:last-of-type { stroke: var(--field); }
+.radar-axis { stroke: var(--line); stroke-width: 1; }
+.radar-shape { fill: color-mix(in srgb, var(--ink) 16%, transparent); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
+.radar-dot { fill: var(--ink); }
+.radar-label { font: 700 13px var(--font-body); fill: var(--muted); }

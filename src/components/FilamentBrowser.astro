@@ -81,6 +81,7 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
     <div class="toolbar-row">
       <p class="count" data-count role="status" aria-live="polite"></p>
       <ViewToggle />
+      <ul class="active-filters" data-active aria-label="Active filters" hidden></ul>
     </div>
     <h2 class="sr-only">Results</h2>
     <div class="list-head" aria-hidden="true"><span>Filament</span><span>Details</span><span>Temperatures</span><span>Ratings</span></div>
@@ -134,7 +135,36 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
     history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
   }
 
+  const active = document.querySelector<HTMLElement>('[data-active]')!;
+  const labelOf = (input: HTMLInputElement) => {
+    const t = input.closest('label')!.querySelector('.t')!.cloneNode(true) as HTMLElement;
+    t.querySelectorAll('.emoji, .sr-only').forEach((n) => n.remove());
+    return t.textContent!.trim();
+  };
+  function renderActive() {
+    const chips: { text: string; remove: () => void }[] = [];
+    if (q.value.trim()) chips.push({ text: `“${q.value.trim()}”`, remove: () => { q.value = ''; } });
+    for (const box of form.querySelectorAll<HTMLInputElement>('[data-material]:checked, [data-good]:checked')) {
+      chips.push({ text: labelOf(box), remove: () => { box.checked = false; } });
+    }
+    active.hidden = chips.length === 0;
+    active.replaceChildren(
+      ...chips.map((c) => {
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'pill-x';
+        btn.setAttribute('aria-label', `Remove filter: ${c.text}`);
+        btn.append(c.text, Object.assign(document.createElement('span'), { textContent: '✕', ariaHidden: 'true' }));
+        btn.addEventListener('click', () => { c.remove(); form.dispatchEvent(new Event('input', { bubbles: true })); });
+        li.append(btn);
+        return li;
+      }),
+    );
+  }
+
   function apply() {
+    renderActive();
     const terms = q.value.toLowerCase().split(/\s+/).filter(Boolean);
     const mats = checked('data-material');
     const goods = checked('data-good');

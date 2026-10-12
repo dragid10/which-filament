@@ -69,7 +69,10 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
 
       <section data-results hidden aria-label="Ranked results">
         <h2 class="sr-only">Ranked results</h2>
-        <div class="toolbar"><ViewToggle /></div>
+        <div class="toolbar-row">
+          <ul class="active-filters" data-active aria-label="Active filters" hidden></ul>
+          <ViewToggle />
+        </div>
         <div class="list-head" aria-hidden="true"><span>Filament</span><span>Details</span><span>Temperatures</span><span>Ratings</span></div>
         <ul class="grid" data-grid>
           {
@@ -113,7 +116,32 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
   const MAX_TOP = 5; // show only the best few first; the rest sit behind "Show more"
   let expanded = false;
 
+  const active = document.querySelector<HTMLElement>('[data-active]')!;
+  // text of a checkbox's visible label (without the emoji or the screen-reader hint)
+  const labelOf = (input: HTMLInputElement) => {
+    const t = input.closest('label')!.querySelector('.t')!.cloneNode(true) as HTMLElement;
+    t.querySelectorAll('.emoji, .sr-only').forEach((n) => n.remove());
+    return t.textContent!.trim();
+  };
+  function renderActive(selected: HTMLInputElement[]) {
+    active.hidden = selected.length === 0;
+    active.replaceChildren(
+      ...selected.map((box) => {
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'pill-x';
+        btn.setAttribute('aria-label', `Remove filter: ${labelOf(box)}`);
+        btn.append(labelOf(box), Object.assign(document.createElement('span'), { textContent: '✕', ariaHidden: 'true' }));
+        btn.addEventListener('click', () => { box.checked = false; box.dispatchEvent(new Event('change')); });
+        li.append(btn);
+        return li;
+      }),
+    );
+  }
+
   function update() {
+    renderActive(boxes.filter((b) => b.checked));
     const selected = boxes.filter((b) => b.checked).map((b) => b.value);
     if (!selected.length) {
       original.forEach((li) => grid.append(li));
