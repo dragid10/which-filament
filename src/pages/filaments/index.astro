@@ -9,13 +9,11 @@ const filaments = await getCollection('filaments');
 
 <Base title="Search all variants" description="Search and filter every filament variant across PLA, PETG, and more.">
   <div class="wrap">
-    <p class="crumbs"><a href="/materials">Materials</a></p>
-    <section class="page-head">
-      <div>
-        <h1>Search all variants</h1>
-        <p class="lede">Every variant across every material in one place. Prefer to browse? <a href="/materials">Start with the material</a>.</p>
-      </div>
-    </section>
+    <p class="crumbs"><a href="/materials">Materials</a> › All variants</p>
+    <header class="head-compact">
+      <h1>All variants</h1>
+      <p class="lede">Every variant across every material. Search, filter, or <a href="/materials">start with the material</a>.</p>
+    </header>
     <FilamentBrowser filaments={filaments} materials={materials} materialFilter />
   </div>
 </Base>

@@ -21,21 +21,11 @@ const d = entry.data;
 <Base title={d.title} description={d.summary}>
   <div class="wrap">
     <p class="crumbs"><a href="/materials">Materials</a> › {d.title}</p>
-    <section class:list={['page-head', { 'with-media': !!d.image }]}><div>
-      <p class="eyebrow">{d.fullName}</p>
-      <h1>{d.title}</h1>
+    <header class="head-compact">
+      <h1>{d.title} <span class="full">{d.fullName}</span></h1>
       <p class="lede">{d.summary}</p>
-      {d.aliases.length > 0 && <p class="aka">Also called: {d.aliases.join(', ')}</p>}
-    </div>
-    {d.image && (
-      <figure class="media" style="margin:0">
-        <img src={d.image} alt={d.imageAlt ?? `${d.title} filament example`} />
-        {d.imageCredit && <figcaption style="font-size:.75rem;color:var(--muted)">{d.imageCredit}</figcaption>}
-      </figure>
-    )}
-    </section>
+    </header>
 
-    <h2 style="margin-top:1.5rem">{d.title} variants <span style="color:var(--muted);font-weight:500;font-size:1rem">({variants.length})</span></h2>
     <FilamentBrowser filaments={variants} materials={materials} />
     <h2>About {d.title}</h2>
     <div class="facts">

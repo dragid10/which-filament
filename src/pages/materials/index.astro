@@ -29,7 +29,6 @@ const filaments = await getCollection('filaments');
                 <div class="mat-body">
                   <p class="eyebrow">{m.data.fullName}</p>
                   <p>{m.data.summary}</p>
-                  <p class="variant-names">{variants.map((v) => v.data.title).join(' · ')}</p>
                   <span class="mat-go">Open {m.data.title} →</span>
                 </div>
               </a>
