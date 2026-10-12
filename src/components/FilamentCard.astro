@@ -46,7 +46,7 @@ const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.ma
     <div class="c-title">
       {!hideMaterial && <p class="eyebrow">{d.title === materialTitle ? `${materialTitle} · standard` : materialTitle}</p>}
       <h3><a href={`/filaments/${filament.id}`}>{d.title}</a></h3>
-      <HomeUse level={homeLevel} note={homeNote} />
+      {(!hideMaterial || homeLevel !== material?.data.homeUse) && <HomeUse level={homeLevel} note={homeNote} />}
     </div>
     <div class="c-info">
       <div class="match" data-match hidden>

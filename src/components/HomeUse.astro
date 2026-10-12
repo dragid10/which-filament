@@ -1,5 +1,5 @@
 ---
-import { HOME_USE, type HomeUseLevel } from '../data/homeUse';
+import { HOME_USE, HOME_USE_LEVELS, type HomeUseLevel } from '../data/homeUse';
 
 interface Props {
   level: HomeUseLevel;
@@ -21,9 +21,15 @@ const h = HOME_USE[level];
       <p class="home-callout-head">
         <span class="home-icon" aria-hidden="true">{h.icon}</span>
         <strong>{h.label}</strong>
-        <span class="home-desc">{h.description}</span>
+        {note && <span class="home-note">{note}</span>}
       </p>
-      {note && <p class="home-note">{note}</p>}
+      <details class="home-key">
+        <summary>Key</summary>
+        <ul>
+          {HOME_USE_LEVELS.map((l) => <li data-level={l}><span aria-hidden="true">{HOME_USE[l].icon}</span> <strong>{HOME_USE[l].label}</strong>: {HOME_USE[l].description}</li>)}
+        </ul>
+        <p>A variant is marked individually only when it differs from the rest of its material.</p>
+      </details>
     </aside>
   )
 }

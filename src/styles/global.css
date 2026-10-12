@@ -492,3 +492,16 @@ details[open] > summary::before { transform: rotate(45deg); }
 .panel h2, .panel h3 { font-size: 1.05rem; font-weight: 800; }
 .panel li, .panel dd, .panel dt, .panel p { color: var(--ink); }
 .fine, .aka, .credit { color: var(--ink); }
+
+/* compact home-use line with an expandable key */
+.home-callout { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1.25rem; width: fit-content; max-width: 100%; padding: 0.4rem 0.9rem; font-size: 0.95rem; }
+.home-callout-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.6rem; }
+.home-note { margin: 0; }
+.home-key { font-size: 0.9rem; }
+.home-key summary { display: flex; align-items: center; color: var(--muted); font-weight: 700; min-height: 32px; }
+.home-key ul { list-style: none; margin: 0.25rem 0; padding: 0; }
+.home-key li { margin-bottom: 0.2rem; }
+.home-key li[data-level='easy'] span { color: var(--good); }
+.home-key li:not([data-level='easy']) span { color: var(--warn); }
+.home-key p { margin: 0.25rem 0 0.4rem; color: var(--muted); }
+.home-key[open] { flex-basis: 100%; }
