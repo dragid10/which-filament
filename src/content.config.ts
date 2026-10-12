@@ -45,6 +45,8 @@ const filaments = defineCollection({
     image: z.string().optional(),
     imageAlt: z.string().optional(),
     imageCredit: z.string().optional(),
+    // Where clicking the photo goes, e.g. the product page the photo came from
+    imageLink: z.url().optional(),
     aliases: z.array(z.string()).default([]),
     ratings: z.object({
       strength: rating,

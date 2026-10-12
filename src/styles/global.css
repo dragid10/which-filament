@@ -439,3 +439,7 @@ code { font-size: 0.9em; background: var(--surface-2); padding: 0.1em 0.45em; bo
 .radar-shape { fill: color-mix(in srgb, var(--ink) 16%, transparent); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
 .radar-dot { fill: var(--ink); }
 .radar-label { font: 700 13px var(--font-body); fill: var(--muted); }
+
+.media-link { display: block; }
+.credit { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; }
+.credit a { color: inherit; }

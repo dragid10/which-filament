@@ -25,7 +25,7 @@ Thanks for helping people pick the right filament! Contributions of all sizes ar
 | `settings` | Typical `nozzle` and `bed` temps, optional `speed` and `cooling` |
 | `needs` | Things required to print it well (dry box, fast printer, ...) |
 | `priceTier` | `"$"`, `"$$"` or `"$$$"` relative to plain PLA |
-| `image` (optional) | Path under `public/`, plus `imageAlt` and `imageCredit` |
+| `image` (optional) | Path under `public/`, plus `imageAlt` and `imageCredit`. Add `imageLink` (the product page) to make the photo clickable and credit-linked. Only add photos you have permission to use. |
 
 3. Write the body in Markdown. Follow the existing structure: **When to pick it**, **Watch out for**, **Tips**.
 4. Run `npm install` then `npm run check` to validate. The error messages say exactly which field is wrong.

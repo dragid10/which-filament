@@ -51,8 +51,18 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
       <div class="head-visuals">
         {d.image && (
           <figure class="media">
-            <img src={d.image} alt={d.imageAlt ?? `${d.title} filament example`} />
-            {d.imageCredit && <figcaption style="font-size:.75rem;color:var(--muted)">{d.imageCredit}</figcaption>}
+            {d.imageLink ? (
+              <a href={d.imageLink} target="_blank" rel="noopener noreferrer" class="media-link" aria-label={`${d.title} product page (opens in a new tab)`}>
+                <img src={d.image} alt={d.imageAlt ?? `${d.title} filament example`} />
+              </a>
+            ) : (
+              <img src={d.image} alt={d.imageAlt ?? `${d.title} filament example`} />
+            )}
+            {d.imageCredit && (
+              <figcaption class="credit">
+                Photo: {d.imageLink ? <a href={d.imageLink} target="_blank" rel="noopener noreferrer">{d.imageCredit} ↗</a> : d.imageCredit}
+              </figcaption>
+            )}
           </figure>
         )}
         <Radar ratings={d.ratings} />
