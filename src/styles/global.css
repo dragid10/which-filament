@@ -443,3 +443,6 @@ code { font-size: 0.9em; background: var(--surface-2); padding: 0.1em 0.45em; bo
 .media-link { display: block; }
 .credit { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; }
 .credit a { color: inherit; }
+
+/* photos show in cards and on detail pages; the list view stays an aligned, text-only table */
+.list-view .card-media { display: none; }

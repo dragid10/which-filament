@@ -2,6 +2,10 @@
 title: PETG
 material: petg
 order: 1
+image: /images/filaments/petg.jpg
+imageAlt: "A 1 kg spool of PETG filament in its box"
+imageCredit: "Suit, CC BY-SA 4.0, via Wikimedia Commons"
+imageLink: "https://commons.wikimedia.org/wiki/File:1_kg_petg_filament_in_packaging.jpg"
 summary: The tougher everyday choice. Handles heat, sun, and impacts that would crack PLA.
 aliases: [standard petg, regular petg, plain petg]
 ratings: { strength: 4, heat: 3, flex: 3, ease: 3, speed: 3, finish: 3, durability: 4 }

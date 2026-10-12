@@ -2,6 +2,10 @@
 title: Wood PLA
 material: pla
 order: 9
+image: /images/filaments/wood-pla.jpg
+imageAlt: "A 3DBenchy boat printed in wood-based PLA, held in a hand, with a matte warm wood-toned finish"
+imageCredit: "3DBenchy.com, CC BY 2.0, via Wikimedia Commons"
+imageLink: "https://commons.wikimedia.org/wiki/File:-3DBenchy_by_CT3D.xyz_-_3D-printed_with_ECO_Wood_filament_(16500744844).jpg"
 summary: PLA blended with wood fibers for a warm, sandable, stainable look. Fussy to print.
 aliases: [wood filament, wood fill pla, wood-fill pla, wooden pla]
 ratings: { strength: 2, heat: 1, flex: 1, ease: 2, speed: 2, finish: 4, durability: 2 }

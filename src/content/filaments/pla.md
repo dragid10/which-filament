@@ -2,6 +2,10 @@
 title: PLA
 material: pla
 order: 1
+image: /images/filaments/pla.jpg
+imageAlt: "Green and white spools of PLA filament"
+imageCredit: "Richardspa, CC0, via Wikimedia Commons"
+imageLink: "https://commons.wikimedia.org/wiki/File:Filaments_PLA.jpg"
 summary: Standard PLA. Cheap, easy, and the right answer for most decorative and low-stress prints.
 aliases: [plain pla, regular pla, basic pla]
 ratings: { strength: 3, heat: 1, flex: 1, ease: 5, speed: 3, finish: 3, durability: 2 }
