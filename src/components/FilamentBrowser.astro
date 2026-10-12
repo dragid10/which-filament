@@ -190,7 +190,7 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
     writeUrl();
   }
 
-  // Sidebar behaviour: always open on wide screens, collapsible on narrow ones
+  // Sidebar behavior: always open on wide screens, collapsible on narrow ones
   const side = document.querySelector<HTMLDetailsElement>('[data-side]')!;
   const sideCount = document.querySelector<HTMLElement>('[data-side-count]')!;
   const wide = window.matchMedia('(min-width: 900px)');

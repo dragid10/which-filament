@@ -1,0 +1,33 @@
+---
+import { HOME_USE, FDM_EXPLAINER, type HomeUseLevel } from '../data/homeUse';
+
+interface Props {
+  level: HomeUseLevel;
+  note?: string;
+  /** "badge" is the compact pill used on rows; "callout" is the full block for detail pages */
+  variant?: 'badge' | 'callout';
+}
+const { level, note, variant = 'badge' } = Astro.props;
+const h = HOME_USE[level];
+---
+
+{
+  variant === 'badge' ? (
+    <p class="home-badge" data-level={level} title={note ? `${h.description} ${note}` : h.description}>
+      <span aria-hidden="true">{h.icon}</span> {h.label}
+    </p>
+  ) : (
+    <aside class="home-callout" data-level={level} aria-label="Where you can print it">
+      <p class="home-callout-head">
+        <span class="home-icon" aria-hidden="true">{h.icon}</span>
+        <strong>{h.label}</strong>
+        <span class="home-desc">{h.description}</span>
+      </p>
+      {note && <p class="home-note">{note}</p>}
+      <details class="home-fdm">
+        <summary>What is an FDM printer?</summary>
+        <p>{FDM_EXPLAINER}</p>
+      </details>
+    </aside>
+  )
+}

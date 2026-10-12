@@ -2,6 +2,8 @@
 title: ASA-CF
 material: asa
 order: 2
+homeUse: care
+homeNote: "Needs an enclosed printer, ventilation, and a hardened steel nozzle."
 summary: ASA filled with carbon fiber. Stiff, matte, and weatherproof, for rigid outdoor and automotive parts.
 aliases: [carbon fiber asa, carbon fibre asa, asa carbon fiber, cf asa]
 ratings: { strength: 4, heat: 4, flex: 1, ease: 2, speed: 3, finish: 4, durability: 4 }
@@ -28,7 +30,7 @@ featured: false
 
 - Hardened nozzle required, since carbon fiber wears brass quickly.
 - Stiffer but less impact-tolerant than plain ASA.
-- The most expensive option on this list.
+- Costs more than plain ASA.
 
 ## Tips
 

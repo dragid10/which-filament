@@ -5,6 +5,8 @@ import FilamentCard from '../components/FilamentCard.astro';
 import ViewToggle from '../components/ViewToggle.astro';
 import ObjectCard from '../components/ObjectCard.astro';
 import UseCaseGroups from '../components/UseCaseGroups.astro';
+import HomeUse from '../components/HomeUse.astro';
+import { FDM_EXPLAINER } from '../data/homeUse';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
 const filaments = await getCollection('filaments');
@@ -40,6 +42,8 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
         Choose at least one option to get a ranked shortlist, or browse by material.
       </p>
 
+      <details class="explainer"><summary>New here? What does FDM mean?</summary><p>{FDM_EXPLAINER}</p></details>
+
       <section data-categories>
         <h2>Browse by material</h2>
         <ul class="grid mats">
@@ -57,6 +61,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
                     <div class="mat-body">
                       <p class="eyebrow">{m.data.fullName}</p>
                       <p>{m.data.summary}</p>
+                      <HomeUse level={m.data.homeUse} note={m.data.homeNote} />
                       <span class="mat-go">Open {m.data.title} →</span>
                     </div>
                   </a>
@@ -213,7 +218,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
   });
   update();
 
-  // Sidebar behaviour: keep options open on wide screens, collapsible on narrow ones
+  // Sidebar behavior: keep options open on wide screens, collapsible on narrow ones
   const side = document.querySelector<HTMLDetailsElement>('[data-side]')!;
   const sideCount = document.querySelector<HTMLElement>('[data-side-count]')!;
   const wide = window.matchMedia('(min-width: 900px)');

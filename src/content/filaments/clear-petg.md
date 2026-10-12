@@ -16,6 +16,9 @@ needs:
   - Dry filament (moisture shows up as bubbles)
 priceTier: "$$"
 featured: false
+sources:
+  - title: "3DJake: outdoor-ready filaments for weather-resistant prints"
+    url: "https://www.3djake.com/info/guide/outdoor-ready-filaments-for-weather-resistant-3d-prints"
 ---
 
 ## Use it for
@@ -28,6 +31,7 @@ featured: false
 - 3D prints are translucent, not truly transparent. Layer lines scatter light.
 - Stringing and blobs are more visible in clear material.
 - Needs very dry filament for the cleanest result.
+- Clear and light colors yellow and haze faster in strong sun than dark ones.
 
 ## Tips
 

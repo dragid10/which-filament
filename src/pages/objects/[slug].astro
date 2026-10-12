@@ -2,6 +2,7 @@
 import { getCollection, getEntries, getEntry, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import FilamentCard from '../../components/FilamentCard.astro';
+import Sources from '../../components/Sources.astro';
 import { USE_CASES } from '../../data/useCases';
 
 export async function getStaticPaths() {
@@ -54,6 +55,8 @@ const label = (id: string) => USE_CASES.find((u) => u.id === id)?.label ?? id;
         </ul>
       </>
     )}
+
+    <Sources sources={d.sources} />
 
     <p style="margin-top:2rem"><a href={`https://github.com/dragid10/which-filament/edit/main/src/content/objects/${entry.id}.md`}>Suggest an edit to this page</a></p>
   </div>

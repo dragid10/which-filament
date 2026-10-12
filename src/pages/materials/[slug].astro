@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Sources from '../../components/Sources.astro';
+import HomeUse from '../../components/HomeUse.astro';
 import FilamentBrowser from '../../components/FilamentBrowser.astro';
 
 export async function getStaticPaths() {
@@ -25,6 +26,8 @@ const d = entry.data;
       <h1>{d.title} <span class="full">{d.fullName}</span></h1>
       <p class="lede">{d.summary}</p>
     </header>
+
+    <HomeUse level={d.homeUse} note={d.homeNote} variant="callout" />
 
     <details class="about" open data-about>
       <summary><h2>About {d.title}</h2></summary>

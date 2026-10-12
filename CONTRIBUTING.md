@@ -17,6 +17,7 @@ Thanks for helping people pick the right filament! Contributions of all sizes ar
 |-------|-------|
 | `title` | Display name, e.g. `Rapid PETG` |
 | `material` | File name of a material in `src/content/materials/` (`pla`, `petg`, `abs`, `asa`, `tpu`). Checked by the build. |
+| `homeUse` / `homeNote` (optional) | Where it can be printed: `easy` (typical home FDM printer), `care` (home, but needs extra gear or safety steps), or `industrial`. Overrides the material's level. Put the specific requirement in `homeNote`. |
 | `order` | Position within the material: the base type is 1, then each step up in complexity (PLA, PLA+, Rapid PLA, ...). Lower comes first. |
 | `summary` | One sentence, max 200 characters |
 | `aliases` | Other names people search for |
@@ -54,6 +55,7 @@ A material is a top-level category such as PLA or ABS. Add `src/content/material
 | `title` / `fullName` | Short name and full chemical name, e.g. `ABS` / `Acrylonitrile butadiene styrene` |
 | `summary` | One sentence, max 200 characters |
 | `order` | Sort position among materials (lower is first) |
+| `homeUse` / `homeNote` | Default where-to-print level for the material (`easy`, `care`, `industrial`) and a short specific note |
 | `aliases` (optional) | Other names people search for |
 | `image`, `imageAlt`, `imageCredit` (optional) | Photo under `public/`, with alt text and credit |
 | `pros` / `cons` | Lists. Quote each item (`"..."`) so colons do not break the YAML |

@@ -24,8 +24,8 @@ sources:
 
 ## Use it for
 
-- When the print will be looked at up close.
-- Matte PLA softens the look of layer lines, does not reflect harsh highlights, and looks great for figurines, planters, desk accessories, and parts you plan to paint.
+- Prints that will be looked at up close: figurines, planters, desk accessories, and parts you plan to paint.
+- It softens the look of layer lines and does not reflect harsh highlights.
 
 ## Watch out for
 
@@ -35,4 +35,4 @@ sources:
 ## Tips
 
 - Print a little hotter and slower, with reduced part cooling, to narrow the strength gap (it will not fully close).
-- Darker colours give the most convincing matte look.
+- Darker colors give the most convincing matte look.

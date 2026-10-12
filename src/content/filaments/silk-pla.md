@@ -22,8 +22,7 @@ sources:
 
 ## Use it for
 
-- Looks come first.
-- Vases, trophies, jewellery-style pieces, decorative gifts, and dual- or tri-colour figures all benefit from silk's metallic glow.
+- When looks come first: vases, trophies, jewelry-style pieces, decorative gifts, and dual- or tri-color figures all benefit from silk's metallic glow.
 
 ## Watch out for
 

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import HomeUse from '../../components/HomeUse.astro';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
 const filaments = await getCollection('filaments');
@@ -29,6 +30,7 @@ const filaments = await getCollection('filaments');
                 <div class="mat-body">
                   <p class="eyebrow">{m.data.fullName}</p>
                   <p>{m.data.summary}</p>
+                  <HomeUse level={m.data.homeUse} note={m.data.homeNote} />
                   <span class="mat-go">Open {m.data.title} →</span>
                 </div>
               </a>

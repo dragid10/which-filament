@@ -2,6 +2,8 @@
 title: ABS-CF
 material: abs
 order: 2
+homeUse: care
+homeNote: "Needs an enclosed printer, ventilation, and a hardened steel nozzle."
 summary: ABS filled with carbon fiber. Stiffer and less warp-prone than plain ABS, with a dry matte look.
 aliases: [carbon fiber abs, carbon fibre abs, abs carbon fiber, cf abs]
 ratings: { strength: 4, heat: 4, flex: 1, ease: 2, speed: 3, finish: 4, durability: 3 }

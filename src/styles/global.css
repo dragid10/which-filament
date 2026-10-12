@@ -1,5 +1,5 @@
-/* Which Filament: bright, rounded and friendly.
-   Violet brand, sunny yellow highlight, a bright colour per material, soft shapes and lots of air. */
+/* Which Filament: warm neutral, calm and scannable.
+   Eggshell page, tan surfaces, near-black ink, rounded-but-not-bubbly cards. Colors are light-dark() pairs. */
 
 :root {
   /* light | dark pairs. The theme follows the system unless the visitor picks one (data-theme on <html>). */
@@ -68,7 +68,7 @@ legend { padding: 0; }
 .btn-link { background: none; border: 0; color: var(--brand); font: 800 1rem var(--font-body); text-decoration: underline; text-decoration-thickness: 2px; cursor: pointer; padding: 0.5rem 0.5rem; min-height: 44px; border-radius: 12px; }
 .btn-link:hover { color: var(--ink); }
 
-/* chips: pill toggles (selected state also gets a check mark, never colour alone) */
+/* chips: pill toggles (selected state also gets a check mark, never color alone) */
 .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0; padding: 0; list-style: none; }
 .chips.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr)); gap: 0.75rem; }
 .chip label { position: relative; display: block; height: 100%; }
@@ -446,3 +446,25 @@ code { font-size: 0.9em; background: var(--surface-2); padding: 0.1em 0.45em; bo
 
 /* photos show in cards and on detail pages; the list view stays an aligned, text-only table */
 .list-view .card-media { display: none; }
+
+/* where it can be printed */
+.home-badge { display: inline-flex; align-items: center; gap: 0.4rem; margin: 0.35rem 0 0; padding: 0.1rem 0.7rem; border-radius: 999px; border: 2px solid var(--line); font-size: 0.82rem; font-weight: 800; background: var(--surface); width: fit-content; }
+.home-badge[data-level='easy'] span { color: var(--good); }
+.home-badge[data-level='care'] { border-style: dashed; border-color: var(--field); }
+.home-badge[data-level='care'] span { color: var(--warn); }
+.home-badge[data-level='industrial'] { border-color: var(--warn); }
+.home-badge[data-level='industrial'] span { color: var(--warn); }
+.home-callout { margin: 1.25rem 0 0; padding: 1rem 1.25rem; background: var(--surface); border: 2px solid var(--line); border-left-width: 6px; border-radius: var(--r-lg); }
+.home-callout[data-level='easy'] { border-left-color: var(--good); }
+.home-callout[data-level='care'] { border-left-color: var(--warn); }
+.home-callout[data-level='industrial'] { border-left-color: var(--warn); border-style: dashed; border-left-style: solid; }
+.home-callout-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; margin: 0; }
+.home-icon { font-weight: 900; }
+.home-callout[data-level='easy'] .home-icon { color: var(--good); }
+.home-callout[data-level='care'] .home-icon, .home-callout[data-level='industrial'] .home-icon { color: var(--warn); }
+.home-desc { color: var(--muted); }
+.home-note { margin: 0.4rem 0 0; font-weight: 700; }
+.home-fdm, .explainer { margin-top: 0.6rem; font-size: 0.95rem; }
+.home-fdm summary, .explainer summary { cursor: pointer; font-weight: 700; color: var(--muted); min-height: 32px; display: flex; align-items: center; }
+.home-fdm p, .explainer p { margin: 0.4rem 0 0; max-width: 46rem; }
+.explainer { margin: 0.25rem 0 1rem; }

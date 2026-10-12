@@ -3,6 +3,8 @@ title: ABS
 fullName: Acrylonitrile butadiene styrene
 summary: Tough and heat-resistant, and sands and smooths well. Needs an enclosure and good ventilation.
 order: 3
+homeUse: care
+homeNote: "Needs an enclosed printer, and a ventilated space or vented enclosure: it gives off styrene fumes."
 pros:
   - "Heat deflection around 95-100 °C, well above PLA and PETG"
   - "Tough and impact-resistant, and not brittle"

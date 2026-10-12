@@ -24,7 +24,7 @@ featured: true
 ## Use it for
 
 - Anything that is going to sit on a shelf, a desk, or a table.
-- Figurines, organisers, test fits, and first prints on a new printer are exactly what plain PLA is for.
+- Figurines, organizers, test fits, and first prints on a new printer are exactly what plain PLA is for.
 
 ## Watch out for
 

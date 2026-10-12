@@ -3,6 +3,8 @@ title: ASA
 fullName: Acrylonitrile styrene acrylate
 summary: Like ABS but built for the outdoors. Resists UV, weather, and heat without yellowing or cracking.
 order: 4
+homeUse: care
+homeNote: "Needs an enclosed printer, and a ventilated space or vented enclosure: it gives off fumes."
 pros:
   - "Excellent UV and weather resistance, so it stays put in sun, rain, and cold"
   - "Heat deflection around 86-96 °C, similar to or slightly below ABS"

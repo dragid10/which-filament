@@ -2,6 +2,8 @@
 title: PETG-CF
 material: petg
 order: 4
+homeUse: care
+homeNote: "Needs a hardened steel nozzle."
 summary: PETG filled with carbon fiber. Stiffer, with a matte finish and cleaner prints.
 aliases: [carbon fiber petg, carbon fibre petg, petg carbon fiber, cf petg]
 ratings: { strength: 4, heat: 3, flex: 2, ease: 3, speed: 3, finish: 4, durability: 3 }

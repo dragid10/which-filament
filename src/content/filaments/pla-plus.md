@@ -19,12 +19,12 @@ featured: true
 
 ## Use it for
 
-- PLA+ is plain PLA that does not snap as easily.
-- Reach for it for brackets, holders, hooks, phone stands, and enclosures that will be handled, bumped, and screwed together.
+- Brackets, holders, hooks, phone stands, and enclosures that will be handled, bumped, and screwed together.
+- Anywhere plain PLA would snap but you still want an easy print.
 
 ## Watch out for
 
-- "PLA+" has no fixed recipe: each brand uses different additives, so behaviour varies. Expect to tune temperature a little.
+- "PLA+" has no fixed recipe: each brand uses different additives, so behavior varies. Expect to tune temperature a little.
 - Heat resistance is still PLA-level. It is not a PETG replacement for hot places.
 
 ## Tips

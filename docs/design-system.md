@@ -1,6 +1,6 @@
 # Design system
 
-Warm neutral and calm: an eggshell page, tan secondary surfaces, near-black ink, and nothing else. There is no accent colour and no decorative colour (a filament type comes in every colour, so showing one would mislead). A light/dark toggle follows the system by default and remembers the visitor's choice.
+Warm neutral and calm: an eggshell page, tan secondary surfaces, near-black ink, and nothing else. There is no accent color and no decorative color (a filament type comes in every color, so showing one would mislead). A light/dark toggle follows the system by default and remembers the visitor's choice.
 
 ## Tokens (`src/styles/global.css`, `light-dark()` pairs)
 
@@ -42,7 +42,7 @@ Radius 14 px for cards and tiles, 10 px for inner media, pills (999 px) for chip
 - Contrast: text >= 4.5:1, UI boundaries >= 3:1 in both themes (checked with axe-core and Lighthouse).
 - Targets: interactive controls are at least 44 px tall.
 - Focus: a visible 3 px ink outline with a tan halo on every focusable element. Skip link first.
-- State is never conveyed by colour alone: check marks, ✓/✕ glyphs, text labels. Emoji are decorative and hidden from screen readers.
+- State is never conveyed by color alone: check marks, ✓/✕ glyphs, text labels. Emoji are decorative and hidden from screen readers.
 - Honours `prefers-color-scheme`, `prefers-reduced-motion`, and `forced-colors`.
 - Headings do not skip levels. Filter groups are `fieldset` + `legend`. Live regions announce result counts.
 - Reflows to 320 px without horizontal scroll (finder tiles go single-column below 400 px).

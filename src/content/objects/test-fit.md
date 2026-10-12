@@ -8,5 +8,5 @@ avoid: []
 ---
 
 - When the part is going in the bin after you check the fit, speed wins.
-- Rapid PLA on a fast printer can finish in a fraction of the time with a lower layer height and a big nozzle.
+- Rapid PLA on a fast printer can finish in a fraction of the time with a larger nozzle and thicker layers.
 - If you are not on a fast printer, plain PLA is just as good.

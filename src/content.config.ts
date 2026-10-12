@@ -2,6 +2,7 @@ import { defineCollection, reference } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { USE_CASE_IDS } from './data/useCases';
+import { HOME_USE_LEVELS } from './data/homeUse';
 
 const rating = z.number().int().min(1).max(5);
 
@@ -16,6 +17,9 @@ const materials = defineCollection({
     summary: z.string().max(200),
     order: z.number().default(100),
     aliases: z.array(z.string()).default([]),
+    // Where it can be printed: easy (typical home FDM printer), care (home, with extra gear or safety steps), industrial
+    homeUse: z.enum(HOME_USE_LEVELS).default('easy'),
+    homeNote: z.string().optional(),
     // Optional photo, relative to /public (e.g. /images/materials/pla.jpg)
     image: z.string().optional(),
     imageAlt: z.string().optional(),
@@ -41,6 +45,9 @@ const filaments = defineCollection({
     // Position within its material: base type first, then each step up in complexity (lower is first)
     order: z.number().default(100),
     summary: z.string().max(200),
+    // Overrides the material's level when this variant needs more (or less) than the base material
+    homeUse: z.enum(HOME_USE_LEVELS).optional(),
+    homeNote: z.string().optional(),
     // Optional photo, relative to /public (e.g. /images/filaments/silk-pla.jpg)
     image: z.string().optional(),
     imageAlt: z.string().optional(),
@@ -83,6 +90,7 @@ const objects = defineCollection({
     best: reference('filaments'),
     runnersUp: z.array(reference('filaments')).default([]),
     avoid: z.array(reference('filaments')).default([]),
+    sources,
   }),
 });
 

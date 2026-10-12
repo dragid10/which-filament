@@ -2,12 +2,17 @@
 title: Outdoor planter
 summary: Sun, rain, heat, and temperature swings all day.
 useCases: [outdoor, waterproof]
-best: petg
-runnersUp: [rapid-petg, asa]
+best: asa
+runnersUp: [petg, asa-cf]
 avoid: [pla, pla-plus, matte-pla, silk-pla, rapid-pla, rapid-pla-plus]
+sources:
+  - title: "3DJake: outdoor-ready filaments for weather-resistant prints"
+    url: "https://www.3djake.com/info/guide/outdoor-ready-filaments-for-weather-resistant-3d-prints"
+  - title: "QIDI: ASA vs PETG for UV-exposed brackets"
+    url: "https://qidi3d.com/blogs/print-lab/asa-petg-sprinkler-brackets-outdoor"
 ---
 
-- PETG tolerates UV, moisture, and heat far better than any PLA, so a planter that sits in a sunny spot will keep its shape for seasons.
+- ASA keeps its color and strength through years of sun, rain, and temperature swings.
+- PETG is the easier choice for a shaded spot or a few seasons. Dark colors last longer in sun than light ones.
 - Print with thicker walls and good layer bonding so it stays watertight.
-- PLA in direct summer sun can soften and sag, and it slowly degrades outdoors.
-- If it must be PLA, keep it in a shaded spot and expect a shorter life.
+- PLA softens and sags in direct summer sun and slowly degrades outdoors. If it must be PLA, keep it in the shade and expect a shorter life.

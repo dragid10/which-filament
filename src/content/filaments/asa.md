@@ -29,7 +29,7 @@ sources:
 ## Use it for
 
 - Outdoor brackets, garden fixtures, camera and sensor housings, vehicle exterior parts, and anything left in the sun and rain for years.
-- It keeps its colour and strength where PLA, PETG, and ABS fade or crack.
+- It keeps its color and strength where PLA, PETG, and ABS fade or crack.
 
 ## Watch out for
 

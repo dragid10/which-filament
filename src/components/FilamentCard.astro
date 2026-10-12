@@ -2,6 +2,8 @@
 import type { CollectionEntry } from 'astro:content';
 import { USE_CASES } from '../data/useCases';
 import RatingBars from './RatingBars.astro';
+import HomeUse from './HomeUse.astro';
+import { getEntry } from 'astro:content';
 
 interface Props {
   filament: CollectionEntry<'filaments'>;
@@ -9,6 +11,9 @@ interface Props {
 }
 const { filament, materialTitle } = Astro.props;
 const d = filament.data;
+const material = await getEntry(d.material);
+const homeLevel = d.homeUse ?? material?.data.homeUse ?? 'easy';
+const homeNote = d.homeNote ?? material?.data.homeNote;
 const labelFor = (id: string) => USE_CASES.find((u) => u.id === id)?.label ?? id;
 const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.map(labelFor)].join(' ').toLowerCase();
 ---
@@ -19,6 +24,7 @@ const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.ma
   data-slug={filament.id}
   data-material={d.material.id}
   data-order={d.order}
+  data-home={homeLevel}
   data-title={d.title.toLowerCase()}
   data-search={search}
   data-good={d.goodFor.join(',')}
@@ -36,8 +42,9 @@ const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.ma
   }
   <div class="card-body">
     <div class="c-title">
-      <p class="eyebrow">{materialTitle}</p>
+      <p class="eyebrow">{d.title === materialTitle ? `${materialTitle} · standard` : materialTitle}</p>
       <h3><a href={`/filaments/${filament.id}`}>{d.title}</a></h3>
+      <HomeUse level={homeLevel} note={homeNote} />
     </div>
     <div class="c-info">
       <div class="match" data-match hidden>

@@ -10,4 +10,4 @@ avoid: []
 - Nothing here is under load or heat, so pick for looks.
 - Matte PLA hides layer lines and fingerprints and looks tidy on a desk.
 - Plain PLA is the budget choice.
-- PETG works but costs more effort for no benefit, and its glossier, slightly rougher surface shows scratches.
+- PETG works too, but it is fussier to print with no benefit here.

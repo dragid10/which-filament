@@ -1,12 +1,14 @@
 ---
 title: PLA
-fullName: Polylactic acid
-summary: The friendly default. Easy, cheap, and comes in every colour and finish you can imagine.
+fullName: Polylactic acid (polylactide)
+summary: The friendly default. Easy, cheap, and comes in every color and finish you can imagine.
 order: 1
+homeUse: easy
+homeNote: "Works on any basic FDM printer, with no enclosure needed."
 pros:
   - "Easiest filament to print; forgiving on almost any printer"
   - "Little warping, no enclosure needed"
-  - "Huge range of colours and finishes (matte, silk, rapid, and more)"
+  - "Huge range of colors and finishes (matte, silk, rapid, and more)"
   - "Cheap and widely available"
 cons:
   - "Softens around 55-65 °C (glass transition), so it can deform in a hot car or near a heater"
@@ -24,6 +26,8 @@ sources:
     url: "https://all3dp.com/2/pla-vs-abs-vs-petg/"
   - title: "Elegoo: filament drying and storage guide"
     url: "https://wiki.elegoo.com/filaments/fdm-filament-drying-and-storage-guide"
+  - title: "Wikipedia: polylactic acid (naming and chemistry)"
+    url: "https://en.wikipedia.org/wiki/Polylactic_acid"
 ---
 
 - Where almost everyone starts: stiff, crisp detail, rarely needs tuning.

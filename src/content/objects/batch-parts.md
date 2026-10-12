@@ -8,5 +8,5 @@ avoid: [silk-pla]
 ---
 
 - Rapid PLA+ gives you speed and a tougher part.
-- It is a good default for batches of brackets, clips, or organiser pieces on a printer that can really go fast.
+- It is a good default for batches of brackets, clips, or organizer pieces on a printer that can really go fast.
 - Choose Rapid PETG if the parts need to tolerate heat or outdoor use.

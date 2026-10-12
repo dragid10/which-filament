@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import RatingBars from '../../components/RatingBars.astro';
 import Radar from '../../components/Radar.astro';
+import HomeUse from '../../components/HomeUse.astro';
 import FilamentCard from '../../components/FilamentCard.astro';
 import Sources from '../../components/Sources.astro';
 import ObjectCard from '../../components/ObjectCard.astro';
@@ -30,6 +31,8 @@ const { entry, material, siblings, materials, objects } = Astro.props;
 if (!material) throw new Error(`Filament "${entry.id}" references unknown material "${entry.data.material.id}"`);
 const { Content } = await render(entry);
 const d = entry.data;
+const homeLevel = d.homeUse ?? material.data.homeUse;
+const homeNote = d.homeNote ?? material.data.homeNote;
 const label = (id: string) => USE_CASES.find((u) => u.id === id)?.label ?? id;
 const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.title ?? id;
 ---
@@ -68,6 +71,8 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
         <Radar ratings={d.ratings} />
       </div>
     </section>
+
+    <HomeUse level={homeLevel} note={homeNote} variant="callout" />
 
     <div class="facts">
       <section class="panel">

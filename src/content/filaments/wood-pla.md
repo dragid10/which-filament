@@ -2,6 +2,8 @@
 title: Wood PLA
 material: pla
 order: 9
+homeUse: easy
+homeNote: "Use a 0.5 mm or larger nozzle."
 image: /images/filaments/wood-pla.jpg
 imageAlt: "A 3DBenchy boat printed in wood-based PLA, held in a hand, with a matte warm wood-toned finish"
 imageCredit: "3DBenchy.com, CC BY 2.0, via Wikimedia Commons"
