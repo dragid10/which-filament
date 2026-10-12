@@ -29,8 +29,8 @@ const d = entry.data;
 
     <HomeUse level={d.homeUse} note={d.homeNote} variant="callout" />
 
-    <details class="about" open data-about>
-      <summary><h2>About {d.title}</h2></summary>
+    <details class="about" open>
+      <summary>About {d.title}</summary>
       <div class="facts">
         <section class="panel">
           <h3>Overview</h3>
@@ -61,12 +61,3 @@ const d = entry.data;
     <Sources sources={d.sources} />
   </div>
 </Base>
-
-<script>
-  // "About" is always open on wide screens and collapsible on narrow ones
-  const about = document.querySelector<HTMLDetailsElement>('[data-about]')!;
-  const wide = window.matchMedia('(min-width: 900px)');
-  if (!wide.matches) about.open = false;
-  wide.addEventListener('change', () => { about.open = wide.matches; });
-  about.addEventListener('toggle', () => { if (wide.matches && !about.open) about.open = true; });
-</script>

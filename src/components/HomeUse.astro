@@ -1,5 +1,5 @@
 ---
-import { HOME_USE, FDM_EXPLAINER, type HomeUseLevel } from '../data/homeUse';
+import { HOME_USE, type HomeUseLevel } from '../data/homeUse';
 
 interface Props {
   level: HomeUseLevel;
@@ -24,10 +24,6 @@ const h = HOME_USE[level];
         <span class="home-desc">{h.description}</span>
       </p>
       {note && <p class="home-note">{note}</p>}
-      <details class="home-fdm">
-        <summary>What is an FDM printer?</summary>
-        <p>{FDM_EXPLAINER}</p>
-      </details>
     </aside>
   )
 }
