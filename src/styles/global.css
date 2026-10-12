@@ -21,8 +21,8 @@
   --soft: 0 2px 4px rgba(60, 40, 10, 0.06), 0 10px 24px -12px var(--shade);
   --r-lg: 14px;
   --r-md: 10px;
-  --font-display: 'Public Sans Variable', 'Public Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Public Sans Variable', 'Public Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color-scheme: light dark;
 }
 :root[data-theme='light'] { color-scheme: light; }
@@ -41,7 +41,7 @@ a:hover { color: var(--ink); text-decoration-thickness: 4px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* type */
-h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0 0 0.5em; letter-spacing: -0.02em; line-height: 1.12; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0 0 0.5em; letter-spacing: -0.022em; line-height: 1.15; font-feature-settings: 'cv11', 'ss03'; }
 h1 { font-size: clamp(2.1rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; }
 h2 { font-size: clamp(1.7rem, 3.2vw, 2.3rem); margin-top: 4rem; }
 h3 { font-size: 1.35rem; }
@@ -387,3 +387,13 @@ code { font-size: 0.9em; background: var(--surface-2); padding: 0.1em 0.45em; bo
   .about .facts { margin-top: 0.75rem; }
   .variants-h { margin-top: 1.5rem; }
 }
+
+/* option groups, top pick, show-more */
+.uc-group + .uc-group { margin-top: 0.9rem; }
+.uc-legend { display: block; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.35rem; padding: 0; }
+.card.top-pick { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink), var(--glow); }
+.card.top-pick .eyebrow::after { content: ' · Best match'; color: var(--ink); }
+.more-row { display: flex; justify-content: center; margin-top: 1.25rem; }
+.btn-more { display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.6rem; border-radius: 999px; border: 2px solid var(--ink); background: var(--surface); color: var(--ink); font: 700 1rem var(--font-body); cursor: pointer; }
+.btn-more:hover { background: var(--ink); color: var(--bg); }
+.btn-more[hidden] { display: none; }

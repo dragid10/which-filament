@@ -22,7 +22,7 @@ Radius 14 px for cards and tiles, 10 px for inner media, pills (999 px) for chip
 
 ## Type (self-hosted via Fontsource, no third-party requests)
 
-- **One family:** Public Sans variable (neutral, not rounded) for everything: 800 for the page title, 700 for headings, 400 for body at 16 px / 1.6.
+- **One family:** Inter variable (clean and neutral, not rounded) for everything: 800 for the page title, 700 for headings, 400 for body at 16 px / 1.6.
 
 ## Components
 

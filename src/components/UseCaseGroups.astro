@@ -1,0 +1,33 @@
+---
+// The use-case checkboxes, in labelled chunks. `attr` is the data attribute the page script looks for.
+import { USE_CASES, USE_CASE_GROUPS } from '../data/useCases';
+
+interface Props {
+  attr: 'data-usecase' | 'data-good';
+  useCases?: readonly (typeof USE_CASES)[number][];
+}
+const { attr, useCases = USE_CASES } = Astro.props;
+const groups = USE_CASE_GROUPS.map((g) => ({ ...g, items: useCases.filter((u) => u.group === g.id) })).filter((g) => g.items.length);
+const flag = { [attr]: true };
+---
+
+{
+  groups.map((g) => (
+    <fieldset class="uc-group">
+      <legend class="uc-legend">{g.label}</legend>
+      <ul class="chips side-list">
+        {g.items.map((u) => (
+          <li class="chip">
+            <label title={u.hint}>
+              <input type="checkbox" value={u.id} {...flag} />
+              <span class="t">
+                <span class="emoji" aria-hidden="true">{u.emoji}</span>
+                <span>{u.label}<span class="sr-only">. {u.hint}</span></span>
+              </span>
+            </label>
+          </li>
+        ))}
+      </ul>
+    </fieldset>
+  ))
+}

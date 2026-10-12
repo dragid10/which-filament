@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import FilamentCard from '../components/FilamentCard.astro';
 import ViewToggle from '../components/ViewToggle.astro';
 import ObjectCard from '../components/ObjectCard.astro';
-import { USE_CASES } from '../data/useCases';
+import UseCaseGroups from '../components/UseCaseGroups.astro';
 
 const materials = (await getCollection('materials')).sort((a, b) => a.data.order - b.data.order);
 const filaments = await getCollection('filaments');
@@ -20,21 +20,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
         <div class="side-body">
           <h2 class="side-title" id="finder-h">What are you printing?</h2>
           <p class="side-hint">Pick everything that applies.</p>
-          <fieldset>
-            <legend class="sr-only">Use cases</legend>
-            <ul class="chips side-list">
-              {
-                USE_CASES.map((u) => (
-                  <li class="chip">
-                    <label title={u.hint}>
-                      <input type="checkbox" value={u.id} data-usecase />
-                      <span class="t"><span class="emoji" aria-hidden="true">{u.emoji}</span><span>{u.label}<span class="sr-only">. {u.hint}</span></span></span>
-                    </label>
-                  </li>
-                ))
-              }
-            </ul>
-          </fieldset>
+          <UseCaseGroups attr="data-usecase" />
           <div class="side-actions">
             <button type="button" class="btn-link" data-clear>Clear selection</button>
             <button type="button" class="btn-show" data-show-results>Show results</button>
@@ -94,6 +80,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
               ))
           }
         </ul>
+        <div class="more-row"><button type="button" class="btn-more" data-show-more aria-expanded="false" hidden>Show more</button></div>
       </section>
 
       <h2>Or see what people print</h2>
@@ -116,6 +103,9 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
   const results = document.querySelector<HTMLElement>('[data-results]')!;
   const items = [...grid.children] as HTMLElement[];
   const original = [...items];
+  const moreBtn = document.querySelector<HTMLButtonElement>('[data-show-more]')!;
+  const MAX_TOP = 5; // show only the best few first; the rest sit behind "Show more"
+  let expanded = false;
 
   function update() {
     const selected = boxes.filter((b) => b.checked).map((b) => b.value);
@@ -123,7 +113,12 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
       original.forEach((li) => grid.append(li));
       for (const card of grid.querySelectorAll<HTMLElement>('[data-card]')) {
         card.querySelector<HTMLElement>('[data-match]')!.hidden = true;
+        card.hidden = false;
+        card.classList.remove('top-pick');
+        delete card.dataset.extra;
       }
+      expanded = false;
+      moreBtn.hidden = true;
       status.textContent = 'Choose at least one option to get a ranked shortlist, or browse by material.';
       categories.hidden = false;
       results.hidden = true;
@@ -157,11 +152,31 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
         ...match.warnings.map((t) => Object.assign(document.createElement('li'), { textContent: t, className: 'warn' })),
       );
     }
+    // Hick's law: lead with the few that matter; the rest are one click away
+    const good = scored.filter((s) => s.match.verdict === 'great' || s.match.verdict === 'good').length;
+    const topCount = Math.max(3, Math.min(MAX_TOP, good));
+    scored.forEach(({ card }, i) => {
+      card.classList.toggle('top-pick', i === 0);
+      if (i >= topCount) card.dataset.extra = '1';
+      else delete card.dataset.extra;
+      card.hidden = i >= topCount && !expanded;
+    });
+    const extra = scored.length - topCount;
+    moreBtn.hidden = extra <= 0;
+    moreBtn.textContent = expanded ? 'Show fewer' : `Show ${extra} more`;
+    moreBtn.setAttribute('aria-expanded', String(expanded));
     const labels = selected.map((id) => USE_CASES.find((u) => u.id === id)!.label.toLowerCase());
     const top = scored[0];
-    status.textContent = `Best for ${labels.join(' + ')}: ${top.card.querySelector('h3')!.textContent}.`;
+    status.textContent = `Best for ${labels.join(' + ')}: ${top.card.querySelector('h3')!.textContent}. Showing the top ${topCount} of ${scored.length}.`;
   }
   boxes.forEach((b) => b.addEventListener('change', update));
+  moreBtn.addEventListener('click', () => {
+    expanded = !expanded;
+    for (const card of grid.querySelectorAll<HTMLElement>('[data-card][data-extra]')) card.hidden = !expanded;
+    const n = grid.querySelectorAll('[data-card][data-extra]').length;
+    moreBtn.textContent = expanded ? 'Show fewer' : `Show ${n} more`;
+    moreBtn.setAttribute('aria-expanded', String(expanded));
+  });
   update();
 
   // Sidebar behaviour: keep options open on wide screens, collapsible on narrow ones

@@ -3,6 +3,7 @@
 import type { CollectionEntry } from 'astro:content';
 import FilamentCard from './FilamentCard.astro';
 import ViewToggle from './ViewToggle.astro';
+import UseCaseGroups from './UseCaseGroups.astro';
 import { USE_CASES } from '../data/useCases';
 
 interface Props {
@@ -52,19 +53,8 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
           )
         }
 
-        <fieldset>
-          <legend class="side-label">Good for</legend>
-          <ul class="chips side-list">
-            {usedUseCases.map((u) => (
-              <li class="chip">
-                <label title={u.hint}>
-                  <input type="checkbox" value={u.id} data-good />
-                  <span class="t"><span class="emoji" aria-hidden="true">{u.emoji}</span>{u.label}</span>
-                </label>
-              </li>
-            ))}
-          </ul>
-        </fieldset>
+        <p class="side-label" style="margin-bottom:0">Good for</p>
+        <UseCaseGroups attr="data-good" useCases={usedUseCases} />
 
         <div>
           <label for="sort" class="side-label">Sort by</label>
