@@ -27,6 +27,5 @@ sources:
     url: "https://all3dp.com/2/asa-vs-abs-differences/"
 ---
 
-- ASA is what you reach for when ABS would be perfect except that the part lives outside.
-- Car exterior parts, garden hardware, sensor housings, and outdoor brackets all suit it.
-- Print it the way you would ABS: enclosed, warm chamber, ventilated room.
+- ABS built for the outdoors: car parts, garden hardware, sensor housings.
+- Print it like ABS: enclosed, warm chamber, ventilated room.

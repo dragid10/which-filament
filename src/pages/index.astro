@@ -82,7 +82,11 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
         <ul class="grid" data-grid>
           {
             filaments
-              .sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title))
+              .sort(
+                (a, b) =>
+                  (materials.findIndex((m) => m.id === a.data.material.id) - materials.findIndex((m) => m.id === b.data.material.id)) ||
+                  a.data.order - b.data.order,
+              )
               .map((f) => (
                 <li style="display:contents">
                   <FilamentCard filament={f} materialTitle={materialTitle(f.data.material.id)} />

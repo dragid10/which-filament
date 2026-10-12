@@ -25,7 +25,6 @@ sources:
     url: "https://wiki.elegoo.com/filaments/fdm-filament-drying-and-storage-guide"
 ---
 
-- TPU is the answer whenever the part has to bend.
-- Phone cases, gaskets, bumpers, grips, tires, and vibration feet are classic uses.
-- The number you see on the spool (like **95A** or **85A**) is the Shore hardness: a lower number is softer and more flexible, and also harder to print.
+- The answer whenever the part has to bend: cases, gaskets, bumpers, grips, tires.
+- The number on the spool is Shore hardness. Lower is softer and harder to print.
 - Start with 95A.

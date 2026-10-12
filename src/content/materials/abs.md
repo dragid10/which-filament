@@ -27,7 +27,6 @@ sources:
     url: "https://wiki.elegoo.com/filaments/fdm-filament-drying-and-storage-guide"
 ---
 
-- ABS is the classic engineering plastic.
-- Choose it when a part needs to survive heat or hard use and you have an enclosed printer.
-- Because of fumes and warping, treat it as a step up: print it in a ventilated space, away from where you sit, with a closed or enclosed printer.
-- If your printer is open frame, PETG is the practical alternative.
+- The classic engineering plastic for heat and hard use.
+- Needs an enclosed printer and ventilation. On an open printer, use PETG.
+- Outdoors it yellows and cracks, so use [ASA](/materials/asa) instead.

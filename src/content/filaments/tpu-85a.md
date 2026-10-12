@@ -1,6 +1,7 @@
 ---
 title: TPU 85A
 material: tpu
+order: 2
 summary: A softer, more rubbery TPU. Squishy and stretchy, but much harder to print than 95A.
 aliases: [soft tpu, 85a tpu, shore 85a, very soft tpu]
 ratings: { strength: 2, heat: 2, flex: 5, ease: 1, speed: 1, finish: 3, durability: 4 }

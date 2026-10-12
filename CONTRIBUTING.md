@@ -17,6 +17,7 @@ Thanks for helping people pick the right filament! Contributions of all sizes ar
 |-------|-------|
 | `title` | Display name, e.g. `Rapid PETG` |
 | `material` | File name of a material in `src/content/materials/` (`pla`, `petg`, `abs`, `asa`, `tpu`). Checked by the build. |
+| `order` | Position within the material: the base type is 1, then each step up in complexity (PLA, PLA+, Rapid PLA, ...). Lower comes first. |
 | `summary` | One sentence, max 200 characters |
 | `aliases` | Other names people search for |
 | `ratings` | Seven scores from 1 to 5: strength, heat, flex, ease, speed, finish, durability |

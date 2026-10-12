@@ -1,6 +1,7 @@
 ---
 title: Clear PETG
 material: petg
+order: 3
 summary: Unpigmented, translucent PETG. Good for light covers, windows, and parts you want to see through.
 aliases: [transparent petg, translucent petg, natural petg]
 ratings: { strength: 4, heat: 3, flex: 3, ease: 3, speed: 3, finish: 4, durability: 4 }

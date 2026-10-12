@@ -16,7 +16,9 @@ export async function getStaticPaths() {
     props: {
       entry,
       material: materials.find((m) => m.id === entry.data.material.id),
-      siblings: filaments.filter((f) => f.data.material.id === entry.data.material.id && f.id !== entry.id),
+      siblings: filaments
+        .filter((f) => f.data.material.id === entry.data.material.id && f.id !== entry.id)
+        .sort((a, b) => a.data.order - b.data.order),
       materials,
       objects: objects.filter((o) => o.data.best.id === entry.id || o.data.runnersUp.some((r) => r.id === entry.id)),
     },

@@ -1,6 +1,7 @@
 ---
 title: Wood PLA
 material: pla
+order: 9
 summary: PLA blended with wood fibers for a warm, sandable, stainable look. Fussy to print.
 aliases: [wood filament, wood fill pla, wood-fill pla, wooden pla]
 ratings: { strength: 2, heat: 1, flex: 1, ease: 2, speed: 2, finish: 4, durability: 2 }

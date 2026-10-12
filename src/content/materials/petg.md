@@ -27,9 +27,6 @@ sources:
     url: "https://wiki.elegoo.com/filaments/fdm-filament-drying-and-storage-guide"
 ---
 
-- PETG is the usual step up when PLA is not tough enough.
-- It is the go-to for functional parts, anything that sees sun or warmth, and parts that need to survive being dropped.
-- It asks for slightly more care: hotter temperatures, lower part cooling, and dry filament.
-- Once tuned it is nearly as easy as PLA.
-- Like PLA it comes in variants.
-- **Rapid PETG** is the high-speed version; standard PETG is the safe default.
+- The usual step up when PLA is not tough enough: functional parts, sun, warmth, drops.
+- A bit fussier than PLA: hotter, less part cooling, and dry filament.
+- Plain PETG is the safe default; Rapid PETG is the high-speed version.

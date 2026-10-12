@@ -1,6 +1,7 @@
 ---
 title: Rapid PLA+
 material: pla
+order: 4
 summary: The speed of Rapid PLA with the toughening of PLA+. A strong choice for fast functional prints.
 aliases: [rapid pla plus, high speed pla+, hs pla+]
 ratings: { strength: 4, heat: 1, flex: 2, ease: 4, speed: 5, finish: 3, durability: 3 }

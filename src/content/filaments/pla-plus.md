@@ -1,6 +1,7 @@
 ---
 title: PLA+
 material: pla
+order: 2
 summary: PLA with toughening additives. Less brittle and a bit stronger, still easy to print.
 aliases: [pla plus, pla pro, tough pla]
 ratings: { strength: 4, heat: 1, flex: 2, ease: 4, speed: 3, finish: 3, durability: 3 }

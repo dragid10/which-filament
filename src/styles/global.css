@@ -369,3 +369,21 @@ code { font-size: 0.9em; background: var(--surface-2); padding: 0.1em 0.45em; bo
 @media (max-width: 899px) {
   .site-header nav a { padding: 0 0.45rem; font-size: 0.86rem; }
 }
+
+/* About block on material pages: heading + panels, collapsible on narrow screens */
+.about > summary { list-style: none; cursor: default; pointer-events: none; }
+.about > summary::-webkit-details-marker { display: none; }
+.about > summary h2 { margin: 1.25rem 0 0.75rem; display: block; }
+.about .facts { margin-top: 0; }
+.prose-inline ul { margin: 0; padding-left: 1.2em; }
+.prose-inline li { margin-bottom: 0.4rem; }
+.variants-h { margin-top: 2.5rem; margin-bottom: 0.5rem; }
+@media (max-width: 899px) {
+  .about > summary { pointer-events: auto; cursor: pointer; display: flex; align-items: center; justify-content: space-between; background: var(--surface); border: 2px solid var(--line); border-radius: var(--r-lg); padding: 0 1.1rem; min-height: 52px; margin-top: 1rem; }
+  .about > summary h2 { margin: 0; font-size: 1.15rem; }
+  .about > summary::after { content: '▾'; font-size: 1.1rem; }
+  .about[open] > summary::after { content: '▴'; }
+  .about[open] > summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .about .facts { margin-top: 0.75rem; }
+  .variants-h { margin-top: 1.5rem; }
+}

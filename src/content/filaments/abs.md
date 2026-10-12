@@ -1,6 +1,7 @@
 ---
 title: ABS
 material: abs
+order: 1
 summary: Tough, heat-resistant, and easy to sand and smooth. The classic choice for enclosures and hot parts.
 aliases: [standard abs, regular abs, abs plastic]
 ratings: { strength: 4, heat: 4, flex: 2, ease: 2, speed: 3, finish: 3, durability: 4 }

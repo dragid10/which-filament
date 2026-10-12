@@ -1,6 +1,7 @@
 ---
 title: Marble / Stone PLA
 material: pla
+order: 8
 summary: PLA with a speckled, stone-like look. Easy to print and good at hiding layer lines.
 aliases: [marble pla, stone pla, granite pla, concrete pla]
 ratings: { strength: 3, heat: 1, flex: 1, ease: 4, speed: 3, finish: 4, durability: 2 }

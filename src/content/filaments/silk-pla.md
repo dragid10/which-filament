@@ -1,6 +1,7 @@
 ---
 title: Silk PLA
 material: pla
+order: 6
 summary: Shiny, pearlescent PLA with a metallic or satin sheen. Prints beautifully but is weaker than normal PLA.
 aliases: [shiny pla, metallic pla, dual color silk pla, tri color silk pla]
 ratings: { strength: 2, heat: 1, flex: 1, ease: 3, speed: 2, finish: 5, durability: 1 }

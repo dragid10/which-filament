@@ -1,6 +1,7 @@
 ---
 title: ASA
 material: asa
+order: 1
 summary: UV- and weather-resistant, tough, and heat-tolerant. The go-to for parts that live outside.
 aliases: [standard asa, asa plastic]
 ratings: { strength: 4, heat: 4, flex: 2, ease: 2, speed: 3, finish: 4, durability: 5 }

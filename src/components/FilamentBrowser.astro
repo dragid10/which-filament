@@ -12,7 +12,15 @@ interface Props {
   materialFilter?: boolean;
 }
 const { filaments, materials, materialFilter = false } = Astro.props;
-const sorted = [...filaments].sort((a, b) => a.data.title.localeCompare(b.data.title));
+const materialRank = (id: string) => materials.find((m) => m.id === id)?.data.order ?? 100;
+const sorted = [...filaments].sort(
+  (a, b) =>
+    materialRank(a.data.material.id) - materialRank(b.data.material.id) ||
+    a.data.order - b.data.order ||
+    // no explicit order: shorter (plainer) names first
+    a.data.title.length - b.data.title.length ||
+    a.data.title.localeCompare(b.data.title),
+);
 const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.title ?? id;
 // Only offer use-case filters that at least one variant is actually good for
 const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodFor as string[]).includes(u.id)));
@@ -61,6 +69,7 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
         <div>
           <label for="sort" class="side-label">Sort by</label>
           <select id="sort" class="sort" data-sort>
+            <option value="order">Recommended order</option>
             <option value="name">Name</option>
             <option value="strength">Strongest</option>
             <option value="speed">Fastest to print</option>
@@ -114,7 +123,7 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
   function readUrl() {
     const p = new URLSearchParams(location.search);
     q.value = p.get('q') ?? '';
-    sort.value = p.get('sort') ?? 'name';
+    sort.value = p.get('sort') ?? 'order';
     for (const [attr, key] of [['data-material', 'material'], ['data-good', 'for']] as const) {
       const wanted = (p.get(key) ?? '').split(',');
       form.querySelectorAll<HTMLInputElement>(`[${attr}]`).forEach((i) => (i.checked = wanted.includes(i.value)));
@@ -123,7 +132,7 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
   function writeUrl() {
     const p = new URLSearchParams();
     if (q.value.trim()) p.set('q', q.value.trim());
-    if (sort.value !== 'name') p.set('sort', sort.value);
+    if (sort.value !== 'order') p.set('sort', sort.value);
     const m = checked('data-material');
     const g = checked('data-good');
     if (m.length) p.set('material', m.join(','));
@@ -149,10 +158,12 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
       if (ok) shown++;
     }
     const key = sort.value;
-    const val = (li: HTMLElement) => (key === 'name' ? 0 : JSON.parse(cardOf(li).dataset.ratings!)[key] as number);
-    [...items]
-      .sort((a, b) => val(b) - val(a) || cardOf(a).dataset.title!.localeCompare(cardOf(b).dataset.title!))
-      .forEach((li) => grid.append(li));
+    const rating = (li: HTMLElement) => JSON.parse(cardOf(li).dataset.ratings!)[key] as number;
+    // `items` starts in recommended order (materials, then each material's own order), so ties keep that order
+    const base = [...items];
+    if (key === 'name') base.sort((a, b) => cardOf(a).dataset.title!.localeCompare(cardOf(b).dataset.title!));
+    else if (key !== 'order') base.sort((a, b) => rating(b) - rating(a));
+    base.forEach((li) => grid.append(li));
     count.textContent = `${shown} of ${items.length} shown`;
     empty.hidden = shown > 0;
     writeUrl();

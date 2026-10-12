@@ -26,29 +26,44 @@ const d = entry.data;
       <p class="lede">{d.summary}</p>
     </header>
 
-    <FilamentBrowser filaments={variants} materials={materials} />
-    <h2>About {d.title}</h2>
-    <div class="facts">
-      <section class="panel">
-        <h3>Pros</h3>
-        <ul class="pros">{d.pros.map((p) => <li>{p}</li>)}</ul>
-      </section>
-      <section class="panel">
-        <h3>Cons</h3>
-        <ul class="cons">{d.cons.map((p) => <li>{p}</li>)}</ul>
-      </section>
-      <section class="panel">
-        <h3>Typical settings</h3>
-        <dl class="kv">
-          <dt>Nozzle</dt><dd>{d.settings.nozzle}</dd>
-          <dt>Bed</dt><dd>{d.settings.bed}</dd>
-          {d.settings.enclosure && <><dt>Enclosure</dt><dd>{d.settings.enclosure}</dd></>}
-          {d.settings.drying && <><dt>Drying</dt><dd>{d.settings.drying}</dd></>}
-        </dl>
-      </section>
-    </div>
+    <details class="about" open data-about>
+      <summary><h2>About {d.title}</h2></summary>
+      <div class="facts">
+        <section class="panel">
+          <h3>Overview</h3>
+          <div class="prose-inline"><Content /></div>
+        </section>
+        <section class="panel">
+          <h3>Pros</h3>
+          <ul class="pros">{d.pros.map((p) => <li>{p}</li>)}</ul>
+        </section>
+        <section class="panel">
+          <h3>Cons</h3>
+          <ul class="cons">{d.cons.map((p) => <li>{p}</li>)}</ul>
+        </section>
+        <section class="panel">
+          <h3>Typical settings</h3>
+          <dl class="kv">
+            <dt>Nozzle</dt><dd>{d.settings.nozzle}</dd>
+            <dt>Bed</dt><dd>{d.settings.bed}</dd>
+            {d.settings.enclosure && <><dt>Enclosure</dt><dd>{d.settings.enclosure}</dd></>}
+            {d.settings.drying && <><dt>Drying</dt><dd>{d.settings.drying}</dd></>}
+          </dl>
+        </section>
+      </div>
+    </details>
 
-    <article class="prose cols-prose"><Content /></article>
+    <h2 class="variants-h">{d.title} variants</h2>
+    <FilamentBrowser filaments={variants} materials={materials} />
     <Sources sources={d.sources} />
   </div>
 </Base>
+
+<script>
+  // "About" is always open on wide screens and collapsible on narrow ones
+  const about = document.querySelector<HTMLDetailsElement>('[data-about]')!;
+  const wide = window.matchMedia('(min-width: 900px)');
+  if (!wide.matches) about.open = false;
+  wide.addEventListener('change', () => { about.open = wide.matches; });
+  about.addEventListener('toggle', () => { if (wide.matches && !about.open) about.open = true; });
+</script>

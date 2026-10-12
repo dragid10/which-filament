@@ -26,10 +26,6 @@ sources:
     url: "https://wiki.elegoo.com/filaments/fdm-filament-drying-and-storage-guide"
 ---
 
-- PLA is where almost everyone starts, and for a lot of prints it is also where they should stay.
-- It is stiff, prints crisp detail, and rarely needs tuning.
-- The catch is heat and impact.
-- If a part will live somewhere warm, take a hit, or flex repeatedly, look at [PETG](/materials/petg) instead.
-- PLA is really a family.
-- Plain PLA, **PLA+** (toughened), **Rapid PLA** (tuned for high-speed printers), **Matte** and **Silk** (looks-focused) all behave a little differently.
-- Pick the variant below that matches what you are printing.
+- Where almost everyone starts: stiff, crisp detail, rarely needs tuning.
+- Not for heat or impact. For warm places or parts that flex, use [PETG](/materials/petg).
+- Comes as plain, PLA+ (tougher), Rapid (fast printers), and Matte or Silk (looks).

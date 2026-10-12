@@ -38,6 +38,8 @@ const filaments = defineCollection({
     title: z.string(),
     // File name (without .md) of an entry in src/content/materials. Typos fail the build.
     material: reference('materials'),
+    // Position within its material: base type first, then each step up in complexity (lower is first)
+    order: z.number().default(100),
     summary: z.string().max(200),
     // Optional photo, relative to /public (e.g. /images/filaments/silk-pla.jpg)
     image: z.string().optional(),

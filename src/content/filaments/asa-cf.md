@@ -1,6 +1,7 @@
 ---
 title: ASA-CF
 material: asa
+order: 2
 summary: ASA filled with carbon fiber. Stiff, matte, and weatherproof, for rigid outdoor and automotive parts.
 aliases: [carbon fiber asa, carbon fibre asa, asa carbon fiber, cf asa]
 ratings: { strength: 4, heat: 4, flex: 1, ease: 2, speed: 3, finish: 4, durability: 4 }

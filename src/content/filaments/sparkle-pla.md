@@ -1,6 +1,7 @@
 ---
 title: Sparkle / Galaxy PLA
 material: pla
+order: 7
 summary: PLA with fine glitter particles that catch the light. Easy to print and fun to look at.
 aliases: [galaxy pla, glitter pla, sparkle pla, stardust pla]
 ratings: { strength: 3, heat: 1, flex: 1, ease: 4, speed: 3, finish: 4, durability: 2 }
