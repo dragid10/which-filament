@@ -83,6 +83,7 @@ const usedUseCases = USE_CASES.filter((u) => filaments.some((f) => (f.data.goodF
       <ViewToggle />
     </div>
     <h2 class="sr-only">Results</h2>
+    <div class="list-head" aria-hidden="true"><span>Filament</span><span>Details</span><span>Temperatures</span><span>Ratings</span></div>
     <ul class="grid" data-grid>
       {
         sorted.map((f) => (

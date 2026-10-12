@@ -31,6 +31,11 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
 
     <div class="main-col" id="results-top">
       <h1 class="page-title">Which filament should I use for this print?</h1>
+      <form class="home-search" action="/filaments" method="get" role="search">
+        <label class="sr-only" for="hq">Search filaments</label>
+        <input id="hq" name="q" type="search" class="search" placeholder="Or search directly: silk, PETG-CF, rapid…" autocomplete="off" />
+        <button type="submit" class="btn-show-inline">Search</button>
+      </form>
       <p class="finder-status" role="status" aria-live="polite" data-status>
         Choose at least one option to get a ranked shortlist, or browse by material.
       </p>
@@ -65,6 +70,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
       <section data-results hidden aria-label="Ranked results">
         <h2 class="sr-only">Ranked results</h2>
         <div class="toolbar"><ViewToggle /></div>
+        <div class="list-head" aria-hidden="true"><span>Filament</span><span>Details</span><span>Temperatures</span><span>Ratings</span></div>
         <ul class="grid" data-grid>
           {
             filaments
