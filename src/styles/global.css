@@ -489,3 +489,6 @@ details[open] > summary::before { transform: rotate(45deg); }
 .about .panel dt { font-weight: 700; }
 .home-desc, .lede { color: var(--ink); }
 .home-note { font-weight: 400; }
+.panel h2, .panel h3 { font-size: 1.05rem; font-weight: 800; }
+.panel li, .panel dd, .panel dt, .panel p { color: var(--ink); }
+.fine, .aka, .credit { color: var(--ink); }

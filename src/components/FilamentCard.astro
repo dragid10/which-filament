@@ -8,8 +8,10 @@ import { getEntry } from 'astro:content';
 interface Props {
   filament: CollectionEntry<'filaments'>;
   materialTitle: string;
+  /** Hide the material label when the page is already inside that material */
+  hideMaterial?: boolean;
 }
-const { filament, materialTitle } = Astro.props;
+const { filament, materialTitle, hideMaterial = false } = Astro.props;
 const d = filament.data;
 const material = await getEntry(d.material);
 const homeLevel = d.homeUse ?? material?.data.homeUse ?? 'easy';
@@ -42,7 +44,7 @@ const search = [d.title, materialTitle, d.summary, ...d.aliases, ...d.goodFor.ma
   }
   <div class="card-body">
     <div class="c-title">
-      <p class="eyebrow">{d.title === materialTitle ? `${materialTitle} · standard` : materialTitle}</p>
+      {!hideMaterial && <p class="eyebrow">{d.title === materialTitle ? `${materialTitle} · standard` : materialTitle}</p>}
       <h3><a href={`/filaments/${filament.id}`}>{d.title}</a></h3>
       <HomeUse level={homeLevel} note={homeNote} />
     </div>

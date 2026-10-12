@@ -46,7 +46,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
 
     <section class="page-head with-visuals">
       <div>
-        <p class="eyebrow">{material.data.title} · price tier {d.priceTier}</p>
+        <p class="eyebrow">Price tier {d.priceTier}</p>
         <h1>{d.title}</h1>
         <p class="lede">{d.summary}</p>
         {d.aliases.length > 0 && <p class="aka">Also called: {d.aliases.join(', ')}</p>}
@@ -126,7 +126,7 @@ const materialTitle = (id: string) => materials.find((m) => m.id === id)?.data.t
         <h2>Other {material.data.title} types</h2>
         <ul class="grid">
           {siblings.map((s) => (
-            <li style="display:contents"><FilamentCard filament={s} materialTitle={materialTitle(s.data.material.id)} /></li>
+            <li style="display:contents"><FilamentCard filament={s} materialTitle={materialTitle(s.data.material.id)} hideMaterial /></li>
           ))}
         </ul>
       </>
