@@ -479,3 +479,6 @@ details[open] > summary::before { transform: rotate(45deg); }
 .variants-h { margin-top: 1rem; margin-bottom: 0.5rem; }
 .home-callout { margin-top: 0.75rem; padding: 0.6rem 1rem; }
 @media (max-width: 899px) { .about .panel, .about .panel:first-child { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); } }
+.about { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 0 1.1rem 0.6rem; }
+.about > summary { border: 0; }
+@media (max-width: 899px) { .about { padding-inline: 0.9rem; } }
