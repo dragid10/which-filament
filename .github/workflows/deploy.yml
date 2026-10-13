@@ -1,9 +1,8 @@
 name: Deploy to GitHub Pages
-# Manual only while the repo is private (Pages needs a public repo or paid plan).
-# When going public: enable Pages (Source: GitHub Actions) and uncomment the push trigger.
+# Deploys on every push to main. Pages source: GitHub Actions.
 on:
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
