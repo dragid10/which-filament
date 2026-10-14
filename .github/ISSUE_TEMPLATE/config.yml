@@ -1,1 +1,5 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Add it yourself (pull request)
+    url: https://github.com/dragid10/which-filament/blob/main/CONTRIBUTING.md#add-a-filament
+    about: Copy docs/templates/filament.md, fill it in, and open a PR. The web editor works.

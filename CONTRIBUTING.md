@@ -10,7 +10,7 @@ Thanks for helping people pick the right filament! Contributions of all sizes ar
 
 ## Add a filament
 
-1. Copy an existing file in `src/content/filaments/` (e.g. `pla-plus.md`) to a new file. The file name becomes the URL, so use lowercase words with dashes: `src/content/filaments/rapid-petg.md` → `/filaments/rapid-petg`.
+1. Copy [`docs/templates/filament.md`](docs/templates/filament.md) (a blank, commented template) into `src/content/filaments/` as a new file. The file name becomes the URL, so use lowercase words with dashes: `src/content/filaments/rapid-petg.md` → `/filaments/rapid-petg`.
 2. Fill in the frontmatter (between the `---` lines):
 
 | Field | Notes |
@@ -30,7 +30,7 @@ Thanks for helping people pick the right filament! Contributions of all sizes ar
 
 3. Write the body in Markdown. Follow the existing structure: **When to pick it**, **Watch out for**, **Tips**.
 4. Run `npm install` then `npm run check` to validate. The error messages say exactly which field is wrong.
-5. Open a pull request. CI runs the same check and a build.
+5. Open a pull request and pick the **new variant** template by adding `?template=new-variant.md` to the PR URL (the checklist covers everything reviewers look for). CI runs the same check and a build.
 
 ### Add an example object
 

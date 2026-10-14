@@ -14,7 +14,7 @@ body:
     id: material
     attributes:
       label: Base material
-      options: [PLA, PETG, Other]
+      options: [PLA, PETG, ABS, ASA, TPU, Other (new material)]
     validations:
       required: true
   - type: textarea
@@ -23,6 +23,15 @@ body:
       label: What is it good (and bad) for?
     validations:
       required: true
+  - type: dropdown
+    id: home
+    attributes:
+      label: Where can it be printed?
+      options:
+        - Typical home FDM printer, no special setup
+        - Home, but needs extra gear or safety steps (enclosure, ventilation, hardened nozzle...)
+        - Industrial equipment only
+        - Not sure
   - type: textarea
     id: settings
     attributes:
@@ -32,7 +41,7 @@ body:
     id: sources
     attributes:
       label: Sources
-      description: Datasheets, tests, or your own experience.
+      description: Datasheets, tests, or your own experience. Links help a lot.
   - type: checkboxes
     id: pr
     attributes:

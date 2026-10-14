@@ -4,6 +4,10 @@
 
 Source for [which-filament.com](https://which-filament.com): a static guide to 3D printing filaments. Pick what you're printing and get a ranked shortlist of filament types (PLA, PETG, and variants like Rapid PLA, PLA+, Matte, Silk, and Rapid PETG) with reasons.
 
+## Contributing
+
+Adding a filament is one Markdown file: copy [`docs/templates/filament.md`](docs/templates/filament.md). See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Features
 
 - **Finder**: choose your use cases and get filaments ranked with explanations.
